@@ -18,6 +18,11 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin {
     }
 
     @Override
+    public boolean validarUsuario(String modulo, String nombre, String contraseña) throws RemoteException {
+        return false;
+    }
+
+    @Override
     public boolean resgitrarRepartidor(String nombre, String usuario, String contraseña) {
         return controllerAdmin.resgitrarRepartidor(nombre,usuario,contraseña);
     }

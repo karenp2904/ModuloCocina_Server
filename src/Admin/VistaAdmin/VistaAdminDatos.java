@@ -28,9 +28,9 @@ public class VistaAdminDatos extends JFrame {
         //logo de la salchica para el fondo
         JLabel logo = new JLabel("Logo");
         logo.setBounds(70, 130, 350, 350);
-        ImageIcon imgLogo = new ImageIcon("ModuloCocina/src/Imagenes/FotoPerrito.png");// se le pone icono a boton
+        ImageIcon imgLogo = new ImageIcon("src/Imagenes/FotoPerrito.png");// se le pone icono a boton
         Icon ilogo = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
-        logo.setIcon(ilogo);
+        logo.setIcon(imgLogo);
         panelCentral.add(logo);
 
         //letrero del registro de clinetes en el panel
@@ -70,15 +70,15 @@ public class VistaAdminDatos extends JFrame {
 
         JButton botonIngresar=new JButton(); //boton para ingresar pedido
         botonIngresar.setBounds(630, 400, 200, 80);
-        ImageIcon imgR= new ImageIcon("ModuloCocina/src/Imagenes/btningresarPedido.png");// se le pone icono a boton
+        ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setIcon(i);
+        botonIngresar.setIcon(imgR);
         botonIngresar.setLayout(null);
         botonIngresar.setOpaque(true);
         botonIngresar.setBorderPainted(false);
-        ImageIcon imgadmin= new ImageIcon("ModuloCocina/src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
+        ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setRolloverIcon(iconAdmin);
+        botonIngresar.setRolloverIcon(imgadmin);
         botonIngresar.setBackground(Color.white);
 
         botonIngresar.addActionListener(new ActionListener() {
@@ -139,9 +139,9 @@ public class VistaAdminDatos extends JFrame {
         //logo de la salchica para el fondo
         JLabel logo = new JLabel("Logo");
         logo.setBounds(70, 130, 350, 350);
-        ImageIcon imgLogo = new ImageIcon("ModuloCocina/src/Imagenes/FotoPerrito.png");// se le pone icono a boton
+        ImageIcon imgLogo = new ImageIcon("src/Imagenes/FotoPerrito.png");// se le pone icono a boton
         Icon ilogo = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
-        logo.setIcon(ilogo);
+        logo.setIcon(imgLogo);
         panelCentral.add(logo);
 
         //letrero del registro de clinetes en el panel
@@ -180,15 +180,15 @@ public class VistaAdminDatos extends JFrame {
 
         JButton botonIngresar=new JButton(); //boton para ingresar pedido
         botonIngresar.setBounds(630, 400, 200, 80);
-        ImageIcon imgR= new ImageIcon("ModuloCocina/src/Imagenes/btningresarPedido.png");// se le pone icono a boton
+        ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setIcon(i);
+        botonIngresar.setIcon(imgR);
         botonIngresar.setLayout(null);
         botonIngresar.setOpaque(true);
         botonIngresar.setBorderPainted(false);
-        ImageIcon imgadmin= new ImageIcon("ModuloCocina/src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
+        ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setRolloverIcon(iconAdmin);
+        botonIngresar.setRolloverIcon(imgadmin);
         botonIngresar.setBackground(Color.white);
         botonIngresar.addActionListener(new ActionListener() {
             @Override
@@ -205,7 +205,7 @@ public class VistaAdminDatos extends JFrame {
 
     }
     public void contenedor(){
-        ImageIcon imagen =new ImageIcon("ModuloCocina/src/Imagenes/fondoLetras.png");
+        ImageIcon imagen =new ImageIcon("src/Imagenes/fondoLetras.png");
         fondo.setIcon(imagen);
         fondo.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         //fondo.setBounds(100,40,1400,600);

@@ -1,37 +1,70 @@
+import Admin.VistaAdmin.VistaAdmin;
+import Admin.VistaAdmin.VistaPrincipal;
 import Servidor.Controladores.*;
 import Servidor.Servicios.*;
 import Shared.Environment;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            Map<String, String> properties = Environment.getInstance().getVariables();
+                Properties properties= new Properties();
+                try {
+                    ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
+                    Server modAdmin = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceAdmin);
 
-            ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
-            Server modAdmin = new Server(properties.get("IP"), properties.get("PORT0"), properties.get("SERVICE0"), serviceAdmin);
+                    properties.load(new FileInputStream(new File("src/server.properties")));
+                    Server server = new Server(
+                            (String) properties.get("IP"),
+                            (String) properties.get("PORT"),
+                            (String) properties.get("SERVICENAME"), serviceAdmin
+                    );
+                    server.deployService();
+                    //System.out.print("Service on");
+                    VistaPrincipal viewAdmin = new VistaPrincipal();
+                    /*
 
-            ServiceCocina serviceCocina = new ServiceCocina(new ControllerCocina());
-            Server modCocina = new Server(properties.get("IP"), properties.get("PORT1"), properties.get("SERVICE1"), serviceCocina);
+                properties.load(new FileInputStream(new File("src/server.properties")));
+                ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
+                Server modAdmin = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceAdmin);
 
-            ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
-            Server modOperador = new Server(properties.get("IP"), properties.get("PORT2"), properties.get("SERVICE2"), serviceOperador);
+                ServiceCocina serviceCocina = new ServiceCocina(new ControllerCocina());
+                Server modCocina = new Server((String)properties.get("IP"),(String) properties.get("PORT1"),(String) properties.get("SERVICE1"), serviceCocina);
 
-            ServiceRegistro serviceRegistro = new ServiceRegistro(new ControllerRegistro());
-            Server modRegistgro = new Server(properties.get("IP"), properties.get("PORT3"), properties.get("SERVICE3"), serviceRegistro);
+                ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
+                Server modOperador = new Server((String)properties.get("IP"),(String) properties.get("PORT2"),(String) properties.get("SERVICE2"), serviceOperador);
 
-            ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
-            Server modRepartidor = new Server(properties.get("IP"), properties.get("PORT4"), properties.get("SERVICE4"), serviceRepartidor);
+                ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
+                Server modRepartidor = new Server((String)properties.get("IP"), (String)properties.get("PORT4"), (String)properties.get("SERVICE4"), serviceRepartidor);
 
-            Thread[] threadList = {new Thread(modRegistgro), new Thread(modAdmin), new Thread(modOperador), new Thread(modCocina), new Thread(modRepartidor)};
+                System.out.print("Service on");
 
-            for (Thread thread : threadList) { //hilos
-                thread.start();
+                VistaAdmin viewAdmin = new VistaAdmin();
+
+                Thread[] threadList = {new Thread(modAdmin), new Thread(modOperador), new Thread(modCocina), new Thread(modRepartidor)};
+
+                for (Thread thread : threadList) { //hilos
+                    thread.start();
+                }
+
+                     */
+                Logger.getLogger("Server").log(Level.INFO, "Server is running...");
+
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            Logger.getLogger("Server").log(Level.INFO, "Server is running...");
+            //Map<String, String> properties = Environment.getInstance().getVariables();
+
         } catch (Exception e) {
             Logger.getLogger("Server").log(Level.WARNING, e.getMessage(), e);
         }

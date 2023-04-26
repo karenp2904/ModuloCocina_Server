@@ -48,13 +48,13 @@ public class VistaPrincipal extends JFrame {
 
         botonIniciar = new JButton("ENTRAR");
         botonIniciar.setBounds(600, 570, 230, 80);
-        ImageIcon img= new ImageIcon("ModuloCocina/src/Imagenes/INICIO.png");// se le pone icono a boton
+        ImageIcon img= new ImageIcon("src/Imagenes/INICIO.png");// se le pone icono a boton
         Icon i= new ImageIcon(img.getImage().getScaledInstance(botonIniciar.getWidth(), botonIniciar.getHeight(), Image.SCALE_DEFAULT));
         botonIniciar.setIcon(i);
         botonIniciar.setLayout(null);
         botonIniciar.setOpaque(true);
         botonIniciar.setBorderPainted(false);
-        ImageIcon imgJugar1= new ImageIcon("ModuloCocina/src/Imagenes/INICIO2.png");// se le pone icono a boton
+        ImageIcon imgJugar1= new ImageIcon("src/Imagenes/INICIO2.png");// se le pone icono a boton
         Icon iconIniciar= new ImageIcon(imgJugar1.getImage().getScaledInstance(botonIniciar.getWidth(), botonIniciar.getHeight(), Image.SCALE_DEFAULT));
         botonIniciar.setRolloverIcon(iconIniciar);
         botonIniciar.setBackground(Color.white);
@@ -90,14 +90,14 @@ public class VistaPrincipal extends JFrame {
         botonSalir = new JButton("Salir");
         botonSalir.setBounds(1100, 600, 200, 70);
         //botonReglas.setFont(new Font("BeaufortforLOL-Bold", Font.ITALIC, 12));
-        ImageIcon imgSalir3= new ImageIcon("ModuloCocina/src/Imagenes/SALIR.png");// se le pone icono a boton
+        ImageIcon imgSalir3= new ImageIcon("src/Imagenes/SALIR.png");// se le pone icono a boton
         Icon iconSalir= new ImageIcon(imgSalir3.getImage().getScaledInstance(botonSalir.getWidth(), botonSalir.getHeight(), Image.SCALE_DEFAULT));
         botonSalir.setIcon(iconSalir);
         botonSalir.setOpaque(false);
         botonSalir.setBorderPainted(false);
         botonSalir.setBackground(Color.white);
 
-        ImageIcon imgSalirD= new ImageIcon("ModuloCocina/src/Imagenes/SALIR2.png");// se le pone icono a boton
+        ImageIcon imgSalirD= new ImageIcon("src/Imagenes/SALIR2.png");// se le pone icono a boton
         Icon iconSalirD= new ImageIcon(imgSalirD.getImage().getScaledInstance(botonSalir.getWidth(), botonSalir.getHeight(), Image.SCALE_DEFAULT));
         botonSalir.setRolloverIcon(iconSalirD);
 
@@ -116,7 +116,7 @@ public class VistaPrincipal extends JFrame {
 
 
     public void panelContenedor(){
-        ImageIcon imagen =(new ImageIcon("ModuloCocina/src/Imagenes/Logo.jpeg"));
+        ImageIcon imagen =(new ImageIcon("src/Imagenes/Logo.jpeg"));
         fondo.setIcon(imagen);
         fondo.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         fondo.setBounds(100,20,1400,600);

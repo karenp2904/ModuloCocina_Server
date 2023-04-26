@@ -22,6 +22,7 @@ public class VistaAdmin extends JFrame {
         this.setVisible(true);
         this.setBackground(Color.white);
 
+
     }
 
     public void panelRegistro(){
@@ -35,7 +36,7 @@ public class VistaAdmin extends JFrame {
 
         JLabel logo=new JLabel("Logo");
         logo.setBounds(110,10,150,150);
-        ImageIcon imgLogo= new ImageIcon("ModuloCocina/src/Imagenes/logoPerrito.png");// se le pone icono a boton
+        ImageIcon imgLogo= new ImageIcon("src/Imagenes/logoPerrito.png");// se le pone icono a boton
         Icon ilogo= new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
         logo.setIcon(ilogo);
         panelBlanco.add(logo);
@@ -64,13 +65,13 @@ public class VistaAdmin extends JFrame {
 
         JButton botonRegistrar=new JButton();
         botonRegistrar.setBounds(140, 420, 100, 50);
-        ImageIcon img= new ImageIcon("ModuloCocina/src/Imagenes/INGRESAR.png");// se le pone icono a boton
+        ImageIcon img= new ImageIcon("src/Imagenes/INGRESAR.png");// se le pone icono a boton
         Icon i= new ImageIcon(img.getImage().getScaledInstance(botonRegistrar.getWidth(), botonRegistrar.getHeight(), Image.SCALE_DEFAULT));
         botonRegistrar.setIcon(i);
         botonRegistrar.setLayout(null);
         botonRegistrar.setOpaque(true);
         botonRegistrar.setBorderPainted(false);
-        ImageIcon imgadmin= new ImageIcon("ModuloCocina/src/Imagenes/INGRESAR2.png");// se le pone icono a boton
+        ImageIcon imgadmin= new ImageIcon("src/Imagenes/INGRESAR2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonRegistrar.getWidth(), botonRegistrar.getHeight(), Image.SCALE_DEFAULT));
         botonRegistrar.setRolloverIcon(iconAdmin);
         botonRegistrar.setBackground(Color.white);
@@ -87,7 +88,7 @@ public class VistaAdmin extends JFrame {
         });
         panelBlanco.add(botonRegistrar);
 
-        ImageIcon imagen =new ImageIcon("ModuloCocina/src/Imagenes/loginAdmin.png");
+        ImageIcon imagen =new ImageIcon("src/Imagenes/loginAdmin.png");
         fondo.setIcon(imagen);
         fondo.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         //capas de la ventana
@@ -118,13 +119,13 @@ public class VistaAdmin extends JFrame {
 
         JLabel fondoAzul=new JLabel("fondo");
         fondoAzul.setBounds(-10,70,300,600);
-        ImageIcon imgAzul= new ImageIcon("ModuloCocina/src/Imagenes/fondoAzul.png");// se le pone icono a boton
+        ImageIcon imgAzul= new ImageIcon("src/Imagenes/fondoAzul.png");// se le pone icono a boton
         Icon iconAzul= new ImageIcon(imgAzul.getImage().getScaledInstance(fondoAzul.getWidth(), fondoAzul.getHeight(), Image.SCALE_DEFAULT));
         fondoAzul.setIcon(iconAzul);
 
         JLabel logo=new JLabel("logoPerrito");
         logo.setBounds(300,500,300,300);
-        ImageIcon imlogo= new ImageIcon("ModuloCocina/src/Imagenes/logoPerro.png");// se le pone icono a boton
+        ImageIcon imlogo= new ImageIcon("src/Imagenes/logoPerro.png");// se le pone icono a boton
         Icon logo1= new ImageIcon(imlogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
         logo.setIcon(logo1);
 
@@ -136,14 +137,14 @@ public class VistaAdmin extends JFrame {
 
         JLabel menuFoto=new JLabel("MenuuFoto");
         menuFoto.setBounds(50,100,800,500);
-        ImageIcon imMenu= new ImageIcon("ModuloCocina/src/Imagenes/menu2.png");// se le pone icono a boton
+        ImageIcon imMenu= new ImageIcon("src/Imagenes/menu2.png");// se le pone icono a boton
         Icon iconMenu= new ImageIcon(imMenu.getImage().getScaledInstance(menuFoto.getWidth(), menuFoto.getHeight(), Image.SCALE_DEFAULT));
         menuFoto.setIcon(iconMenu);
         panelCentral.add(menuFoto);
 
         JButton botonAgregarOperador=new JButton();
         botonAgregarOperador.setBounds(200, 140, 200, 80);
-        ImageIcon imgopera= new ImageIcon("ModuloCocina/src/Imagenes/botonAñadirOperador.png");// se le pone icono a boton
+        ImageIcon imgopera= new ImageIcon("src/Imagenes/botonAñadirOperador.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgopera.getImage().getScaledInstance(botonAgregarOperador.getWidth(), botonAgregarOperador.getHeight(), Image.SCALE_DEFAULT));
         botonAgregarOperador.setIcon(i);
         botonAgregarOperador.setLayout(null);
@@ -151,7 +152,7 @@ public class VistaAdmin extends JFrame {
         botonAgregarOperador.setBorder(new Bordes(10));
         botonAgregarOperador.setBackground(new Color(74,126,235));
         botonAgregarOperador.setBorderPainted(false);
-        ImageIcon imgOpera2= new ImageIcon("ModuloCocina/src/Imagenes/botonAñadirOperador2.png");// se le pone icono a boton
+        ImageIcon imgOpera2= new ImageIcon("src/Imagenes/botonAñadirOperador2.png");// se le pone icono a boton
         Icon iconopera2= new ImageIcon(imgOpera2.getImage().getScaledInstance(botonAgregarOperador.getWidth(), botonAgregarOperador.getHeight(), Image.SCALE_DEFAULT));
         botonAgregarOperador.setRolloverIcon(iconopera2);
         botonAgregarOperador.setBackground(Color.white);
@@ -169,7 +170,7 @@ public class VistaAdmin extends JFrame {
 
         JButton botonAgregarRepartidor=new JButton();
         botonAgregarRepartidor.setBounds(200, 300, 200, 80);
-        ImageIcon imgRepar= new ImageIcon("ModuloCocina/src/Imagenes/botonAñadirRepartidor.png");// se le pone icono a boton
+        ImageIcon imgRepar= new ImageIcon("src/Imagenes/botonAñadirRepartidor.png");// se le pone icono a boton
         Icon iRepar= new ImageIcon(imgRepar.getImage().getScaledInstance(botonAgregarRepartidor.getWidth(), botonAgregarRepartidor.getHeight(), Image.SCALE_DEFAULT));
         botonAgregarRepartidor.setIcon(iRepar);
         botonAgregarRepartidor.setLayout(null);
@@ -177,7 +178,7 @@ public class VistaAdmin extends JFrame {
         botonAgregarRepartidor.setBorder(new Bordes(10));
         botonAgregarRepartidor.setBackground(new Color(74,126,235));
         botonAgregarRepartidor.setBorderPainted(false);
-        ImageIcon imgRepartidor2= new ImageIcon("ModuloCocina/src/Imagenes/botonAñadirRepartidor2.png");// se le pone icono a boton
+        ImageIcon imgRepartidor2= new ImageIcon("src/Imagenes/botonAñadirRepartidor2.png");// se le pone icono a boton
         Icon iRepar2= new ImageIcon(imgRepartidor2.getImage().getScaledInstance(botonAgregarRepartidor.getWidth(), botonAgregarRepartidor.getHeight(), Image.SCALE_DEFAULT));
         botonAgregarRepartidor.setRolloverIcon(iRepar2);
         botonAgregarRepartidor.setBackground(Color.white);
@@ -194,7 +195,7 @@ public class VistaAdmin extends JFrame {
 
         JButton botonActivarCocina=new JButton();
         botonActivarCocina.setBounds(200, 450, 200, 80);
-        ImageIcon imgProductos= new ImageIcon("ModuloCocina/src/Imagenes/botonActivarCocina.png");// se le pone icono a boton
+        ImageIcon imgProductos= new ImageIcon("src/Imagenes/botonActivarCocina.png");// se le pone icono a boton
         Icon iprod= new ImageIcon(imgProductos.getImage().getScaledInstance(botonActivarCocina.getWidth(), botonActivarCocina.getHeight(), Image.SCALE_DEFAULT));
         botonActivarCocina.setIcon(iprod);
         botonActivarCocina.setLayout(null);
@@ -202,7 +203,7 @@ public class VistaAdmin extends JFrame {
         botonActivarCocina.setBorder(new Bordes(10));
         botonActivarCocina.setBackground(new Color(74,126,235));
         botonActivarCocina.setBorderPainted(false);
-        ImageIcon imgProductos2= new ImageIcon("ModuloCocina/src/Imagenes/botonActivarCocina2.png");// se le pone icono a boton
+        ImageIcon imgProductos2= new ImageIcon("src/Imagenes/botonActivarCocina2.png");// se le pone icono a boton
         Icon iprod2= new ImageIcon(imgProductos2.getImage().getScaledInstance(botonActivarCocina.getWidth(), botonActivarCocina.getHeight(), Image.SCALE_DEFAULT));
         botonActivarCocina.setRolloverIcon(iprod2);
         botonActivarCocina.setBackground(Color.white);

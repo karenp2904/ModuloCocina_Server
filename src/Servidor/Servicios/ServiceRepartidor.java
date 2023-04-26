@@ -19,6 +19,11 @@ public class ServiceRepartidor extends UnicastRemoteObject implements IRepartido
     }
 
     @Override
+    public boolean validarUsuario(String modulo, String nombre, String contraseña) throws RemoteException {
+        return false;
+    }
+
+    @Override
     public ColasList imprimirRuta() {
         return controllerRepartidor.imprimirRuta();
     }

@@ -29,6 +29,11 @@ public class ServiceOperador extends UnicastRemoteObject implements IOperador {
 
 
     @Override
+    public boolean validarUsuario(String modulo, String nombre, String contraseña) throws RemoteException {
+        return false;
+    }
+
+    @Override
     public boolean registrarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
         return controllerOperador.registrarCliente(nombre,direccion,telefono,tipoDeCuenta);
     }
