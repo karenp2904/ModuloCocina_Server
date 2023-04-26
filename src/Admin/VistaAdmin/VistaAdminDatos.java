@@ -30,7 +30,7 @@ public class VistaAdminDatos extends JFrame {
         logo.setBounds(70, 130, 350, 350);
         ImageIcon imgLogo = new ImageIcon("src/Imagenes/FotoPerrito.png");// se le pone icono a boton
         Icon ilogo = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
-        logo.setIcon(imgLogo);
+        logo.setIcon(ilogo);
         panelCentral.add(logo);
 
         //letrero del registro de clinetes en el panel
@@ -72,13 +72,13 @@ public class VistaAdminDatos extends JFrame {
         botonIngresar.setBounds(630, 400, 200, 80);
         ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setIcon(imgR);
+        botonIngresar.setIcon(i);
         botonIngresar.setLayout(null);
         botonIngresar.setOpaque(true);
         botonIngresar.setBorderPainted(false);
         ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setRolloverIcon(imgadmin);
+        botonIngresar.setRolloverIcon(iconAdmin);
         botonIngresar.setBackground(Color.white);
 
         botonIngresar.addActionListener(new ActionListener() {
@@ -141,7 +141,7 @@ public class VistaAdminDatos extends JFrame {
         logo.setBounds(70, 130, 350, 350);
         ImageIcon imgLogo = new ImageIcon("src/Imagenes/FotoPerrito.png");// se le pone icono a boton
         Icon ilogo = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
-        logo.setIcon(imgLogo);
+        logo.setIcon(ilogo);
         panelCentral.add(logo);
 
         //letrero del registro de clinetes en el panel
@@ -182,13 +182,13 @@ public class VistaAdminDatos extends JFrame {
         botonIngresar.setBounds(630, 400, 200, 80);
         ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setIcon(imgR);
+        botonIngresar.setIcon(i);
         botonIngresar.setLayout(null);
         botonIngresar.setOpaque(true);
         botonIngresar.setBorderPainted(false);
         ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setRolloverIcon(imgadmin);
+        botonIngresar.setRolloverIcon(iconAdmin);
         botonIngresar.setBackground(Color.white);
         botonIngresar.addActionListener(new ActionListener() {
             @Override
