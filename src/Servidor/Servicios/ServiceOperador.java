@@ -68,6 +68,11 @@ public class ServiceOperador extends UnicastRemoteObject implements IOperador {
         return controllerOperador.busquedaCliente(clienteABuscar);
     }
 
+    @Override
+    public boolean clienteExistente(String telefono) throws RemoteException {
+        return controllerOperador.clienteExistente(telefono);
+    }
+
     //Json part 
     public class FileJsonAdapter<T> {
 /*
