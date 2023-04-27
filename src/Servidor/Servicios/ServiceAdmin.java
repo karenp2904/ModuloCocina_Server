@@ -3,10 +3,11 @@ package Servidor.Servicios;
 import Servidor.Controladores.ControllerAdmin;
 import Servidor.Interfaces.IServices.IAdmin;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServiceAdmin extends UnicastRemoteObject implements IAdmin {
+public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Serializable {
 
     private ControllerAdmin controllerAdmin;
 

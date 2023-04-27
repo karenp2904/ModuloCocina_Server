@@ -5,10 +5,11 @@ import Servidor.Controladores.ControllerRepartidor;
 import Servidor.Dominio.Factura;
 import Servidor.Interfaces.IServices.IRepartidor;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServiceRepartidor extends UnicastRemoteObject implements IRepartidor {
+public class ServiceRepartidor extends UnicastRemoteObject implements IRepartidor, Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class ControllerAdmin implements IControllerAdmin, Serializable {
 
-    private ModeloAdmin modeloAdmin;
+    private ModeloAdmin modeloAdmin=new ModeloAdmin();
     @Override
     public boolean resgitrarRepartidor(String nombre, String usuario, String contraseña) {
         return modeloAdmin.registrarOperador(nombre,usuario,contraseña);

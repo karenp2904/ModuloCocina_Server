@@ -15,11 +15,11 @@ import java.rmi.RemoteException;
 public class ControllerOperador implements IControllerOperador, Serializable {
 
     private String archivoJSON = "datos.json";
-    private ModeloOperador modeloOperador;
+    private ModeloOperador modeloOperador=new ModeloOperador();
 
     @Override
     public boolean validarUsuario(String modulo, String nombre, String contraseña) {
-        return false;
+        return modeloOperador.validarUsuario(modulo,nombre,contraseña);
     }
 
     @Override

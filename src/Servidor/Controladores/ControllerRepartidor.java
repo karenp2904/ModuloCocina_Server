@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class ControllerRepartidor implements IControllerRepartidor , Serializable {
 
-    private ModeloRepartidor modeloRepartidor;
+    private ModeloRepartidor modeloRepartidor=new ModeloRepartidor();
 
     @Override
     public boolean validarUsuario(String modulo, String nombre, String contraseña) {

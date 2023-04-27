@@ -6,10 +6,11 @@ import Servidor.Dominio.Factura;
 import Servidor.Dominio.Pedido;
 import Servidor.Interfaces.IServices.ICocina;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServiceCocina extends UnicastRemoteObject implements ICocina {
+public class ServiceCocina extends UnicastRemoteObject implements ICocina, Serializable {
 
     private ControllerCocina controllerCocina; //instancia
     private static final long serialVersionUID = 1L;
@@ -20,7 +21,7 @@ public class ServiceCocina extends UnicastRemoteObject implements ICocina {
 
 
     @Override
-    public PriorityQueue pantallaDePedidos() throws RemoteException {
+    public PriorityQueue<Pedido> pantallaDePedidos() throws RemoteException {
         return controllerCocina.pantallaDePedidos() ;
     }
 

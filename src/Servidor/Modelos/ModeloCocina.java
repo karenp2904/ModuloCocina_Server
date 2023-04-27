@@ -7,9 +7,14 @@ import Servidor.Dominio.Factura;
 import Servidor.Dominio.Pedido;
 import Servidor.Interfaces.IController.IControllerCocina;
 
-public class ModeloCocina implements IControllerCocina {
+import java.io.Serializable;
 
-    PriorityQueue colaDespacho=new PriorityQueue(5);
+public class ModeloCocina implements IControllerCocina, Serializable {
+
+
+    // el archivo se guarda- guardar cola de despacho de los pedidos- en el metodo de guardarPedido();
+
+    PriorityQueue<Pedido> colaDespacho=new PriorityQueue(5);
     ColasArray numFogon=new ColasArray();
     @Override
     public Factura extraerPedido() {
@@ -20,7 +25,7 @@ public class ModeloCocina implements IControllerCocina {
     }
 
     @Override
-    public PriorityQueue pantallaDePedidos() {
+    public PriorityQueue<Pedido> pantallaDePedidos() {
         return colaDespacho; // aqui se muestra la pantalla en la vista y se extrae
     }
 

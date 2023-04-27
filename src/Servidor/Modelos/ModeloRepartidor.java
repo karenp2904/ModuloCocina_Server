@@ -4,7 +4,9 @@ import Estructuras.Colas.ColasList;
 import Servidor.Dominio.Factura;
 import Servidor.Interfaces.IController.IControllerRepartidor;
 
-public class ModeloRepartidor implements IControllerRepartidor {
+import java.io.Serializable;
+
+public class ModeloRepartidor implements IControllerRepartidor, Serializable {
     @Override
     public boolean validarUsuario(String modulo, String nombre, String contraseña) {
         return false;

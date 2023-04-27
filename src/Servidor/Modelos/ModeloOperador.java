@@ -6,9 +6,10 @@ import Servidor.Dominio.Factura;
 import Servidor.Dominio.Pedido;
 import Servidor.Interfaces.IController.IControllerOperador;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 
-public class ModeloOperador implements IControllerOperador {
+public class ModeloOperador implements IControllerOperador, Serializable {
 
 
     @Override

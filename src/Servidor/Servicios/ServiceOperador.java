@@ -4,11 +4,8 @@ import Estructuras.Colas.ColasArray;
 import Servidor.Controladores.ControllerOperador;
 import Servidor.Dominio.Cliente;
 import Servidor.Interfaces.IServices.IOperador;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 /*
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,7 +14,7 @@ import com.google.gson.GsonBuilder;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServiceOperador extends UnicastRemoteObject implements IOperador {
+public class ServiceOperador extends UnicastRemoteObject implements IOperador, Serializable {
 
     private static final long serialVersionUID = 1L;
 

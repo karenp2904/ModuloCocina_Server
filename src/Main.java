@@ -20,17 +20,21 @@ public class Main {
         try {
                 Properties properties= new Properties();
                 try {
-                    ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
-                    Server modAdmin = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceAdmin);
+                    ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
+                    Server modOperador = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceOperador);
+
+                    ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
+                    Server modRepartidor = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceRepartidor);
 
                     properties.load(new FileInputStream(new File("src/server.properties")));
-                    Server server = new Server(
-                            (String) properties.get("IP"),
-                            (String) properties.get("PORT"),
-                            (String) properties.get("SERVICENAME"), serviceAdmin
-                    );
-                    server.deployService();
-                    //System.out.print("Service on");
+                   // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
+
+                    Thread[] threadList = { new Thread(modOperador), new Thread(modRepartidor)};
+
+                    for (Thread thread : threadList) { //hilos
+                        thread.start();
+                    }
+
                     //metodos para acceder a la cocina y al admin que se encuentran servidor
                     VistaPrincipal viewAdmin = new VistaPrincipal();
                     ControladorAdmin controladorAdmin = new ControladorAdmin();

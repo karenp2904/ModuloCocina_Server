@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class ControllerCocina implements IControllerCocina, Serializable {
 
-    private ModeloCocina modeloCocina;
+    private ModeloCocina modeloCocina=new ModeloCocina();
 
     @Override
     public Factura extraerPedido() {//extraer del archivo el pedido pero manejando el archivo de facturas
@@ -19,7 +19,7 @@ public class ControllerCocina implements IControllerCocina, Serializable {
     }
 
     @Override
-    public PriorityQueue pantallaDePedidos() {
+    public PriorityQueue<Pedido> pantallaDePedidos() {
         return modeloCocina.pantallaDePedidos();
     }
 
