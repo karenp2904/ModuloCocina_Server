@@ -12,14 +12,15 @@ import Servidor.Servicios.ServiceCocina;
 import java.rmi.RemoteException;
 
 public class ControladorCocina {
-    VistaCocina vistaCocina=new VistaCocina();
-    ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
 
     public ControladorCocina() throws RemoteException {
-        metodos();
+        start();
     }
 //metodo para la conexion
-    public void metodos() throws RemoteException {
+    public void start() throws RemoteException {
+        VistaCocina vistaCocina=new VistaCocina();
+        vistaCocina.setVisible(false);
+        ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
         while (!serviceCocina.pantallaDePedidos().isEmpty()){
             Pedido pedido= (Pedido) serviceCocina.pantallaDePedidos().extract();
             vistaCocina.editarColaDeDespacho(pedido, serviceCocina.entregarNumeroFogon(pedido));;

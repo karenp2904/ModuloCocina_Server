@@ -1,5 +1,7 @@
+import Admin.ControladorAdmin.ControladorAdmin;
 import Admin.VistaAdmin.VistaAdmin;
 import Admin.VistaAdmin.VistaPrincipal;
+import Cocina.ControladorCocina.ControladorCocina;
 import Servidor.Controladores.*;
 import Servidor.Servicios.*;
 import Shared.Environment;
@@ -29,7 +31,13 @@ public class Main {
                     );
                     server.deployService();
                     //System.out.print("Service on");
+                    //metodos para acceder a la cocina y al admin que se encuentran servidor
                     VistaPrincipal viewAdmin = new VistaPrincipal();
+                    ControladorAdmin controladorAdmin = new ControladorAdmin();
+                    controladorAdmin.start();
+                    ControladorCocina controladorCocina=new ControladorCocina();
+                    controladorCocina.start();
+
                     /*
 
                 properties.load(new FileInputStream(new File("src/server.properties")));

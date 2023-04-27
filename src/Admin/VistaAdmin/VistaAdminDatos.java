@@ -95,6 +95,37 @@ public class VistaAdminDatos extends JFrame {
 
     }
 
+    public String ingresarNombreOperador(){
+        JTextField txusuario = new JTextField();
+        txusuario.setBackground(Color.white);
+        txusuario.setFont(new Font("Arial", Font.BOLD, 20));
+        txusuario.setBounds(640, 200, 220, 40);
+        panelCentral.add(txusuario);
+        String usuario=txusuario.getText();
+        return usuario;
+    }
+
+    public String ingresarUsuarioOperador(){
+        JTextField txtCodigo = new JTextField();
+        txtCodigo.setBackground(Color.white);
+        // txTelefono.setBackground(new Color(217,217,217));
+        txtCodigo.setFont(new Font("Arial", Font.BOLD, 20));
+        txtCodigo.setBounds(640, 250, 220, 40);
+        panelCentral.add(txtCodigo);
+        String codigo=txtCodigo.getText();
+        return codigo;
+    }
+
+    public String ingresarContraseñaOperador(){
+        JTextField txDireccion = new JTextField();
+        txDireccion.setBackground(Color.white);
+        txDireccion.setFont(new Font("Arial", Font.BOLD, 20));
+        txDireccion.setBounds(640, 300, 220, 40);
+        panelCentral.add(txDireccion);
+        String direccion=txDireccion.getText();
+        return direccion;
+    }
+
 
     public String ingresarNombre(){
         JTextField txusuario = new JTextField();
@@ -173,9 +204,9 @@ public class VistaAdminDatos extends JFrame {
         panelCentral.add(direccionText);
 
 
-        String nombre=ingresarNombre();
-        String usuario= ingresarUsuario();
-        String contra= ingresarContraseña();
+        String nombre=ingresarNombreOperador();
+        String usuario= ingresarUsuarioOperador();
+        String contra= ingresarContraseñaOperador();
 
 
         JButton botonIngresar=new JButton(); //boton para ingresar pedido

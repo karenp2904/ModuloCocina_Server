@@ -14,6 +14,7 @@ public class VistaAdmin extends JFrame {
     JLayeredPane contenedor=new JLayeredPane();
     JPanel panelInicio = new JPanel();
     JPanel panelBlanco = new JPanel();
+    JButton botonRegistrar=new JButton();
 
     public VistaAdmin(){
         this.setTitle("Hot Dogs Palace");
@@ -47,23 +48,18 @@ public class VistaAdmin extends JFrame {
         adminText.setBounds(90,140,200,100);
         panelBlanco.add(adminText);
 
-        JLabel nombreUsuario=new JLabel("Usuario");
-        nombreUsuario.setBounds(40,180,200,100);
-        panelBlanco.add(nombreUsuario);
 
-        JTextField txusuario=new JTextField();
-        txusuario.setBounds(30,250,300,40);
-        panelBlanco.add(txusuario);
+        JLabel usuarioo=new JLabel("Usuario");
+        usuarioo.setBounds(40,184,200,100);
+        panelBlanco.add(usuarioo);
+
 
         JLabel contraseña=new JLabel("Contraseña");
         contraseña.setBounds(40,290,200,100);
         panelBlanco.add(contraseña);
 
-        JTextField txcontraseña=new JTextField();
-        txcontraseña.setBounds(30,360,300,40);
-        panelBlanco.add(txcontraseña);
 
-        JButton botonRegistrar=new JButton();
+
         botonRegistrar.setBounds(140, 420, 100, 50);
         ImageIcon img= new ImageIcon("src/Imagenes/INGRESAR.png");// se le pone icono a boton
         Icon i= new ImageIcon(img.getImage().getScaledInstance(botonRegistrar.getWidth(), botonRegistrar.getHeight(), Image.SCALE_DEFAULT));
@@ -75,17 +71,6 @@ public class VistaAdmin extends JFrame {
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonRegistrar.getWidth(), botonRegistrar.getHeight(), Image.SCALE_DEFAULT));
         botonRegistrar.setRolloverIcon(iconAdmin);
         botonRegistrar.setBackground(Color.white);
-
-        botonRegistrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelInicio.setVisible(false);
-                panelBlanco.setVisible(false);
-                fondo.setVisible(false);
-                panelMenu();
-
-            }
-        });
         panelBlanco.add(botonRegistrar);
 
         ImageIcon imagen =new ImageIcon("src/Imagenes/loginAdmin.png");
@@ -98,7 +83,46 @@ public class VistaAdmin extends JFrame {
 
         //se llama al contenedor
         contenedor();
+        String usuario=validarUsuario();
+        String contraseñaaa=validarContraseña();
     }
+
+    public void validarLogin(boolean validacion){
+
+        if(validacion){
+            botonRegistrar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    panelInicio.setVisible(false);
+                    panelBlanco.setVisible(false);
+                    fondo.setVisible(false);
+                    panelMenu();
+
+                }
+            });
+        }
+    }
+
+    //metodo para verificar usuario ingresada por el operador
+    public String validarUsuario(){
+        JTextField txusuario = new JTextField();//caja de texto
+        txusuario.setBackground(Color.white);//color
+        txusuario.setBounds(30, 250, 300, 40);//ubicacion y tamaño
+        panelBlanco.add(txusuario);//se añade al panel
+        String usuario=txusuario.getText();//SE TOMA EL VALOR QUE SE DIGITA
+        return usuario;
+    }
+
+    //metodo para verificar contraseña ingresada por el operador
+    public String validarContraseña(){
+        JTextField txcontraseña = new JTextField();//caja de texto
+        txcontraseña.setBackground(Color.white);//color
+        txcontraseña.setBounds(30,360,300,40);//ubicacion y tamaño
+        panelBlanco.add(txcontraseña);//se añade al panel
+        String contraseña=txcontraseña.getText();//SE TOMA EL VALOR QUE SE DIGITA
+        return contraseña;
+    }
+
 
     public void panelMenu(){
         //Panel que tendrá las etiquetas y botones
