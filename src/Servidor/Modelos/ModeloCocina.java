@@ -15,7 +15,7 @@ public class ModeloCocina implements IControllerCocina {
     public Factura extraerPedido() {
         //este objeto es temporal mientras se devuelven los archivos, llenar esos espacios cuando se tenga la info
         Factura fact= new Factura(new Pedido("Papas", "14","56"), new Cliente("berta", "pereza", "73773737", "premium"));
-        guardarPedidos(fact.getPedido(),clasificarPedidoPrioridad(fact));
+        guardarPedidos(fact,clasificarPedidoPrioridad(fact));
         return null;
     }
 
@@ -24,8 +24,7 @@ public class ModeloCocina implements IControllerCocina {
         return colaDespacho; // aqui se muestra la pantalla en la vista y se extrae
     }
 
-    private PriorityQueue guardarPedidos(Pedido pedido, int prioridad) {
-        colaDespacho.insert(pedido,prioridad);
+    private PriorityQueue guardarPedidos(Factura factura, int prioridad) {
         return colaDespacho;//aqui se guarda en el archivo
     }
 
@@ -36,29 +35,75 @@ public class ModeloCocina implements IControllerCocina {
 
     @Override
     public int clasificarPedidoPrioridad(Factura factura) {
+        int prioridadDefinida=0;
+
         int tiempoCoccion=Integer.parseInt(factura.getPedido().getCodigo());// se convierte para comparar
         boolean clientePremium=false;
+        int prioridadDireccion=definirPrioridadPorDireccion(factura.getCliente());
+
         if(factura.getCliente().getTipoCuenta().toLowerCase().equals("premium")){ // se evalua el tipo de cliente
             clientePremium=true;
         }
-        if(tiempoCoccion<10 && clientePremium==false){ // comida rapida
+
+        if((tiempoCoccion<10 || prioridadDireccion>=4) && (clientePremium==false) ){ // comida rapida
             //opciones puesto 3 o 4
             //verificar la cantidad de elementos que tiene el puesto 3 y 4 y encolar en el menor
-        }else if( tiempoCoccion<10 && clientePremium==true) {
-            //opcion 2
-        }else if(tiempoCoccion>=10){// coccion lenta
-            //opcion 1
-            if(clientePremium){
-                //encolarlo primero
+            if (colaDespacho.sizePrioridad(3)>colaDespacho.sizePrioridad(4)){
+                colaDespacho.insert(factura.getPedido(),3);
+                prioridadDefinida=3;
             }else{
-                //se agrega a la cola
+                colaDespacho.insert(factura.getPedido(),4);
+                prioridadDefinida=4;
             }
+
+        }else if( (tiempoCoccion<10 || prioridadDireccion>=3) && ( clientePremium==true)) {
+            //opcion 2
+            colaDespacho.insert(factura.getPedido(),2);
+            prioridadDefinida=2;
+
+        }else if(tiempoCoccion>=10 || prioridadDireccion<3){// coccion lenta
+            //opcion 1 - Mayor prioridad
+            if(clientePremium){
+                colaDespacho.insertFirst(factura.getPedido(),1);
+            }else{
+                colaDespacho.insert(factura.getPedido(),1);
+            }
+            prioridadDefinida=1;
         }
-        return 0;
+        return prioridadDefinida;
+    }
+
+    private int definirPrioridadPorDireccion(Cliente cliente){
+
+        int direccionLejana=0; //entre mas lejos sera un numero menor
+        if(cliente.getDireccionCliente().contains(String.valueOf("Giron"))){
+            direccionLejana=1;
+        }
+        if(cliente.getDireccionCliente().contains(String.valueOf("Pidecuesta"))){
+            direccionLejana=2;
+        }
+        if(cliente.getDireccionCliente().contains(String.valueOf("Buscaramanga"))){
+            direccionLejana=3;
+        }
+        if(cliente.getDireccionCliente().contains(String.valueOf("Florida"))){
+            direccionLejana=4;
+        }
+        if(cliente.getDireccionCliente().contains(String.valueOf("Cañaveral"))){
+            direccionLejana=5;
+        }
+        if(cliente.getDireccionCliente().contains(String.valueOf("Provenza"))){
+            direccionLejana=6;
+        }
+        return direccionLejana;
     }
 
     @Override
     public boolean entregarPedido(PriorityQueue queue) {
-        return false;
+       if(!queue.isEmpty()){
+           queue.extract();
+           return true;
+       }else{
+           return false;
+       }
     }
 }

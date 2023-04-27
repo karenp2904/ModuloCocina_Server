@@ -55,7 +55,7 @@ public class PriorityQueue implements QueueInterface {
 	public boolean insert(Object object, int prioridad) {
 		boolean insertado=false;
 		if(!isEmpty()) {
-			if (prioridad>0 && object!=null) {
+			if (prioridad>=0 && object!=null) {
 				Queue queue= arrayQueue[prioridad];
 			    arrayQueue[prioridad].insert(object);//en el indice segun la prioridad que se indique se aña el objeto a la lista
 				insertado=true;
@@ -63,11 +63,27 @@ public class PriorityQueue implements QueueInterface {
 		}
 		return insertado;	
 	}
+
+	public boolean insertFirst(Object object, int prioridad) {
+		boolean insertado=false;
+		if(!isEmpty()) {
+			if (prioridad>=0 && object!=null) {
+				Queue queue= arrayQueue[prioridad];
+				arrayQueue[prioridad].insertFirst(object);//en el indice segun la prioridad que se indique se aña el objeto a la lista
+				insertado=true;
+			}
+		}
+		return insertado;
+	}
 	
 	
 	public int size() {
 		return numeroPrioridad;
 		
+	}
+
+	public int sizePrioridad(int prioridad){
+		return  arrayQueue[prioridad].size();
 	}
 	
 	public boolean search(Object object) {

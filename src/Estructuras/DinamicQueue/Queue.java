@@ -51,6 +51,20 @@ public class Queue implements QueueInterface {
 	     }
 	}
 
+	public boolean insertFirst(Object object) {
+		boolean objetoInsertado=false;
+		try {
+			if(object!=null) {
+				cola.addFirst(object);// agregara un elemento al final de la cola
+				objetoInsertado= true;
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}finally{
+			return objetoInsertado; //retornar el valor booleano que indica si hubo una insercion o no
+		}
+	}
+
 	//4 Retorna el tamaño de la cola - Cantidad de elementos
 	@Override
 	public int size() {
