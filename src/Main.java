@@ -20,16 +20,24 @@ public class Main {
         try {
                 Properties properties= new Properties();
                 try {
+                    properties.load(new FileInputStream(new File("src/server.properties")));
+
                     ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
                     Server modOperador = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceOperador);
 
                     ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
                     Server modRepartidor = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceRepartidor);
 
-                    properties.load(new FileInputStream(new File("src/server.properties")));
+                    ServiceCocina serviceCocina = new ServiceCocina(new ControllerCocina());
+                    Server modCocina = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceCocina);
+
+                    ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
+                    Server modAdmin = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceRepartidor);
+
+
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
 
-                    Thread[] threadList = { new Thread(modOperador), new Thread(modRepartidor)};
+                    Thread[] threadList = { new Thread(modOperador), new Thread(modRepartidor), new Thread(modAdmin), new Thread(modCocina)};
 
                     for (Thread thread : threadList) { //hilos
                         thread.start();
