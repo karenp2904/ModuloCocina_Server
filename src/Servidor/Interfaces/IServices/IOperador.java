@@ -3,10 +3,11 @@ package Servidor.Interfaces.IServices;
 import Estructuras.Colas.ColasArray;
 import Servidor.Dominio.Cliente;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface IOperador extends Remote {
+public interface IOperador extends Remote, Serializable {
 
     boolean validarUsuario(String modulo,String nombre, String contraseña) throws RemoteException;//para el login del modulo
     boolean registrarCliente(String nombre, String direccion, String telefono,String tipoDeCuenta) throws RemoteException;//registro de clientes
@@ -16,6 +17,7 @@ public interface IOperador extends Remote {
     ColasArray pedidosFrecuentesCliente(String telefono) throws RemoteException;//pedidos mas solicitados por el cliente
     ColasArray busquedaPedido(String pedidoABuscar) throws RemoteException; //busqueda de pedido
     ColasArray busquedaCliente(String clienteTelefonoABuscar) throws RemoteException; //busqueda de cliente
+    boolean clienteExistente(String telefono)throws RemoteException;
 
 
 

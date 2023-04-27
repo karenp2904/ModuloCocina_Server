@@ -5,7 +5,10 @@ import Servidor.Dominio.Cliente;
 import Servidor.Dominio.Factura;
 import Servidor.Dominio.Pedido;
 
-public interface IControllerOperador {
+import java.io.Serializable;
+import java.rmi.RemoteException;
+
+public interface IControllerOperador extends Serializable {
 
     boolean validarUsuario(String modulo,String nombre, String contraseña);//para el login del modulo
     boolean registrarCliente(String nombre, String direccion, String telefono,String tipoDeCuenta);//registro de clientes
@@ -16,4 +19,6 @@ public interface IControllerOperador {
     ColasArray busquedaPedido(String pedidoABuscar); //busqueda de pedido
     ColasArray busquedaCliente(String clienteTelefonoABuscar); //busqueda de cliente
     Factura generarFactura(Pedido pedido, Cliente cliente);
+
+    boolean clienteExistente(String telefono);
 }

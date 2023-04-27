@@ -6,6 +6,8 @@ import Servidor.Dominio.Factura;
 import Servidor.Dominio.Pedido;
 import Servidor.Interfaces.IController.IControllerOperador;
 
+import java.rmi.RemoteException;
+
 public class ModeloOperador implements IControllerOperador {
 
 
@@ -52,6 +54,11 @@ public class ModeloOperador implements IControllerOperador {
     @Override
     public Factura generarFactura(Pedido pedido, Cliente cliente) {
         return null;
+    }
+
+    @Override
+    public boolean clienteExistente(String telefono) {
+        return false;
     }
 
     public ModeloOperador obtenerDatos() {

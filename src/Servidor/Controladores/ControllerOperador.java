@@ -10,6 +10,7 @@ import Servidor.Servicios.ServiceOperador;
 
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 
 public class ControllerOperador implements IControllerOperador, Serializable {
 
@@ -59,6 +60,11 @@ public class ControllerOperador implements IControllerOperador, Serializable {
     @Override
     public Factura generarFactura(Pedido pedido, Cliente cliente) {
         return modeloOperador.generarFactura(pedido,cliente);
+    }
+
+    @Override
+    public boolean clienteExistente(String telefono) {
+        return modeloOperador.clienteExistente(telefono);
     }
 
     //Json part
