@@ -22,7 +22,7 @@ public class ControladorCocina {
         vistaCocina.setVisible(false);
         ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
         while (!serviceCocina.pantallaDePedidos().isEmpty()){
-            Pedido pedido= (Pedido) serviceCocina.pantallaDePedidos().extract();
+            Pedido pedido= serviceCocina.pantallaDePedidos().extract();
             vistaCocina.editarColaDeDespacho(pedido, serviceCocina.entregarNumeroFogon(pedido));;
         }
     }

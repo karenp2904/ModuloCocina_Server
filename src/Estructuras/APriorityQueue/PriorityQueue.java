@@ -1,6 +1,7 @@
 package Estructuras.APriorityQueue;
 
 import  Estructuras.DinamicQueue.Queue;
+import Servidor.Dominio.Pedido;
 
 public class PriorityQueue<T> implements QueueInterface<T> {
 
@@ -40,15 +41,14 @@ public class PriorityQueue<T> implements QueueInterface<T> {
 	}
 	
 	
-	public Object extract() {
+	public T extract() {
 		for (int i = 0; i < arrayQueue.length; i++) {
 			Queue queue= arrayQueue[i];
 			while(!queue.isEmpty()) {//hasta que la cola en esa posicion no este vacia se sigue extrayendo de la misma posicion
-				return queue.extract();
+				return (T) queue.extract();
 			}
 		}
-		return arrayQueue;
-		
+		return null;
 	}
 	
 	

@@ -190,7 +190,7 @@ public class VistaCocina extends JFrame{
         JLabel puesto=new JLabel(String.valueOf(puestoTrabajo));
         puesto.setBackground(Color.black);
         puesto.setFont(new Font("Arial", Font.BOLD, 20));
-        puesto.setBounds(250,y-5,600,100);
+        puesto.setBounds(300,y-5,600,100);
         panelDespacho.add(puesto);
 
         JButton botonPedidoListo=new JButton();

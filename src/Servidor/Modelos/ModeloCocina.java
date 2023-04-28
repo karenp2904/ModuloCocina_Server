@@ -11,9 +11,7 @@ import java.io.Serializable;
 
 public class ModeloCocina implements IControllerCocina, Serializable {
 
-
     // el archivo se guarda- guardar cola de despacho de los pedidos- en el metodo de guardarPedido();
-
     PriorityQueue<Pedido> colaDespacho=new PriorityQueue(5);
     ColasArray numFogon=new ColasArray();
     @Override
@@ -50,7 +48,7 @@ public class ModeloCocina implements IControllerCocina, Serializable {
             clientePremium=true;
         }
 
-        if((tiempoCoccion<10 || prioridadDireccion>=4) && (clientePremium==false) ){ // comida rapida
+        if((tiempoCoccion<10 || prioridadDireccion==3 || prioridadDireccion==4) && (clientePremium==false) ){ // comida rapida
             //opciones puesto 3 o 4
             //verificar la cantidad de elementos que tiene el puesto 3 y 4 y encolar en el menor
             if (colaDespacho.sizePrioridad(3)>colaDespacho.sizePrioridad(4)){
@@ -61,12 +59,12 @@ public class ModeloCocina implements IControllerCocina, Serializable {
                 prioridadDefinida=4;
             }
 
-        }else if( (tiempoCoccion<10 || prioridadDireccion>=3) && ( clientePremium==true)) {
+        }else if( (tiempoCoccion<10 || prioridadDireccion==2) && ( clientePremium==true)) {
             //opcion 2
             colaDespacho.insert(factura.getPedido(),2);
             prioridadDefinida=2;
 
-        }else if(tiempoCoccion>=10 || prioridadDireccion<3){// coccion lenta
+        }else if(tiempoCoccion>=10 || prioridadDireccion==1){// coccion lenta
             //opcion 1 - Mayor prioridad
             if(clientePremium){
                 colaDespacho.insertFirst(factura.getPedido(),1);
@@ -85,19 +83,19 @@ public class ModeloCocina implements IControllerCocina, Serializable {
             direccionLejana=1;
         }
         if(cliente.getDireccionCliente().contains(String.valueOf("Pidecuesta"))){
-            direccionLejana=2;
+            direccionLejana=1;
         }
         if(cliente.getDireccionCliente().contains(String.valueOf("Buscaramanga"))){
-            direccionLejana=3;
+            direccionLejana=2;
         }
         if(cliente.getDireccionCliente().contains(String.valueOf("Florida"))){
-            direccionLejana=4;
+            direccionLejana=3;
         }
         if(cliente.getDireccionCliente().contains(String.valueOf("Cañaveral"))){
-            direccionLejana=5;
+            direccionLejana=4;
         }
         if(cliente.getDireccionCliente().contains(String.valueOf("Provenza"))){
-            direccionLejana=6;
+            direccionLejana=4;
         }
         return direccionLejana;
     }
