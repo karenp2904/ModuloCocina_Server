@@ -12,8 +12,8 @@ public class ControllerRepartidor implements IControllerRepartidor , Serializabl
     private ModeloRepartidor modeloRepartidor=new ModeloRepartidor();
 
     @Override
-    public boolean validarUsuario(String modulo, String nombre, String contraseña) {
-        return modeloRepartidor.validarUsuario(modulo,nombre,contraseña);
+    public boolean validarUsuario(String nombre, String contraseña) {
+        return modeloRepartidor.validarUsuario(nombre,contraseña);
     }
 
     @Override

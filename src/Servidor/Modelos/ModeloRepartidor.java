@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class ModeloRepartidor implements IControllerRepartidor, Serializable {
     @Override
-    public boolean validarUsuario(String modulo, String nombre, String contraseña) {
+    public boolean validarUsuario( String nombre, String contraseña) {
         return false;
     }
 

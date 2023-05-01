@@ -18,8 +18,8 @@ public class ControllerOperador implements IControllerOperador, Serializable {
     private ModeloOperador modeloOperador=new ModeloOperador();
 
     @Override
-    public boolean validarUsuario(String modulo, String nombre, String contraseña) {
-        return modeloOperador.validarUsuario(modulo,nombre,contraseña);
+    public boolean validarUsuario( String nombre, String contraseña) {
+        return modeloOperador.validarUsuario(nombre,contraseña);
     }
 
     @Override

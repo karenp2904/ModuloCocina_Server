@@ -13,7 +13,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
 
     @Override
-    public boolean validarUsuario(String modulo, String nombre, String contraseña) {
+    public boolean validarUsuario( String nombre, String contraseña) {
         return false;
     }
 
