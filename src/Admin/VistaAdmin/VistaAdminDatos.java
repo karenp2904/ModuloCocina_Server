@@ -9,6 +9,19 @@ public class VistaAdminDatos extends JFrame {
     JPanel panelCentral =new JPanel();
     JLabel fondo = new JLabel();
     JLayeredPane contenedor=new JLayeredPane();
+    JButton botonIngresar=new JButton(); //boton para ingresar pedido
+    JButton botonIngresarOpera=new JButton();
+    JTextField txtNombreoperador = new JTextField();
+    JTextField txtUseroperador = new JTextField();
+    JTextField txtContraOperador = new JTextField();
+    JTextField txtnombreRepartidor = new JTextField();
+    JTextField txtUsuarioRepartidor = new JTextField();
+
+    JTextField txContraseñaRepartidor = new JTextField();
+
+    boolean estadoOperador,estadoRepartidor;
+    String contraseOperador,nombreOperador,usuarioOperador, usuarioRepartidor, nombreRepartidor, contraseñaRepartidor;
+
     public VistaAdminDatos(){
         this.setTitle("Hot Dogs Palace");
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -61,14 +74,10 @@ public class VistaAdminDatos extends JFrame {
         direccionText.setBounds(480, 270, 200, 100);
         panelCentral.add(direccionText);
 
+        String nombre= ingresarNombreRepartidor();
+        String usuario= ingresarUsuarioRepartidor();
+        String contra= ingresarContraseñaRepartidor();
 
-
-        String nombre=ingresarNombre();
-        String codigo= ingresarUsuario();
-        String direccion= ingresarContraseña();
-
-
-        JButton botonIngresar=new JButton(); //boton para ingresar pedido
         botonIngresar.setBounds(630, 400, 200, 80);
         ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
@@ -86,6 +95,9 @@ public class VistaAdminDatos extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 VistaAdmin admin=new VistaAdmin();
                 admin.panelMenu();
+                nombreRepartidor=txtnombreRepartidor.getText();
+                usuarioRepartidor=txtUsuarioRepartidor.getText();
+                contraseñaRepartidor=txContraseñaRepartidor.getText();
                 dispose();
             }
         });
@@ -95,67 +107,60 @@ public class VistaAdminDatos extends JFrame {
 
     }
 
-    public String ingresarNombreOperador(){
-        JTextField txusuario = new JTextField();
-        txusuario.setBackground(Color.white);
-        txusuario.setFont(new Font("Arial", Font.BOLD, 20));
-        txusuario.setBounds(640, 200, 220, 40);
-        panelCentral.add(txusuario);
-        String usuario=txusuario.getText();
-        return usuario;
+    public boolean botonActivoOperador(){
+        return estadoOperador;
     }
 
-    public String ingresarUsuarioOperador(){
-        JTextField txtCodigo = new JTextField();
-        txtCodigo.setBackground(Color.white);
+    public String ingresarNombreOperador(){
+        txtNombreoperador.setBackground(Color.white);
+        txtNombreoperador.setFont(new Font("Arial", Font.BOLD, 20));
+        txtNombreoperador.setBounds(640, 200, 220, 40);
+        panelCentral.add(txtNombreoperador);
+        return nombreOperador;
+    }
+
+    public String ingresarUsuarioOperador() {
+        txtUseroperador.setBackground(Color.white);
         // txTelefono.setBackground(new Color(217,217,217));
-        txtCodigo.setFont(new Font("Arial", Font.BOLD, 20));
-        txtCodigo.setBounds(640, 250, 220, 40);
-        panelCentral.add(txtCodigo);
-        String codigo=txtCodigo.getText();
-        return codigo;
+        txtUseroperador.setFont(new Font("Arial", Font.BOLD, 20));
+        txtUseroperador.setBounds(640, 250, 220, 40);
+        panelCentral.add(txtUseroperador);
+        return usuarioOperador;
     }
 
     public String ingresarContraseñaOperador(){
-        JTextField txDireccion = new JTextField();
-        txDireccion.setBackground(Color.white);
-        txDireccion.setFont(new Font("Arial", Font.BOLD, 20));
-        txDireccion.setBounds(640, 300, 220, 40);
-        panelCentral.add(txDireccion);
-        String direccion=txDireccion.getText();
-        return direccion;
+        txtContraOperador.setBackground(Color.white);
+        txtContraOperador.setFont(new Font("Arial", Font.BOLD, 20));
+        txtContraOperador.setBounds(640, 300, 220, 40);
+        panelCentral.add(txtContraOperador);
+        return contraseOperador;
+
     }
 
 
-    public String ingresarNombre(){
-        JTextField txusuario = new JTextField();
-        txusuario.setBackground(Color.white);
-        txusuario.setFont(new Font("Arial", Font.BOLD, 20));
-        txusuario.setBounds(640, 200, 220, 40);
-        panelCentral.add(txusuario);
-        String usuario=txusuario.getText();
-        return usuario;
+    public String ingresarNombreRepartidor(){
+        txtnombreRepartidor.setBackground(Color.white);
+        txtnombreRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
+        txtnombreRepartidor.setBounds(640, 200, 220, 40);
+        panelCentral.add(txtnombreRepartidor);
+        return nombreRepartidor;
     }
 
-    public String ingresarUsuario(){
-        JTextField txtCodigo = new JTextField();
-        txtCodigo.setBackground(Color.white);
+    public String ingresarUsuarioRepartidor(){
+        txtUsuarioRepartidor.setBackground(Color.white);
         // txTelefono.setBackground(new Color(217,217,217));
-        txtCodigo.setFont(new Font("Arial", Font.BOLD, 20));
-        txtCodigo.setBounds(640, 250, 220, 40);
-        panelCentral.add(txtCodigo);
-        String codigo=txtCodigo.getText();
-        return codigo;
+        txtUsuarioRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
+        txtUsuarioRepartidor.setBounds(640, 250, 220, 40);
+        panelCentral.add(txtUsuarioRepartidor);
+        return usuarioRepartidor;
     }
 
-    public String ingresarContraseña(){
-        JTextField txDireccion = new JTextField();
-        txDireccion.setBackground(Color.white);
-        txDireccion.setFont(new Font("Arial", Font.BOLD, 20));
-        txDireccion.setBounds(640, 300, 220, 40);
-        panelCentral.add(txDireccion);
-        String direccion=txDireccion.getText();
-        return direccion;
+    public String ingresarContraseñaRepartidor(){
+        txContraseñaRepartidor.setBackground(Color.white);
+        txContraseñaRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
+        txContraseñaRepartidor.setBounds(640, 300, 220, 40);
+        panelCentral.add(txContraseñaRepartidor);
+        return contraseñaRepartidor;
     }
 
 
@@ -209,28 +214,33 @@ public class VistaAdminDatos extends JFrame {
         String contra= ingresarContraseñaOperador();
 
 
-        JButton botonIngresar=new JButton(); //boton para ingresar pedido
-        botonIngresar.setBounds(630, 400, 200, 80);
+
+        botonIngresarOpera.setBounds(630, 400, 200, 80);
         ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
-        Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setIcon(i);
-        botonIngresar.setLayout(null);
-        botonIngresar.setOpaque(true);
-        botonIngresar.setBorderPainted(false);
+        Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresarOpera.getWidth(), botonIngresarOpera.getHeight(), Image.SCALE_DEFAULT));
+        botonIngresarOpera.setIcon(i);
+        botonIngresarOpera.setLayout(null);
+        botonIngresarOpera.setOpaque(true);
+        botonIngresarOpera.setBorderPainted(false);
         ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
-        Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
-        botonIngresar.setRolloverIcon(iconAdmin);
-        botonIngresar.setBackground(Color.white);
-        botonIngresar.addActionListener(new ActionListener() {
+        Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresarOpera.getWidth(), botonIngresarOpera.getHeight(), Image.SCALE_DEFAULT));
+        botonIngresarOpera.setRolloverIcon(iconAdmin);
+        botonIngresarOpera.setBackground(Color.white);
+        botonIngresarOpera.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                estadoOperador=true;
+                nombreOperador=txtNombreoperador.getText();
+                usuarioOperador=txtUseroperador.getText();
+                contraseOperador=txtContraOperador.getText();
                 VistaAdmin admin=new VistaAdmin();
                 admin.panelMenu();
                 dispose();
 
+
             }
         });
-        panelCentral.add(botonIngresar);
+        panelCentral.add(botonIngresarOpera);
 
         contenedor.add(panelCentral,Integer.valueOf(1));
 

@@ -18,8 +18,8 @@ public class ControladorAdmin {
         VistaAdminDatos vistaAdminDatos=new VistaAdminDatos();
         vistaAdminDatos.setVisible(false);
         ServiceAdmin serviceAdmin=new ServiceAdmin(new ControllerAdmin());
-        vistaAdmin.validarLogin(serviceAdmin.validarUsuario("admin", vistaAdmin.validarUsuario(),vistaAdmin.validarContraseña()));
-        serviceAdmin.resgitrarRepartidor(vistaAdminDatos.ingresarNombre(),vistaAdminDatos.ingresarUsuario(),vistaAdminDatos.ingresarContraseña());
+        vistaAdmin.validarLogin(serviceAdmin.validarUsuario( vistaAdmin.validarUsuario(),vistaAdmin.validarContraseña()));
+        serviceAdmin.resgitrarRepartidor(vistaAdminDatos.ingresarNombreRepartidor(),vistaAdminDatos.ingresarUsuarioRepartidor(),vistaAdminDatos.ingresarContraseñaRepartidor());
         serviceAdmin.registrarOperador(vistaAdminDatos.ingresarNombreOperador(),vistaAdminDatos.ingresarUsuarioOperador(),vistaAdminDatos.ingresarContraseñaOperador());
     }
 }
