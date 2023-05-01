@@ -1,11 +1,16 @@
 package Admin.VistaAdmin;
 
+import Admin.ControladorAdmin.ControladorAdmin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class VistaAdminDatos extends JFrame {
+
+    ControladorAdmin controladorAdmin=new ControladorAdmin();
     JPanel panelCentral =new JPanel();
     JLabel fondo = new JLabel();
     JLayeredPane contenedor=new JLayeredPane();
@@ -19,7 +24,7 @@ public class VistaAdminDatos extends JFrame {
 
     JTextField txContraseñaRepartidor = new JTextField();
 
-    boolean estadoOperador,estadoRepartidor;
+    boolean estadoOperador=false,estadoRepartidor=false;
     String contraseOperador,nombreOperador,usuarioOperador, usuarioRepartidor, nombreRepartidor, contraseñaRepartidor;
 
     public VistaAdminDatos(){
@@ -61,6 +66,13 @@ public class VistaAdminDatos extends JFrame {
         nombretext.setFont(new Font("Arial", Font.BOLD, 20));
         nombretext.setBounds(480, 170, 200, 100);
         panelCentral.add(nombretext);
+
+        txtnombreRepartidor.setBackground(Color.white);
+        txtnombreRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
+        txtnombreRepartidor.setBounds(640, 200, 220, 40);
+        panelCentral.add(txtnombreRepartidor);
+
+
         //Label del numero telefonico
         JLabel telefonoText = new JLabel("USUARIO: ");
         telefonoText.setBackground(Color.black);
@@ -68,11 +80,23 @@ public class VistaAdminDatos extends JFrame {
         telefonoText.setBounds(480, 220, 200, 100);
         panelCentral.add(telefonoText);
 
+        txtUsuarioRepartidor.setBackground(Color.white);
+        // txTelefono.setBackground(new Color(217,217,217));
+        txtUsuarioRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
+        txtUsuarioRepartidor.setBounds(640, 250, 220, 40);
+        panelCentral.add(txtUsuarioRepartidor);
+
+
         JLabel direccionText = new JLabel("CONTRASEÑA: ");
         direccionText.setBackground(Color.black);
         direccionText.setFont(new Font("Arial", Font.BOLD, 20));
         direccionText.setBounds(480, 270, 200, 100);
         panelCentral.add(direccionText);
+
+        txContraseñaRepartidor.setBackground(Color.white);
+        txContraseñaRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
+        txContraseñaRepartidor.setBounds(640, 300, 220, 40);
+        panelCentral.add(txContraseñaRepartidor);
 
         String nombre= ingresarNombreRepartidor();
         String usuario= ingresarUsuarioRepartidor();
@@ -95,9 +119,17 @@ public class VistaAdminDatos extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 VistaAdmin admin=new VistaAdmin();
                 admin.panelMenu();
+                estadoRepartidor=true;
+
+
                 nombreRepartidor=txtnombreRepartidor.getText();
                 usuarioRepartidor=txtUsuarioRepartidor.getText();
                 contraseñaRepartidor=txContraseñaRepartidor.getText();
+                controladorAdmin.datosRepartidor(txtnombreRepartidor.getText(),txtUsuarioRepartidor.getText(),txContraseñaRepartidor.getText());
+
+
+
+                System.out.println(nombreRepartidor);
                 dispose();
             }
         });
@@ -110,56 +142,34 @@ public class VistaAdminDatos extends JFrame {
     public boolean botonActivoOperador(){
         return estadoOperador;
     }
+    public boolean botonActivoRepartidor() {
+        return estadoRepartidor;
+
+    }
+
 
     public String ingresarNombreOperador(){
-        txtNombreoperador.setBackground(Color.white);
-        txtNombreoperador.setFont(new Font("Arial", Font.BOLD, 20));
-        txtNombreoperador.setBounds(640, 200, 220, 40);
-        panelCentral.add(txtNombreoperador);
         return nombreOperador;
     }
 
     public String ingresarUsuarioOperador() {
-        txtUseroperador.setBackground(Color.white);
-        // txTelefono.setBackground(new Color(217,217,217));
-        txtUseroperador.setFont(new Font("Arial", Font.BOLD, 20));
-        txtUseroperador.setBounds(640, 250, 220, 40);
-        panelCentral.add(txtUseroperador);
         return usuarioOperador;
     }
 
     public String ingresarContraseñaOperador(){
-        txtContraOperador.setBackground(Color.white);
-        txtContraOperador.setFont(new Font("Arial", Font.BOLD, 20));
-        txtContraOperador.setBounds(640, 300, 220, 40);
-        panelCentral.add(txtContraOperador);
         return contraseOperador;
-
     }
 
 
     public String ingresarNombreRepartidor(){
-        txtnombreRepartidor.setBackground(Color.white);
-        txtnombreRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
-        txtnombreRepartidor.setBounds(640, 200, 220, 40);
-        panelCentral.add(txtnombreRepartidor);
         return nombreRepartidor;
     }
 
     public String ingresarUsuarioRepartidor(){
-        txtUsuarioRepartidor.setBackground(Color.white);
-        // txTelefono.setBackground(new Color(217,217,217));
-        txtUsuarioRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
-        txtUsuarioRepartidor.setBounds(640, 250, 220, 40);
-        panelCentral.add(txtUsuarioRepartidor);
         return usuarioRepartidor;
     }
 
     public String ingresarContraseñaRepartidor(){
-        txContraseñaRepartidor.setBackground(Color.white);
-        txContraseñaRepartidor.setFont(new Font("Arial", Font.BOLD, 20));
-        txContraseñaRepartidor.setBounds(640, 300, 220, 40);
-        panelCentral.add(txContraseñaRepartidor);
         return contraseñaRepartidor;
     }
 
@@ -195,6 +205,12 @@ public class VistaAdminDatos extends JFrame {
         nombretext.setFont(new Font("Arial", Font.BOLD, 20));
         nombretext.setBounds(480, 170, 200, 100);
         panelCentral.add(nombretext);
+
+        txtNombreoperador.setBackground(Color.white);
+        txtNombreoperador.setFont(new Font("Arial", Font.BOLD, 20));
+        txtNombreoperador.setBounds(640, 200, 220, 40);
+        panelCentral.add(txtNombreoperador);
+
         //Label del numero telefonico
         JLabel telefonoText = new JLabel("USUARIO: ");
         telefonoText.setBackground(Color.black);
@@ -202,11 +218,25 @@ public class VistaAdminDatos extends JFrame {
         telefonoText.setBounds(480, 220, 200, 100);
         panelCentral.add(telefonoText);
 
+        txtUseroperador.setBackground(Color.white);
+        // txTelefono.setBackground(new Color(217,217,217));
+        txtUseroperador.setFont(new Font("Arial", Font.BOLD, 20));
+        txtUseroperador.setBounds(640, 250, 220, 40);
+        panelCentral.add(txtUseroperador);
+
+
+
+
         JLabel direccionText = new JLabel("CONTRASEÑA: ");
         direccionText.setBackground(Color.black);
         direccionText.setFont(new Font("Arial", Font.BOLD, 20));
         direccionText.setBounds(480, 270, 200, 100);
         panelCentral.add(direccionText);
+
+        txtContraOperador.setBackground(Color.white);
+        txtContraOperador.setFont(new Font("Arial", Font.BOLD, 20));
+        txtContraOperador.setBounds(640, 300, 220, 40);
+        panelCentral.add(txtContraOperador);
 
 
         String nombre=ingresarNombreOperador();
@@ -233,6 +263,8 @@ public class VistaAdminDatos extends JFrame {
                 nombreOperador=txtNombreoperador.getText();
                 usuarioOperador=txtUseroperador.getText();
                 contraseOperador=txtContraOperador.getText();
+                controladorAdmin.datosOperador(txtNombreoperador.getText(),txtUseroperador.getText(),txtContraOperador.getText());
+
                 VistaAdmin admin=new VistaAdmin();
                 admin.panelMenu();
                 dispose();

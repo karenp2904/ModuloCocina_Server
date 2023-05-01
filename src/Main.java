@@ -47,8 +47,13 @@ public class Main {
                     VistaPrincipal viewAdmin = new VistaPrincipal();
                     ControladorAdmin controladorAdmin = new ControladorAdmin();
                     controladorAdmin.start();
+
+                    /*
                     ControladorCocina controladorCocina=new ControladorCocina();
+
                     controladorCocina.start();
+
+                     */
 
                     /*
 
