@@ -2,12 +2,13 @@ package Servidor.Dominio;
 
 public class Usuario {
     private String nombre;
-    private String password;
+    private String id;
+    private String contraseña;
 
-    //Constructores
-    public Usuario(String nombre, String contrasena) {
+    public Usuario(String nombre, String id, String contraseña) {
         this.nombre = nombre;
-        this.password = contrasena;
+        this.id = id;
+        this.contraseña = contraseña;
     }
 
     public String getNombre() {
@@ -18,12 +19,20 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getId() {
+        return id;
     }
 
-    public void setPassword(String contrasena) {
-        this.password = contrasena;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 /*
     //Metodo para validar los datos ingresados

@@ -7,12 +7,12 @@ import java.io.Serializable;
 public class ModeloAdmin implements IControllerAdmin, Serializable {
 
     @Override
-    public boolean resgitrarRepartidor(String nombre, String usuario, String contraseña) {
+    public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
         return false;
     }
 
     @Override
-    public boolean registrarOperador(String nombre, String usuario, String contraseña) {
+    public boolean registrarOperador(String nombre, String id, String contraseña) {
         return false;
     }
 
