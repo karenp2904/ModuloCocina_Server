@@ -5,7 +5,7 @@ import Servidor.Dominio.Factura;
 
 public interface IControllerRepartidor {
 
-    boolean validarUsuario(String modulo,String nombre, String contraseña);//para el login del modulo
+    boolean validarUsuario(String nombre, String contraseña);//para el login del modulo
     ColasList imprimirRuta();
     boolean recibirPedido(Factura factura);
     boolean estadoPedido(Boolean estado);

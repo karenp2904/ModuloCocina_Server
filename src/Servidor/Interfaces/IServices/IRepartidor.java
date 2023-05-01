@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 
 public interface IRepartidor extends Remote, Serializable {
 
-    boolean validarUsuario(String modulo,String nombre, String contraseña) throws RemoteException;//para el login del modulo
+    boolean validarUsuario(String nombre, String contraseña) throws RemoteException;//para el login del modulo
     ColasList imprimirRuta()throws RemoteException;
     boolean recibirPedido(Factura factura)throws RemoteException;
     boolean estadoPedido(Boolean estado)throws RemoteException;

@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
 
 public interface IControllerOperador extends Serializable {
 
-    boolean validarUsuario(String modulo,String nombre, String contraseña);//para el login del modulo
+    boolean validarUsuario(String nombre, String contraseña);//para el login del modulo
     boolean registrarCliente(String nombre, String direccion, String telefono,String tipoDeCuenta);//registro de clientes
     boolean actualizarCliente(String nombre, String direccion, String telefono,String tipoDeCuenta );//actualizar el cliente
     boolean ingresarPedido(String producto, String codigo, String cantidad);//ingresar un pedido

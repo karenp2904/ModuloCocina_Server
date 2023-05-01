@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 
 public interface IOperador extends Remote, Serializable {
 
-    boolean validarUsuario(String modulo,String nombre, String contraseña) throws RemoteException;//para el login del modulo
+    boolean validarUsuario(String nombre, String contraseña) throws RemoteException;//para el login del modulo
     boolean registrarCliente(String nombre, String direccion, String telefono,String tipoDeCuenta) throws RemoteException;//registro de clientes
     boolean actualizarCliente(String nombre, String direccion, String telefono,String tipoDeCuenta ) throws RemoteException;//actualizar el cliente
     boolean ingresarPedido(String producto, String codigo, String cantidad) throws RemoteException;//ingresar un pedido
