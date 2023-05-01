@@ -1,5 +1,6 @@
 package Admin.VistaAdmin;
 
+import Admin.ControladorAdmin.ControladorAdmin;
 import Admin.VistaAdmin.VistaAdminDatos;
 import Cocina.VistaCocina.Bordes;
 import Cocina.VistaCocina.VistaCocina;
@@ -8,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class VistaAdmin extends JFrame {
     JLabel fondo = new JLabel();
@@ -15,6 +17,9 @@ public class VistaAdmin extends JFrame {
     JPanel panelInicio = new JPanel();
     JPanel panelBlanco = new JPanel();
     JButton botonRegistrar=new JButton();
+    JTextField txusuario = new JTextField();//caja de texto
+    JTextField txcontraseña = new JTextField();//caja de texto
+    String usuario, contraseña;
 
     public VistaAdmin(){
         this.setTitle("Hot Dogs Palace");
@@ -53,10 +58,18 @@ public class VistaAdmin extends JFrame {
         usuarioo.setBounds(40,184,200,100);
         panelBlanco.add(usuarioo);
 
+        txusuario.setBackground(Color.white);//color
+        txusuario.setBounds(30, 250, 300, 40);//ubicacion y tamaño
+        panelBlanco.add(txusuario);//se añade al panel
 
         JLabel contraseña=new JLabel("Contraseña");
         contraseña.setBounds(40,290,200,100);
         panelBlanco.add(contraseña);
+
+
+        txcontraseña.setBackground(Color.white);//color
+        txcontraseña.setBounds(30,360,300,40);//ubicacion y tamaño
+        panelBlanco.add(txcontraseña);//se añade al panel
 
 
 
@@ -86,7 +99,7 @@ public class VistaAdmin extends JFrame {
         String usuario=validarUsuario();
         String contraseñaaa=validarContraseña();
 
-        validarLogin(true);
+
     }
 
     public void validarLogin(boolean validacion){
@@ -95,9 +108,17 @@ public class VistaAdmin extends JFrame {
             botonRegistrar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                   contraseña=txcontraseña.getText();//SE TOMA EL VALOR QUE SE DIGITA
+                   usuario=txusuario.getText();//SE TOMA EL VALOR QUE SE DIGITA
                     panelInicio.setVisible(false);
                     panelBlanco.setVisible(false);
                     fondo.setVisible(false);
+                    try {
+                        ControladorAdmin controladorAdmin=new ControladorAdmin();
+                        controladorAdmin.validarLogin(txusuario.getText(),txcontraseña.getText());
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     panelMenu();
 
                 }
@@ -107,21 +128,12 @@ public class VistaAdmin extends JFrame {
 
     //metodo para verificar usuario ingresada por el operador
     public String validarUsuario(){
-        JTextField txusuario = new JTextField();//caja de texto
-        txusuario.setBackground(Color.white);//color
-        txusuario.setBounds(30, 250, 300, 40);//ubicacion y tamaño
-        panelBlanco.add(txusuario);//se añade al panel
-        String usuario=txusuario.getText();//SE TOMA EL VALOR QUE SE DIGITA
         return usuario;
     }
 
     //metodo para verificar contraseña ingresada por el operador
     public String validarContraseña(){
-        JTextField txcontraseña = new JTextField();//caja de texto
-        txcontraseña.setBackground(Color.white);//color
-        txcontraseña.setBounds(30,360,300,40);//ubicacion y tamaño
-        panelBlanco.add(txcontraseña);//se añade al panel
-        String contraseña=txcontraseña.getText();//SE TOMA EL VALOR QUE SE DIGITA
+
         return contraseña;
     }
 
