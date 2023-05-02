@@ -38,7 +38,6 @@ public class ControladorAdmin {
         serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
         serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
 
-
         System.out.println("admin " + userAdmin.getNombre());
         System.out.println("contra00 " + userAdmin.getId());
 
@@ -61,6 +60,7 @@ public class ControladorAdmin {
         user1.setContraseña(contraseña);
         user1.setId(user);
         user1.setNombre(nombre);
+
         System.out.println("usuarioOpera " + user1.getNombre());
         System.out.println("contra00 " + user1.getId());
         System.out.println("nombre00  " + user1.getContraseña());

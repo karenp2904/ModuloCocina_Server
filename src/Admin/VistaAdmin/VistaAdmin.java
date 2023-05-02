@@ -98,9 +98,8 @@ public class VistaAdmin extends JFrame {
         contenedor();
         String usuario=validarUsuario();
         String contraseñaaa=validarContraseña();
+
         validarLogin(true);
-
-
     }
 
     public void validarLogin(boolean validacion){

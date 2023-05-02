@@ -121,10 +121,6 @@ public class VistaAdminDatos extends JFrame {
                 admin.panelMenu();
                 estadoRepartidor=true;
 
-
-                nombreRepartidor=txtnombreRepartidor.getText();
-                usuarioRepartidor=txtUsuarioRepartidor.getText();
-                contraseñaRepartidor=txContraseñaRepartidor.getText();
                 controladorAdmin.datosRepartidor(txtnombreRepartidor.getText(),txtUsuarioRepartidor.getText(),txContraseñaRepartidor.getText());
 
 

@@ -20,19 +20,35 @@ public class Main {
         try {
                 Properties properties= new Properties();
                 try {
-                    properties.load(new FileInputStream(new File("src/server.properties")));
+                    properties.load(new FileInputStream(new File("src/serverOperador.properties")));
 
                     ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
-                    Server modOperador = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceOperador);
+                    Server modOperador = new Server((String) properties.get("IP"),
+                            (String) properties.get("PORT"),
+                            (String) properties.get("SERVICE"),
+                            serviceOperador);
 
+                    properties.load(new FileInputStream(new File("src/serverRepartidor.properties")));
                     ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
-                    Server modRepartidor = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceRepartidor);
+                    Server modRepartidor = new Server((String) properties.get("IP"),
+                            (String) properties.get("PORT"),
+                            (String) properties.get("SERVICE"),
+                            serviceRepartidor);
 
-                    ServiceCocina serviceCocina = new ServiceCocina(new ControllerCocina());
-                    Server modCocina = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceCocina);
-
+                    properties.load(new FileInputStream(new File("src/serverAdmin.properties")));
                     ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
-                    Server modAdmin = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceRepartidor);
+                    Server modAdmin = new Server((String) properties.get("IP"),
+                            (String) properties.get("PORT"),
+                            (String) properties.get("SERVICE"),
+                            serviceAdmin);
+
+                    properties.load(new FileInputStream(new File("src/serverCocina.properties")));
+                    ServiceCocina serviceCocina = new ServiceCocina(new ControllerCocina());
+                    Server modCocina = new Server((String) properties.get("IP"),
+                            (String) properties.get("PORT"),
+                            (String) properties.get("SERVICE"),
+                            serviceCocina);
+
 
 
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
@@ -57,7 +73,7 @@ public class Main {
 
                     /*
 
-                properties.load(new FileInputStream(new File("src/server.properties")));
+                properties.load(new FileInputStream(new File("src/serverOperador.properties")));
                 ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
                 Server modAdmin = new Server((String) properties.get("IP"), (String) properties.get("PORT0"), (String) properties.get("SERVICE0"), serviceAdmin);
 

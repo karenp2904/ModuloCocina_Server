@@ -2,6 +2,10 @@ package Servidor.Servicios;
 
 import Servidor.Controladores.*;
 import Servidor.Interfaces.IServices.*;
+import Servidor.Interfaces.IServices.IOperador;
+import Servidor.Interfaces.IServices.IAdmin;
+import Servidor.Interfaces.IServices.IRepartidor;
+import Servidor.Interfaces.IServices.ICocina;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -26,12 +30,7 @@ public class Server implements Runnable {
         this.url = "//" + ip + ":" + port + "/" + serviceName;
     }
 
-    @Override
-    public void run() {
-        this.deployService();
-    }
-
-    public boolean deployService() {
+    public boolean deploy() {
         boolean successful = false;
         if (ip == null || port == null || serviceName == null)
             return successful;
@@ -45,6 +44,29 @@ public class Server implements Runnable {
             Logger.getLogger(this.getClass().getSimpleName()).log(Level.WARNING, e.getMessage(), e);
         }
         return successful;
+    }
+
+    @Override
+    public void run() {
+        this.deploy();
+    }
+
+    public boolean deployService() {
+        boolean ack = false;
+        if (ip == null | port == null | serviceName == null) return ack;
+        try {
+            System.setProperty( "java.rmi.server.hostname", ip);
+            Remote service = new ServiceOperador(new ControllerOperador());
+            LocateRegistry.createRegistry(Integer.parseInt(port));
+            Naming.rebind(url, service);
+            ack = true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } finally {
+            return ack;
+        }
     }
 /*
     public boolean deployServiceAdmin() {

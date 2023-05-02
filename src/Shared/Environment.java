@@ -21,7 +21,7 @@ public class Environment {
     }
 
     private String getPathProperties() {
-        return "src/server.properties";
+        return "src/serverOperador.properties";
     }
 
     private void loadVariables(String path) {
