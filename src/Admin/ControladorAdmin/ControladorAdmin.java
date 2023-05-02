@@ -15,6 +15,7 @@ public class ControladorAdmin {
 
     Usuario user1=new Usuario();
     Usuario user2=new Usuario();
+    Usuario userAdmin=new Usuario();
     ServiceAdmin serviceAdmin;
 
     {
@@ -33,20 +34,21 @@ public class ControladorAdmin {
         vistaAdmin.setVisible(false);
         VistaAdminDatos vistaAdminDatos = new VistaAdminDatos();
         vistaAdminDatos.setVisible(false);
-
+        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña()));
+        serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
+        serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
     }
 
     public  void validarLogin(String usuario, String contraseña) throws RemoteException {
-        VistaAdmin vistaAdmin = new VistaAdmin();
-        vistaAdmin.setVisible(false);
-        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(usuario, contraseña));
+       userAdmin.setId(usuario);
+       userAdmin.setContraseña(contraseña);
+
     }
 
     public void datosOperador(String nombre,String user, String contraseña){
         user1.setContraseña(contraseña);
         user1.setId(user);
         user1.setNombre(nombre);
-        serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
         System.out.println("usuarioOpera " + user1.getNombre());
         System.out.println("contra00 " + user1.getId());
         System.out.println("nombre00  " + user1.getContraseña());
@@ -58,7 +60,7 @@ public class ControladorAdmin {
         user2.setNombre(nombre);
         user2=new Usuario(nombre,user, contraseña);
 
-        serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
+
         System.out.println("usuario00 " +  user2.getNombre());
         System.out.println("contra00 " +  user2.getId());
         System.out.println("nombre00  " +  user2.getContraseña());
