@@ -21,10 +21,12 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
     public boolean registrarOperador(String nombre, String id, String contraseña) {
         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Servidor/Modelos/JSON/operadores.json", true));
-            writer.write(new Gson().toJson(usuario) + "\n");
-            writer.close();
-            System.out.println("El operador ha sido agregado con éxito");
+            if(usuario!=null) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("src/Servidor/Modelos/JSON/operadores.json", true));
+                writer.write(new Gson().toJson(usuario) + "\n");
+                writer.close();
+                System.out.println("El operador ha sido agregado con éxito");
+            }
             return true;
         } catch (IOException e) {
             System.out.println("Error agregar operador" + e.getMessage());
@@ -67,10 +69,12 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
     public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Servidor/Modelos/JSON/repartidores.json", true));
-            writer.write(new Gson().toJson(usuario) + "\n");
-            writer.close();
-            System.out.println("El operador ha sido agregado con éxito");
+            if(usuario!=null) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("src/Servidor/Modelos/JSON/repartidores.json", true));
+                writer.write(new Gson().toJson(usuario) + "\n");
+                writer.close();
+                System.out.println("El operador ha sido agregado con éxito");
+            }
             return true;
         } catch (IOException e) {
             System.out.println("Error agregar operador" + e.getMessage());
