@@ -36,7 +36,7 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
         }
     }
 
-    public boolean validarUsuario(String usuario,String contraseña) throws RemoteException {
+    public boolean validarUsuario(String usuario) throws RemoteException {
         Gson gson = new Gson();
         Usuario user = gson.fromJson(usuario, Usuario.class);
 
