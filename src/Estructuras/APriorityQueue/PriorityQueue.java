@@ -1,7 +1,7 @@
 package Estructuras.APriorityQueue;
 
 import  Estructuras.DinamicQueue.Queue;
-import Servidor.Dominio.Pedido;
+import Dominio.Pedido;
 
 public class PriorityQueue<T> implements QueueInterface<T> {
 

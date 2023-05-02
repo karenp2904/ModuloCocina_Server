@@ -1,11 +1,9 @@
-package Servidor.Controladores;
+package Servicios.Controladores;
 
 import Estructuras.APriorityQueue.PriorityQueue;
-import Servidor.Dominio.Cliente;
-import Servidor.Dominio.Factura;
-import Servidor.Dominio.Pedido;
-import Servidor.Interfaces.IController.IControllerCocina;
-import Servidor.Modelos.ModeloCocina;
+import Dominio.Factura;
+import Dominio.Pedido;
+import Servicios.Modelos.ModeloCocina;
 
 import java.io.Serializable;
 

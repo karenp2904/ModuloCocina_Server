@@ -1,16 +1,13 @@
-package Servidor.Controladores;
+package Servicios.Controladores;
 
 import Estructuras.Colas.ColasArray;
-import Servidor.Dominio.Cliente;
-import Servidor.Dominio.Factura;
-import Servidor.Dominio.Pedido;
-import Servidor.Interfaces.IController.IControllerOperador;
-import Servidor.Modelos.ModeloOperador;
-import Servidor.Servicios.ServiceOperador;
+import Dominio.Cliente;
+import Dominio.Factura;
+import Dominio.Pedido;
+import Servicios.Modelos.ModeloOperador;
 
 
 import java.io.Serializable;
-import java.rmi.RemoteException;
 
 public class ControllerOperador implements IControllerOperador, Serializable {
 

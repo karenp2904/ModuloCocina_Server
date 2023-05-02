@@ -1,7 +1,6 @@
-package Servidor.Controladores;
+package Servicios.Controladores;
 
-import Servidor.Interfaces.IController.IControllerAdmin;
-import Servidor.Modelos.ModeloAdmin;
+import Servicios.Modelos.ModeloAdmin;
 
 import java.io.Serializable;
 

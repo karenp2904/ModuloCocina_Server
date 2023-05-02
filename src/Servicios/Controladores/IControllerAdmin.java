@@ -1,4 +1,4 @@
-package Servidor.Interfaces.IController;
+package Servicios.Controladores;
 
 public interface IControllerAdmin {
     boolean resgitrarRepartidor(String nombre,String id, String contraseña);

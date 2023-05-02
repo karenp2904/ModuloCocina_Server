@@ -1,4 +1,4 @@
-package Servidor.Dominio;
+package Dominio;
 
 public class Cliente {
     private String nombreCliente = "";
@@ -19,6 +19,10 @@ public class Cliente {
         this.direccionCliente = direccionCliente;
         this.telefono = telefono;
         this.tipoCuenta = tipoCuenta;
+    }
+
+    public Cliente(){
+
     }
 
     //Getters and setters

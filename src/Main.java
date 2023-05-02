@@ -1,16 +1,15 @@
 import Admin.ControladorAdmin.ControladorAdmin;
-import Admin.VistaAdmin.VistaAdmin;
 import Admin.VistaAdmin.VistaPrincipal;
-import Cocina.ControladorCocina.ControladorCocina;
-import Servidor.Controladores.*;
-import Servidor.Servicios.*;
-import Shared.Environment;
+import Servicios.Controladores.*;
+import Servicios.Server;
+import Servicios.ServiceOperador;
+import Servicios.ServiceRepartidor;
+import Servicios.ServiceOperador;
 //
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +34,7 @@ public class Main {
                             (String) properties.get("SERVICE"),
                             serviceRepartidor);
 
+                    /*
                     properties.load(new FileInputStream(new File("src/serverAdmin.properties")));
                     ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
                     Server modAdmin = new Server((String) properties.get("IP"),
@@ -50,10 +50,13 @@ public class Main {
                             serviceCocina);
 
 
+                     */
 
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
 
-                    Thread[] threadList = { new Thread(modOperador), new Thread(modRepartidor), new Thread(modAdmin), new Thread(modCocina)};
+                    Thread[] threadList = { new Thread(modOperador), new Thread(modRepartidor),
+                          //  new Thread(modAdmin), new Thread(modCocina)
+                    };
 
                     for (Thread thread : threadList) { //hilos
                         thread.start();

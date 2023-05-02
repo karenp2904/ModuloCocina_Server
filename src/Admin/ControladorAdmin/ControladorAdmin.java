@@ -2,9 +2,8 @@ package Admin.ControladorAdmin;
 
 import Admin.VistaAdmin.VistaAdmin;
 import Admin.VistaAdmin.VistaAdminDatos;
-import Servidor.Controladores.ControllerAdmin;
-import Servidor.Dominio.Cliente;
-import Servidor.Dominio.Usuario;
+import Servicios.Controladores.ControllerAdmin;
+import Dominio.Usuario;
 import Servidor.Servicios.ServiceAdmin;
 
 import java.rmi.RemoteException;

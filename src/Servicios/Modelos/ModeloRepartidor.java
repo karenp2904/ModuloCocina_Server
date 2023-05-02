@@ -1,8 +1,8 @@
-package Servidor.Modelos;
+package Servicios.Modelos;
 
 import Estructuras.Colas.ColasList;
-import Servidor.Dominio.Factura;
-import Servidor.Interfaces.IController.IControllerRepartidor;
+import Dominio.Factura;
+import Servicios.Controladores.IControllerRepartidor;
 
 import java.io.Serializable;
 

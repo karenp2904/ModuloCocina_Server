@@ -1,7 +1,7 @@
-package Servidor.Interfaces.IController;
+package Servicios.Controladores;
 
 import Estructuras.Colas.ColasList;
-import Servidor.Dominio.Factura;
+import Dominio.Factura;
 
 public interface IControllerRepartidor {
 

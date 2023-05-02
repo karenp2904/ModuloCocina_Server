@@ -1,4 +1,4 @@
-package Servidor.Dominio;
+package Dominio;
 
 public class Pedido {
 
@@ -10,6 +10,9 @@ public class Pedido {
         this.productoNombre = productoNombre;
         this.codigo = codigo;
         this.cantidad = cantidad;
+    }
+    public Pedido(){
+
     }
 
     public String getProductoNombre() {

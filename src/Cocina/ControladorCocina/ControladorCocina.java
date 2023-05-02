@@ -1,18 +1,15 @@
 package Cocina.ControladorCocina;
 
 import Cocina.VistaCocina.VistaCocina;
-import Estructuras.APriorityQueue.PriorityQueue;
-import Servidor.Controladores.ControllerCocina;
-import Servidor.Dominio.Factura;
-import Servidor.Dominio.Pedido;
-import Servidor.Interfaces.IServices.ICocina;
-import Servidor.Servicios.ServiceCocina;
+import Servicios.Controladores.ControllerCocina;
 
+import Servicios.ServiceCocina;
+import Dominio.Pedido;
 
 import java.rmi.RemoteException;
 
 public class ControladorCocina {
-
+    Pedido pedido;
     public ControladorCocina() throws RemoteException {
         start();
     }
@@ -22,7 +19,7 @@ public class ControladorCocina {
         vistaCocina.setVisible(false);
         ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
         while (!serviceCocina.pantallaDePedidos().isEmpty()){
-            Pedido pedido= serviceCocina.pantallaDePedidos().extract();
+            pedido= serviceCocina.pantallaDePedidos().extract();
             vistaCocina.editarColaDeDespacho(pedido, serviceCocina.entregarNumeroFogon(pedido));;
         }
     }

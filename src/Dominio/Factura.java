@@ -1,4 +1,4 @@
-package Servidor.Dominio;
+package Dominio;
 
 public class Factura {
     Pedido pedido;

@@ -1,7 +1,6 @@
 package Cocina.VistaCocina;
 
-import Estructuras.APriorityQueue.PriorityQueue;
-import Servidor.Dominio.Pedido;
+import Dominio.Pedido;
 
 import javax.swing.*;
 import java.awt.*;

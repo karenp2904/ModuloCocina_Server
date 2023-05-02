@@ -1,11 +1,11 @@
-package Servidor.Modelos;
+package Servicios.Modelos;
 
 import Estructuras.APriorityQueue.PriorityQueue;
 import Estructuras.Colas.ColasArray;
-import Servidor.Dominio.Cliente;
-import Servidor.Dominio.Factura;
-import Servidor.Dominio.Pedido;
-import Servidor.Interfaces.IController.IControllerCocina;
+import Dominio.Cliente;
+import Dominio.Factura;
+import Dominio.Pedido;
+import Servicios.Controladores.IControllerCocina;
 
 import java.io.Serializable;
 
@@ -109,4 +109,5 @@ public class ModeloCocina implements IControllerCocina, Serializable {
            return false;
        }
     }
+
 }

@@ -1,8 +1,8 @@
-package Servidor.Interfaces.IController;
+package Servicios.Controladores;
 
 import Estructuras.APriorityQueue.PriorityQueue;
-import Servidor.Dominio.Factura;
-import Servidor.Dominio.Pedido;
+import Dominio.Factura;
+import Dominio.Pedido;
 
 public interface IControllerCocina {
 
