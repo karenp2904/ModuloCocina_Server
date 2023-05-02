@@ -22,6 +22,7 @@ public class ControladorCocina {
             pedido= serviceCocina.pantallaDePedidos().extract();
             vistaCocina.editarColaDeDespacho(pedido, serviceCocina.entregarNumeroFogon(pedido));;
         }
+
     }
 
 

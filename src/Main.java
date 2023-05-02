@@ -17,8 +17,8 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
         try {
-                Properties properties= new Properties();
                 try {
+                    Properties properties= new Properties();
                     properties.load(new FileInputStream(new File("src/serverOperador.properties")));
 
                     ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
@@ -27,12 +27,16 @@ public class Main {
                             (String) properties.get("SERVICE"),
                             serviceOperador);
 
-                    properties.load(new FileInputStream(new File("src/serverRepartidor.properties")));
+                    /*
+                    Properties propertiess= new Properties();
+                    propertiess.load(new FileInputStream(new File("src/serverRepartidor.properties")));
                     ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
-                    Server modRepartidor = new Server((String) properties.get("IP"),
-                            (String) properties.get("PORT"),
-                            (String) properties.get("SERVICE"),
+                    Server modRepartidor = new Server((String) propertiess.get("IP"),
+                            (String) propertiess.get("PORT"),
+                            (String) propertiess.get("SERVICE"),
                             serviceRepartidor);
+
+                     */
 
                     /*
                     properties.load(new FileInputStream(new File("src/serverAdmin.properties")));
@@ -54,7 +58,8 @@ public class Main {
 
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
 
-                    Thread[] threadList = { new Thread(modOperador), new Thread(modRepartidor),
+                    Thread[] threadList = { new Thread(modOperador)
+                            //, new Thread(modRepartidor),
                           //  new Thread(modAdmin), new Thread(modCocina)
                     };
 

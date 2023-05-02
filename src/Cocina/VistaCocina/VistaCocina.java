@@ -13,6 +13,11 @@ public class VistaCocina extends JFrame{
     JPanel panelCentral=new JPanel();//panel para la pantalla de despacho
     JPanel panelBlanco = new JPanel();//panel para el registro
     JPanel panelDespacho=new JPanel();//panel para la impresion de la cola de pedidos
+
+    JButton botonBanco1=new JButton();
+    JButton botonBanco2=new JButton();
+    JButton botonBanco3=new JButton();
+    JButton botonBanco4=new JButton();
     int y;
     public VistaCocina(){
         this.setTitle("Hot Dogs Palace");
@@ -157,6 +162,60 @@ public class VistaCocina extends JFrame{
         panelDespacho.setBounds(350,240,600,400);
         panelDespacho.setBackground(new Color(217, 217, 217));
 
+
+        botonBanco1.setBounds(400, 50, 150, 50);
+        ImageIcon img= new ImageIcon("src/Imagenes/entregado1.png");// se le pone icono a boton
+        // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
+        botonBanco1.setIcon(img);
+        botonBanco1.setLayout(null);
+        botonBanco1.setBackground(new Color(217, 217, 217));
+        botonBanco1.setOpaque(false);
+        botonBanco1.setBorderPainted(false);
+        panelDespacho.add(botonBanco1);
+
+        botonBanco2.setBounds(400, 130, 150, 50);
+        ImageIcon im1g= new ImageIcon("src/Imagenes/entregado2.png");// se le pone icono a boton
+        // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
+        botonBanco2.setIcon(im1g);
+        botonBanco2.setLayout(null);
+        botonBanco2.setBackground(new Color(217, 217, 217));
+        botonBanco2.setOpaque(false);
+        botonBanco2.setBorderPainted(false);
+        panelDespacho.add(botonBanco2);
+
+        botonBanco3.setBounds(400, 210, 150, 50);
+        ImageIcon img3= new ImageIcon("src/Imagenes/entregado3.png");// se le pone icono a boton
+        // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
+        botonBanco3.setIcon(img3);
+        botonBanco3.setLayout(null);
+        botonBanco3.setBackground(new Color(217, 217, 217));
+        botonBanco3.setOpaque(false);
+        botonBanco3.setBorderPainted(false);
+        panelDespacho.add(botonBanco3);
+
+        botonBanco4.setBounds(400, 290, 150, 50);
+        ImageIcon img4= new ImageIcon("src/Imagenes/entregado4.png");// se le pone icono a boton
+        // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
+        botonBanco4.setIcon(img4);
+        botonBanco4.setLayout(null);
+        botonBanco4.setBackground(new Color(217, 217, 217));
+        botonBanco4.setOpaque(false);
+        botonBanco4.setBorderPainted(false);
+        panelDespacho.add(botonBanco4);
+
+
+        botonBanco1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ImageIcon imgadmin= new ImageIcon("src/Imagenes/entregado11.png");// se le pone icono a boton
+                //  Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
+                botonBanco1.setIcon(imgadmin);
+                botonBanco1.setBackground(new Color(217, 217, 217));
+                boolean estado=pedidoEntregado(true);
+            }
+        });
+        panelDespacho.add(botonBanco1);
+
         JLabel fondoLetras=new JLabel();
         ImageIcon imagen =new ImageIcon("src/Imagenes/fondoLetras.png");
         fondoLetras.setIcon(imagen);
@@ -192,30 +251,10 @@ public class VistaCocina extends JFrame{
         puesto.setBounds(300,y-5,600,100);
         panelDespacho.add(puesto);
 
-        JButton botonPedidoListo=new JButton();
-        botonPedidoListo.setBounds(400, y+15, 150, 50);
-        ImageIcon img= new ImageIcon("src/Imagenes/entregado.png");// se le pone icono a boton
-        // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
-        botonPedidoListo.setIcon(img);
-        botonPedidoListo.setLayout(null);
-        botonPedidoListo.setBackground(new Color(217, 217, 217));
-        botonPedidoListo.setOpaque(false);
-        botonPedidoListo.setBorderPainted(false);
-        boolean estado=pedidoEntregado(false); //dice que no esta listo el pedido
-        botonPedidoListo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ImageIcon imgadmin= new ImageIcon("src/Imagenes/entregado1.png");// se le pone icono a boton
-                //  Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
-                botonPedidoListo.setIcon(imgadmin);
-                botonPedidoListo.setBackground(new Color(217, 217, 217));
-                boolean estado=pedidoEntregado(true);
-            }
-        });
-        panelDespacho.add(botonPedidoListo);
-
         y+=50;//se le agrega distancia a y para la ubicacion del texto
      }
+
+
 
 
 

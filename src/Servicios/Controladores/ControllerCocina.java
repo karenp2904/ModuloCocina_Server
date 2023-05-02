@@ -27,8 +27,8 @@ public class ControllerCocina implements IControllerCocina, Serializable {
     }
 
     @Override
-    public boolean entregarPedido(PriorityQueue queue) {
-        return modeloCocina.entregarPedido(queue);
+    public boolean entregarPedido() {
+        return modeloCocina.entregarPedido();
     }
 
     @Override

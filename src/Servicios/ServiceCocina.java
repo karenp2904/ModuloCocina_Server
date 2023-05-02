@@ -34,8 +34,8 @@ public class ServiceCocina extends UnicastRemoteObject implements ICocina, Seria
     }
 
     @Override
-    public boolean entregarPedido(PriorityQueue queue) throws RemoteException {
-        return controllerCocina.entregarPedido(queue);
+    public boolean entregarPedido() throws RemoteException {
+        return controllerCocina.entregarPedido();
     }
 
     @Override

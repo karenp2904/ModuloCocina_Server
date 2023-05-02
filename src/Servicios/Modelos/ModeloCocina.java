@@ -101,9 +101,9 @@ public class ModeloCocina implements IControllerCocina, Serializable {
     }
 
     @Override
-    public boolean entregarPedido(PriorityQueue queue) {
-       if(!queue.isEmpty()){
-           queue.extract();
+    public boolean entregarPedido() {
+       if(!colaDespacho.isEmpty()){
+           colaDespacho.extract();
            return true;
        }else{
            return false;
