@@ -36,10 +36,10 @@ public class ControladorAdmin {
 
     }
 
-    public  void validarLogin(String usuario, String contraseña) throws RemoteException {
+    public  void validarLogin(String id, String contraseña) throws RemoteException {
         VistaAdmin vistaAdmin = new VistaAdmin();
         vistaAdmin.setVisible(false);
-        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(usuario, contraseña));
+        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(id,contraseña));
     }
 
     public void datosOperador(String nombre,String user, String contraseña){
