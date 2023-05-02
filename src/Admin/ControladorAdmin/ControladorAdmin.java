@@ -60,7 +60,6 @@ public class ControladorAdmin {
         user2.setNombre(nombre);
         user2=new Usuario(nombre,user, contraseña);
 
-
         System.out.println("usuario00 " +  user2.getNombre());
         System.out.println("contra00 " +  user2.getId());
         System.out.println("nombre00  " +  user2.getContraseña());
