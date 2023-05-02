@@ -33,26 +33,32 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
     }
 
     public boolean validarUsuario(String id, String contraseña) throws RemoteException {
+        boolean valido=false;
         Gson gson = new Gson();
         Usuario user = gson.fromJson(id, Usuario.class);
-
         try {
-            FileReader reader = new FileReader("src/Servidor/Modelos/JSON/admin.json");
-            JsonParser jsonParser = new JsonParser();
-            JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
-            String idAdmin = jsonObject.get("id").getAsString();
-            String contraseñaAdmin = jsonObject.get("contraseña").getAsString();
-
-            if ((id==idAdmin) && (contraseña==contraseñaAdmin)) {
-                System.out.println("Bienvenido Administrador, recuerde... UN GRAN PODER REQUIERE UNA GRAN RESPONSABILIDAD");
-                return true;
-            } else {
-                System.out.println("Credenciales no válidas");
-                return false;
+            if(user!=null){
+                FileReader reader = new FileReader("src/Servidor/Modelos/JSON/admin.json");
+                JsonParser jsonParser = new JsonParser();
+                JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
+                String idAdmin = jsonObject.get("id").getAsString();
+                String contraseñaAdmin = jsonObject.get("contraseña").getAsString();
+                if ((idAdmin.equals(id)) && (contraseñaAdmin.equals(contraseña))) {
+                    System.out.println("Bienvenido Administrador, recuerde... UN GRAN PODER REQUIERE UNA GRAN RESPONSABILIDAD");
+                    valido=true;
+                    return true;
+                } else {
+                    System.out.println("Credenciales no válidas");
+                    return false;
+                }
             }
+
         } catch (IOException e) {
             System.out.println("Error al leer el archivo JSON");
             return false;
+        }
+        finally {
+            return valido;
         }
     }
 
