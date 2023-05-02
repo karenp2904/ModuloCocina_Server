@@ -14,10 +14,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Serializable {
 
     private ControllerAdmin controllerAdmin;
-
     private static final long serialVersionUID = 1L;
-
-
     public ServiceAdmin(ControllerAdmin controllerAdmin) throws RemoteException {
         this.controllerAdmin=controllerAdmin;
     }
@@ -46,7 +43,7 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
             String idAdmin = jsonObject.get("id").getAsString();
             String contraseñaAdmin = jsonObject.get("contraseña").getAsString();
 
-            if (id.equals(idAdmin) && contraseña.equals(contraseñaAdmin)) {
+            if ((id==idAdmin) && (contraseña==contraseñaAdmin)) {
                 System.out.println("Bienvenido Administrador, recuerde... UN GRAN PODER REQUIERE UNA GRAN RESPONSABILIDAD");
                 return true;
             } else {

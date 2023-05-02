@@ -37,6 +37,18 @@ public class ControladorAdmin {
         vistaAdmin.validarLogin(serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña()));
         serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
         serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
+
+
+        System.out.println("admin " + userAdmin.getNombre());
+        System.out.println("contra00 " + userAdmin.getId());
+
+        System.out.println("usuarioOpera " + user1.getNombre());
+        System.out.println("contra00 " + user1.getId());
+        System.out.println("nombre00  " + user1.getContraseña());
+
+        System.out.println("usuarioRepar " +  user2.getNombre());
+        System.out.println("contra00 " +  user2.getId());
+        System.out.println("nombre00  " +  user2.getContraseña());
     }
 
     public  void validarLogin(String usuario, String contraseña) throws RemoteException {

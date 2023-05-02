@@ -133,7 +133,6 @@ public class VistaAdmin extends JFrame {
 
     //metodo para verificar contraseña ingresada por el operador
     public String validarContraseña(){
-
         return contraseña;
     }
 
