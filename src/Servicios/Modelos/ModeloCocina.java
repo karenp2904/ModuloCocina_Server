@@ -18,7 +18,7 @@ public class ModeloCocina implements IControllerCocina, Serializable {
     public Factura extraerPedido() {
         //este objeto es temporal mientras se devuelven los archivos, llenar esos espacios cuando se tenga la info
         Factura fact= new Factura(new Pedido("Papas", "8","6"), new Cliente("berta", "giron", "73773737", "premium"));
-        Factura fact3= new Factura(new Pedido("Perro", "8","6"), new Cliente("berta", "Pidecuesta", "73773737", "premium"));
+        Factura fact3= new Factura(new Pedido("Perro", "3","6"), new Cliente("berta", "Pidecuesta", "73773737", "premium"));
         Factura fact2= new Factura(new Pedido("Perrito", "10","6"), new Cliente("berta", "provenza", "73773737", "normal"));
        // guardarPedidos(fact,clasificarPedidoPrioridad(fact));
         guardarPedidos(fact,clasificarPedidoPrioridad(fact));

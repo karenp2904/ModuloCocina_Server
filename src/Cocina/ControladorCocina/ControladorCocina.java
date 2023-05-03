@@ -26,24 +26,44 @@ public class ControladorCocina implements Serializable {
         vistaCocina.agregarPedido(1,"salchicha","3",4);
         vistaCocina.agregarPedido(1,"perro","3",5);
 
-        while (serviceCocina.pantallaDePedidos().size()!=0){
-            Pedido pedido= serviceCocina.pantallaDePedidos().extract();
-            System.out.println("pedido"+pedido.getProductoNombre());
-            vistaCocina.agregarPedido(1,pedido.getProductoNombre(), pedido.getCantidad(),serviceCocina.entregarNumeroFogon(pedido));;
+        System.out.println(serviceCocina.pantallaDePedidos().toString());
+        extraerPedido();
+
+       /*
+        while (!serviceCocina.pantallaDePedidos().isEmpty()){
+
+            try{
+                Pedido pedido= serviceCocina.pantallaDePedidos().extract();
+                System.out.println("pedido"+pedido.getProductoNombre());
+                vistaCocina.agregarPedido(1,pedido.getProductoNombre(), pedido.getCantidad(),serviceCocina.entregarNumeroFogon(pedido));;
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
+        */
+
+
     }
 
     public void extraerPedido() throws RemoteException {
         ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
+        if(vistaCocina.pedidoEntregado()){
+            vistaCocina.eliminarPedido(2);
+        }
+        /*
         vistaCocina.eliminarPedido(2);
         if(serviceCocina.entregarPedido(true)){
+            /*
             while (!serviceCocina.pantallaDePedidos().isEmpty()){
                 Pedido pedido= new Pedido();
                 pedido=serviceCocina.pantallaDePedidos().extract();
                 System.out.println("pedido"+pedido.getProductoNombre());
                 vistaCocina.eliminarPedido(serviceCocina.entregarNumeroFogon(pedido));;
             }
-        }
+
+             */
+
     }
 
 

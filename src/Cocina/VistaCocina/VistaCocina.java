@@ -26,6 +26,8 @@ public class VistaCocina extends JFrame{
     JButton botonBanco2=new JButton();
     JButton botonBanco3=new JButton();
     JButton botonBanco4=new JButton();
+
+    boolean entregado=false;
     int y;
     public VistaCocina(){
         this.setTitle("Hot Dogs Palace");
@@ -65,7 +67,7 @@ public class VistaCocina extends JFrame{
     }
     public void eliminarPedido(int bancoDeTrabajo) {
         // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
-        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo-1].getContentPane().getComponent(0)).getViewport().getView();
+        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo+1].getContentPane().getComponent(bancoDeTrabajo)).getViewport().getView();
         DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
 
         // Eliminar la primera fila de la tabla si existe
@@ -121,10 +123,7 @@ public class VistaCocina extends JFrame{
         prueba="perro caliente";
 
 
-
-
-
-        botonBanco1.setBounds(600, 300, 150, 50);
+        botonBanco1.setBounds(1000, 350, 200, 90);
         ImageIcon img= new ImageIcon("src/Imagenes/entregado1.png");// se le pone icono a boton
         // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
         botonBanco1.setIcon(img);
@@ -139,16 +138,13 @@ public class VistaCocina extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 ImageIcon imgadmin= new ImageIcon("src/Imagenes/entregado11.png");// se le pone icono a boton
                 //  Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
-                botonBanco1.setIcon(imgadmin);
-
                 botonBanco1.setBackground(new Color(217, 217, 217));
-
-                boolean estado=pedidoEntregado();
-
-
+                entregado=true;
 
             }
         });
+
+        entregado=false;
 
 
         JLabel fondoLetras=new JLabel();
@@ -161,7 +157,8 @@ public class VistaCocina extends JFrame{
         contenedor.add(titulo,Integer.valueOf(7));
        // contenedor.add(puesto,Integer.valueOf(8));
         //contenedor.add(pedido,Integer.valueOf(8));
-        contenedor.add(panelDespacho,Integer.valueOf(7));
+        contenedor.add(panelDespacho,Integer.valueOf(8));
+        contenedor.add(botonBanco1,Integer.valueOf(9));
 
 
         contenedor();
@@ -229,7 +226,7 @@ public class VistaCocina extends JFrame{
 */
 
     public boolean pedidoEntregado(){
-        return true;
+        return entregado;
     }
 
 
