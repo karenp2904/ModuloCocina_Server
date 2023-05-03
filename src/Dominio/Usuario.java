@@ -1,9 +1,9 @@
 package Dominio;
 
 public class Usuario {
-    private String nombre;
-    private String id;
-    private String contraseña;
+    private String nombre="";
+    private String id="";
+    private String contraseña="";
 
     public Usuario(String id, String contraseña){
         this.id = id;

@@ -113,12 +113,15 @@ public class VistaAdmin extends JFrame {
                     panelInicio.setVisible(false);
                     panelBlanco.setVisible(false);
                     fondo.setVisible(false);
+                    /*
                     try {
-                        ControladorAdmin controladorAdmin=new ControladorAdmin();
+                      ControladorAdmin controladorAdmin=new ControladorAdmin();
                         controladorAdmin.validarLogin(txusuario.getText(),txcontraseña.getText());
                     } catch (RemoteException ex) {
                         throw new RuntimeException(ex);
                     }
+
+                     */
                     panelMenu();
 
                 }

@@ -1,4 +1,4 @@
-package Servidor.Servicios;
+package Servicios;
 
 import Servicios.Controladores.ControllerAdmin;
 import Dominio.Usuario;

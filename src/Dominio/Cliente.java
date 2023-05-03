@@ -3,8 +3,8 @@ package Dominio;
 public class Cliente {
     private String nombreCliente = "";
     private String direccionCliente = "";
-    private String telefono;
-    public String tipoCuenta;
+    private String telefono="";
+    public String tipoCuenta="";
 
 /*
     //Atributo especial

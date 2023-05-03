@@ -11,7 +11,7 @@ public interface ICocina extends Remote, Serializable{
 
     PriorityQueue<Pedido> pantallaDePedidos() throws RemoteException;
     int clasificarPedidoPrioridad(Factura factura) throws RemoteException;
-    boolean entregarPedido() throws RemoteException;
+    boolean entregarPedido(Boolean estado) throws RemoteException;
     int entregarNumeroFogon(Pedido pedido)throws RemoteException;
 
 }

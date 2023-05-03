@@ -9,6 +9,6 @@ public interface IControllerCocina {
     Factura extraerPedido(); //devuelve la informacion del pedido
     PriorityQueue<Pedido> pantallaDePedidos();
     int clasificarPedidoPrioridad(Factura factura);
-    boolean entregarPedido();
+    boolean entregarPedido(Boolean estado);
     int entregarNumeroFogon(Pedido pedido);
 }

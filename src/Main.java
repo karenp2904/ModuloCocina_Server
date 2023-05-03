@@ -1,10 +1,9 @@
 import Admin.ControladorAdmin.ControladorAdmin;
 import Admin.VistaAdmin.VistaPrincipal;
+import Servicios.*;
 import Servicios.Controladores.*;
-import Servicios.Server;
 import Servicios.ServiceOperador;
-import Servicios.ServiceRepartidor;
-import Servicios.ServiceOperador;
+import Servidor.Servicios.ServiceAdmin;
 //
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +26,7 @@ public class Main {
                             (String) properties.get("SERVICE"),
                             serviceOperador);
 
-                    /*
+/*
                     Properties propertiess= new Properties();
                     propertiess.load(new FileInputStream(new File("src/serverRepartidor.properties")));
                     ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
@@ -36,25 +35,9 @@ public class Main {
                             (String) propertiess.get("SERVICE"),
                             serviceRepartidor);
 
-                     */
-
-                    /*
-                    properties.load(new FileInputStream(new File("src/serverAdmin.properties")));
-                    ServiceAdmin serviceAdmin = new ServiceAdmin(new ControllerAdmin());
-                    Server modAdmin = new Server((String) properties.get("IP"),
-                            (String) properties.get("PORT"),
-                            (String) properties.get("SERVICE"),
-                            serviceAdmin);
-
-                    properties.load(new FileInputStream(new File("src/serverCocina.properties")));
-                    ServiceCocina serviceCocina = new ServiceCocina(new ControllerCocina());
-                    Server modCocina = new Server((String) properties.get("IP"),
-                            (String) properties.get("PORT"),
-                            (String) properties.get("SERVICE"),
-                            serviceCocina);
+ */
 
 
-                     */
 
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
 
