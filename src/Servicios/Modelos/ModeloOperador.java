@@ -13,42 +13,49 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean validarUsuario( String nombre, String contraseña) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean registrarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean actualizarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean ingresarPedido(String producto, String codigo, String cantidad) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean actualizarPedido(String producto, String codigo, String cantidad) {
-        return false;
+        return true;
     }
 
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
-        return null;
+        return new ColasArray();
     }
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
-        return null;
+        return new ColasArray();
     }
 
     @Override
     public ColasArray busquedaCliente(String clienteTelefonoABuscar) {
-        return null;
+        Cliente cliente=new Cliente("Karen","Giron", "3157660279", "premium");
+        ColasArray colasArray=new ColasArray();
+        colasArray.enqueue("karen");
+        colasArray.enqueue("Giron");
+        colasArray.enqueue("3157660279");
+        colasArray.enqueue("premium");
+        System.out.println(colasArray.print());
+        return colasArray;
     }
 
     @Override
@@ -58,7 +65,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean clienteExistente(String telefono) {
-        return false;
+        return true;
     }
 
     public ModeloOperador obtenerDatos() {
