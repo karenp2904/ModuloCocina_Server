@@ -24,7 +24,7 @@ public class ModeloCocina implements IControllerCocina, Serializable {
         guardarPedidos(fact,clasificarPedidoPrioridad(fact));
         guardarPedidos(fact3,clasificarPedidoPrioridad(fact3));
         guardarPedidos(fact2,clasificarPedidoPrioridad(fact2));
-        return null;
+        return fact;
     }
 
     @Override
@@ -34,6 +34,7 @@ public class ModeloCocina implements IControllerCocina, Serializable {
 
     private PriorityQueue guardarPedidos(Factura factura, int prioridad) {
         System.out.println(colaDespacho.toString());
+        colaDespacho.insert(factura,clasificarPedidoPrioridad(factura));
         return colaDespacho;//aqui se guarda en el archivo
     }
 
@@ -79,7 +80,9 @@ public class ModeloCocina implements IControllerCocina, Serializable {
             }
             prioridadDefinida=1;
         }
+        System.out.println("prioridad definidda"+ prioridadDefinida);
         return prioridadDefinida;
+
     }
 
     private int definirPrioridadPorDireccion(Cliente cliente){

@@ -24,7 +24,6 @@ public class Main {
                             (String) properties.get("PORT"),
                             (String) properties.get("SERVICE"),
                             serviceOperador);
-
 /*
                     Properties propertiess= new Properties();
                     propertiess.load(new FileInputStream(new File("src/serverRepartidor.properties")));
@@ -35,9 +34,6 @@ public class Main {
                             serviceRepartidor);
 
  */
-
-
-
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
 
                     Thread[] threadList = { new Thread(modOperador)
@@ -54,12 +50,6 @@ public class Main {
                     ControladorAdmin controladorAdmin = new ControladorAdmin();
                     controladorAdmin.start();
 
-                    /*
-                    ControladorCocina controladorCocina=new ControladorCocina();
-
-                    controladorCocina.start();
-
-                     */
 
                     /*
 

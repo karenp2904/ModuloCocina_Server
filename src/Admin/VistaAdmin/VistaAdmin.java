@@ -2,13 +2,16 @@ package Admin.VistaAdmin;
 
 import Admin.ControladorAdmin.ControladorAdmin;
 import Admin.VistaAdmin.VistaAdminDatos;
+import Cocina.ControladorCocina.ControladorCocina;
 import Cocina.VistaCocina.Bordes;
 import Cocina.VistaCocina.VistaCocina;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import java.rmi.RemoteException;
 
 public class VistaAdmin extends JFrame {
@@ -251,11 +254,18 @@ public class VistaAdmin extends JFrame {
         botonActivarCocina.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                VistaCocina vista=new VistaCocina();
-                vista.panelDespachoPedidos();
-                System.out.println("Service on");
-                dispose();
 
+                try {
+
+                    ControladorCocina controladorCocina = new ControladorCocina();
+                    controladorCocina.start();
+                    dispose();
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+                dispose();
             }
         });
 

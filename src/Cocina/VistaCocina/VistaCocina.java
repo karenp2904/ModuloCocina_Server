@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 
@@ -33,27 +34,29 @@ public class VistaCocina extends JFrame{
         this.setVisible(false);
         this.setBackground(Color.white);
         y=30; //coordenadas de la pantalla de despacho
+
     }
 
-    public void crearTabla(){
+    public void crearTabla() throws PropertyVetoException {
         // Crear los frames internos de las colas de pedidos
-        internalFrames = new JInternalFrame[4];
-        for (int i = 0; i < 1; i++) {
-            internalFrames[i] = createInternalFrame("Banco de trabajo " + (i + 1));
-            internalFrames[i].setSize(new Dimension(600, 400)); // Redimensionar el frame interno
+        internalFrames = new JInternalFrame[1];
+            int i=0;
+        internalFrames[i] = createInternalFrame("Banco de trabajo " + (i + 1));
+        internalFrames[i].setSize(new Dimension(600, 400)); // Redimensionar el frame interno
             internalFrames[i].setLocation(i * 420, 0); // Alinear los frames internos horizontalmente
             panelDespacho.add(internalFrames[i]);
-        }
+
     }
+
     //Metodos de la tablita
-    public void agregarPedido(String nombrePedido, String cantidad,int bancoAsignado) {
+    public void agregarPedido(int bancoDeTrabajo,String nombrePedido, String cantidad,int bancoAsignado) {
         System.out.println(nombrePedido+cantidad+bancoAsignado);
         // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
-        JTable queueTable = (JTable) ((JScrollPane) internalFrames[1].getContentPane().getComponent(0)).getViewport().getView();
+        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo - 1].getContentPane().getComponent(0)).getViewport().getView();
         DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
 
         // Obtener la información del nuevo pedido
-       // Date tiempo = new Date();
+
         String banco = "Banco de trabajo " + bancoAsignado;
 
         // Agregar el nuevo pedido a la tabla de la cola de pedidos
@@ -62,7 +65,7 @@ public class VistaCocina extends JFrame{
     }
     public void eliminarPedido(int bancoDeTrabajo) {
         // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
-        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo - 1].getContentPane().getComponent(0)).getViewport().getView();
+        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo-1].getContentPane().getComponent(0)).getViewport().getView();
         DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
 
         // Eliminar la primera fila de la tabla si existe
@@ -71,25 +74,13 @@ public class VistaCocina extends JFrame{
         }
     }
 
-    public String registroNombreUsuario(){
-        JTextField txusuario=new JTextField();
-        txusuario.setBounds(30,250,300,50);
-        panelBlanco.add(txusuario);
-        String usuario=txusuario.getText();
-        return usuario;
+    public void ingresarIntento(int bancoDeTrabajo,String nombrePedido, String cantidad,int bancoAsignado){
+        agregarPedido( bancoDeTrabajo, nombrePedido,  cantidad, bancoAsignado);
     }
 
-    public String registroContraseñaUsuario(){
-        JTextField txcontraseña=new JTextField();
-        txcontraseña.setBounds(30,360,300,50);
-        panelBlanco.add(txcontraseña);
-        String contraseña=txcontraseña.getText();
-        return contraseña;
-    }
 
     public void panelDespachoPedidos(){
         //Nuevo
-        crearTabla();
         //panel de color blanco
         panelCentral.setLayout(null);
         panelCentral.setVisible(true);
@@ -151,12 +142,7 @@ public class VistaCocina extends JFrame{
                 botonBanco1.setIcon(imgadmin);
 
                 botonBanco1.setBackground(new Color(217, 217, 217));
-                try {
-                   ControladorCocina controladorCocina =new ControladorCocina();
-                    controladorCocina.extraerPedido();
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
+
                 boolean estado=pedidoEntregado();
 
 
@@ -179,7 +165,7 @@ public class VistaCocina extends JFrame{
 
 
         contenedor();
-        createWorkbenches(1,30,30);
+        createWorkbenches(1,600,400);
         createInternalFrame("Pedidos");
     }
 
@@ -197,8 +183,9 @@ public class VistaCocina extends JFrame{
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int preferredWidth = numWorkbenches * (width + 20); // Calcular el ancho preferido de la ventana principal
         int preferredHeight = height + 50; // Calcular la altura preferida de la ventana principal
-        this.setPreferredSize(new Dimension(preferredWidth, preferredHeight)); // Establecer el tamaño preferido de la ventana principal
+        //this.setPreferredSize(new Dimension(preferredWidth, preferredHeight)); // Establecer el tamaño preferido de la ventana principal
         this.pack();
+        this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
         this.setVisible(true);
     }
@@ -249,7 +236,6 @@ public class VistaCocina extends JFrame{
     public void contenedor(){
         this.getContentPane().add(contenedor);
         this.setSize(getMaximumSize());
-
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -331,6 +317,22 @@ public class VistaCocina extends JFrame{
             //  contenedor.add(panelInicio,Integer.valueOf(2));
             this.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         }
+
+         public String registroNombreUsuario(){
+        JTextField txusuario=new JTextField();
+        txusuario.setBounds(30,250,300,50);
+        panelBlanco.add(txusuario);
+        String usuario=txusuario.getText();
+        return usuario;
+    }
+
+    public String registroContraseñaUsuario(){
+        JTextField txcontraseña=new JTextField();
+        txcontraseña.setBounds(30,360,300,50);
+        panelBlanco.add(txcontraseña);
+        String contraseña=txcontraseña.getText();
+        return contraseña;
+    }
     */
 
 }
