@@ -13,6 +13,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean validarUsuario( String nombre, String contraseña) {
+        System.out.println("validacion operador"+ nombre+""+contraseña);
         return true;
     }
 
@@ -23,6 +24,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean actualizarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
+        System.out.println("??? LLEGA");
         return true;
     }
 
@@ -43,6 +45,11 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
+        ColasArray colasArray=new ColasArray();
+        colasArray.enqueue("Perro");
+        colasArray.enqueue("10");
+        colasArray.enqueue("12");
+        System.out.println(colasArray.print());
         return new ColasArray();
     }
 

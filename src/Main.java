@@ -21,8 +21,8 @@ public class Main {
 
                     ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
                     Server modOperador = new Server((String) properties.get("IP"),
-                            (String) properties.get("PORT"),
-                            (String) properties.get("SERVICE"),
+                            (String) properties.get("PORTS"),
+                            (String) properties.get("SERVICES"),
                             serviceOperador);
 /*
                     Properties propertiess= new Properties();

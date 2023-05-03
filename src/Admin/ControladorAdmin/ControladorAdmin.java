@@ -60,7 +60,7 @@ public class ControladorAdmin implements Serializable {
     public  boolean validarLogin(String usuario, String contraseña) throws RemoteException {
        userAdmin.setId(usuario);
        userAdmin.setContraseña(contraseña);
-        return serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña());
+        return serviceAdmin.validarUsuario(usuario, contraseña);
 
     }
 
@@ -72,7 +72,7 @@ public class ControladorAdmin implements Serializable {
         System.out.println("usuarioOpera " + user1.getNombre());
         System.out.println("contra00 " + user1.getId());
         System.out.println("nombre00  " + user1.getContraseña());
-        serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
+        serviceAdmin.registrarOperador(nombre, user,contraseña);
     }
 
     public void datosRepartidor(String nombre,String user, String contraseña){
@@ -84,7 +84,7 @@ public class ControladorAdmin implements Serializable {
         System.out.println("usuario00 " +  user2.getNombre());
         System.out.println("contra00 " +  user2.getId());
         System.out.println("nombre00  " +  user2.getContraseña());
-        serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
+        serviceAdmin.resgitrarRepartidor(nombre, user,contraseña);
     }
 
 }

@@ -163,7 +163,7 @@ public class VistaCocina extends JFrame{
 
         contenedor();
         createWorkbenches(1,600,400);
-        createInternalFrame("Pedidos");
+        //createInternalFrame("Pedidos");
     }
 
     public void createWorkbenches(int numWorkbenches, int width, int height) {

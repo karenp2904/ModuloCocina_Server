@@ -26,46 +26,55 @@ public class ServiceOperador extends UnicastRemoteObject implements IOperador, S
 
     @Override
     public boolean validarUsuario( String nombre, String contraseña) throws RemoteException {
+        System.out.println("Validar"+ nombre + contraseña);
         return true;
     }
 
     @Override
     public boolean registrarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
+        System.out.println("registro!!!!" + nombre+ direccion+telefono+tipoDeCuenta);
         return controllerOperador.registrarCliente(nombre,direccion,telefono,tipoDeCuenta);
     }
 
     @Override
     public boolean actualizarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
+        System.out.println("actualizar" + nombre+ direccion+telefono+tipoDeCuenta);
         return controllerOperador.actualizarCliente(nombre,direccion,telefono,tipoDeCuenta);
     }
 
     @Override
     public boolean ingresarPedido(String producto, String codigo, String cantidad) {
+        System.out.println("pedido" + producto+ codigo+ cantidad);
         return controllerOperador.ingresarPedido(producto,codigo,cantidad);
     }
 
     @Override
     public boolean actualizarPedido(String producto, String codigo, String cantidad) {
+        System.out.println("actualizar" + producto+ codigo+ cantidad);
         return controllerOperador.actualizarPedido(producto,codigo,cantidad);
     }
 
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
+        System.out.println("frecuente tel"+ telefono);
         return controllerOperador.pedidosFrecuentesCliente(telefono);
     }
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
+        System.out.println("pedido" + pedidoABuscar);
         return controllerOperador.busquedaPedido(pedidoABuscar);
     }
 
     @Override
     public ColasArray busquedaCliente(String clienteABuscar) {
+        System.out.println("busqueda cliente"+ clienteABuscar);
         return controllerOperador.busquedaCliente(clienteABuscar);
     }
 
     @Override
     public boolean clienteExistente(String telefono) throws RemoteException {
+        System.out.println("clinte existe" + telefono);
         return controllerOperador.clienteExistente(telefono);
     }
 

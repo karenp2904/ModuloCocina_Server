@@ -49,7 +49,7 @@ public class ControladorCocina implements Serializable {
     public void extraerPedido() throws RemoteException {
         ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
         if(vistaCocina.pedidoEntregado()){
-            vistaCocina.eliminarPedido(2);
+           // vistaCocina.eliminarPedido(2);
         }
         /*
         vistaCocina.eliminarPedido(2);

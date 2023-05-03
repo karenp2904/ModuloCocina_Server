@@ -1,8 +1,9 @@
 package Estructuras.Colas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ColasArray {
+public class ColasArray implements Serializable {
     private ArrayList<Object> items;
 
     public ColasArray() {
