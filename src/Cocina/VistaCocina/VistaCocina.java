@@ -32,6 +32,10 @@ public class VistaCocina extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(false);
         this.setBackground(Color.white);
+        y=30; //coordenadas de la pantalla de despacho
+    }
+
+    public void crearTabla(){
         // Crear los frames internos de las colas de pedidos
         internalFrames = new JInternalFrame[4];
         for (int i = 0; i < 1; i++) {
@@ -40,10 +44,10 @@ public class VistaCocina extends JFrame{
             internalFrames[i].setLocation(i * 420, 0); // Alinear los frames internos horizontalmente
             panelDespacho.add(internalFrames[i]);
         }
-        y=30; //coordenadas de la pantalla de despacho
     }
     //Metodos de la tablita
     public void agregarPedido(String nombrePedido, String cantidad,int bancoAsignado) {
+        System.out.println(nombrePedido+cantidad+bancoAsignado);
         // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
         JTable queueTable = (JTable) ((JScrollPane) internalFrames[1].getContentPane().getComponent(0)).getViewport().getView();
         DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
@@ -85,7 +89,7 @@ public class VistaCocina extends JFrame{
 
     public void panelDespachoPedidos(){
         //Nuevo
-
+        crearTabla();
         //panel de color blanco
         panelCentral.setLayout(null);
         panelCentral.setVisible(true);
