@@ -89,6 +89,30 @@ public class VistaAdmin extends JFrame {
         botonRegistrar.setBackground(Color.white);
         panelBlanco.add(botonRegistrar);
 
+        botonRegistrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelInicio.setVisible(false);
+                panelBlanco.setVisible(false);
+                fondo.setVisible(false);
+
+                    try {
+                      ControladorAdmin controladorAdmin=new ControladorAdmin();
+                        if(controladorAdmin.validarLogin(txusuario.getText(),txcontraseña.getText())) {
+                            setVisible(true);
+                            panelMenu();
+                        }
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+
+
+            }
+        });
+
+
+
         ImageIcon imagen =new ImageIcon("src/Imagenes/loginAdmin.png");
         fondo.setIcon(imagen);
         fondo.setSize(imagen.getIconWidth(), imagen.getIconHeight());
@@ -102,7 +126,6 @@ public class VistaAdmin extends JFrame {
         String usuario=validarUsuario();
         String contraseñaaa=validarContraseña();
 
-        validarLogin(true);
     }
 
     public void validarLogin(boolean validacion){
@@ -125,6 +148,7 @@ public class VistaAdmin extends JFrame {
                     }
 
                      */
+                    setVisible(true);
                     panelMenu();
 
                 }

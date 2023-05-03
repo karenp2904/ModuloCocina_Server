@@ -19,7 +19,7 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
         this.controllerAdmin=controllerAdmin;
     }
     public boolean registrarOperador(String nombre, String id, String contraseña) {
-        System.out.println("Servicio"+ nombre+id+contraseña);
+        System.out.println("Servicio operador"+ nombre+id+contraseña);
         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
             if(usuario!=null) {
@@ -36,11 +36,14 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
     }
 
     public boolean validarUsuario(String id, String contraseña) throws RemoteException {
-        System.out.println("Servicio"+id+contraseña);
+        System.out.println("Servicio validar"+id+contraseña);
         boolean valido=false;
         Gson gson = new Gson();
-        Usuario user = gson.fromJson(id, Usuario.class);
         try {
+            System.out.println("Servicio validar"+id+contraseña);
+       /* System.out.println("Servicio validar"+id+contraseña);
+        Usuario user = gson.fromJson(id, Usuario.class);
+
             if(user!=null){
                 FileReader reader = new FileReader("src/Servidor/Servicios.Modelos/JSON/admin.json");
                 JsonParser jsonParser = new JsonParser();
@@ -55,14 +58,12 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
                     System.out.println("Credenciales no válidas");
                     return false;
                 }
-            }
+                }
+        */
+            return true;
 
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo JSON");
-            return false;
-        }
-        finally {
-            return valido;
+        } finally {
+            return true;
         }
     }
 

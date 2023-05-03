@@ -54,15 +54,13 @@ public class ControladorAdmin implements Serializable {
 
 
  */
-        ControllerAdmin controllerAdmin=new ControllerAdmin();
-        controllerAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
-        controllerAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
+
     }
 
-    public  void validarLogin(String usuario, String contraseña) throws RemoteException {
+    public  boolean validarLogin(String usuario, String contraseña) throws RemoteException {
        userAdmin.setId(usuario);
        userAdmin.setContraseña(contraseña);
-        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña()));
+        return serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña());
 
     }
 
