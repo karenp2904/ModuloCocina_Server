@@ -28,7 +28,7 @@ public class VistaAdmin extends JFrame {
         this.setTitle("Hot Dogs Palace");
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setVisible(true);
+        this.setVisible(false);
         this.setBackground(Color.white);
 
 

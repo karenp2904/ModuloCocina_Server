@@ -19,6 +19,7 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
         this.controllerAdmin=controllerAdmin;
     }
     public boolean registrarOperador(String nombre, String id, String contraseña) {
+        System.out.println("Servicio"+ nombre+id+contraseña);
         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
             if(usuario!=null) {
@@ -35,6 +36,7 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
     }
 
     public boolean validarUsuario(String id, String contraseña) throws RemoteException {
+        System.out.println("Servicio"+id+contraseña);
         boolean valido=false;
         Gson gson = new Gson();
         Usuario user = gson.fromJson(id, Usuario.class);
@@ -67,6 +69,7 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
 
     @Override
     public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
+        System.out.println("Servicio R"+ nombre+id+contraseña);
         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
             if(usuario!=null) {

@@ -63,6 +63,7 @@ public class VistaPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 VistaAdmin admin=new VistaAdmin();
+                admin.setVisible(true);
                 admin.panelRegistro();
                 dispose();
 

@@ -2,14 +2,16 @@ package Admin.ControladorAdmin;
 
 import Admin.VistaAdmin.VistaAdmin;
 import Admin.VistaAdmin.VistaAdminDatos;
+import Admin.VistaAdmin.VistaPrincipal;
 import Servicios.Controladores.ControllerAdmin;
 import Dominio.Usuario;
 import Servicios.ServiceAdmin;
 
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 
-public class ControladorAdmin {
+public class ControladorAdmin implements Serializable {
 
 
 
@@ -17,6 +19,7 @@ public class ControladorAdmin {
     Usuario user2=new Usuario();
     Usuario userAdmin=new Usuario();
     ServiceAdmin serviceAdmin;
+    VistaAdmin vistaAdmin = new VistaAdmin();
 
     {
         try {
@@ -30,13 +33,8 @@ public class ControladorAdmin {
     }
 
     public void start() throws RemoteException {
-        VistaAdmin vistaAdmin = new VistaAdmin();
+        VistaPrincipal vistaPrincipal=new VistaPrincipal();
         vistaAdmin.setVisible(false);
-        VistaAdminDatos vistaAdminDatos = new VistaAdminDatos();
-        vistaAdminDatos.setVisible(false);
-        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña()));
-        serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
-        serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
 
         System.out.println("admin " + userAdmin.getNombre());
         System.out.println("contra00 " + userAdmin.getId());
@@ -48,11 +46,23 @@ public class ControladorAdmin {
         System.out.println("usuarioRepar " +  user2.getNombre());
         System.out.println("contra00 " +  user2.getId());
         System.out.println("nombre00  " +  user2.getContraseña());
+/*
+        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña()));
+        serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
+        serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
+
+
+
+ */
+        ControllerAdmin controllerAdmin=new ControllerAdmin();
+        controllerAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
+        controllerAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
     }
 
     public  void validarLogin(String usuario, String contraseña) throws RemoteException {
        userAdmin.setId(usuario);
        userAdmin.setContraseña(contraseña);
+        vistaAdmin.validarLogin(serviceAdmin.validarUsuario(userAdmin.getId(), userAdmin.getContraseña()));
 
     }
 
@@ -64,6 +74,7 @@ public class ControladorAdmin {
         System.out.println("usuarioOpera " + user1.getNombre());
         System.out.println("contra00 " + user1.getId());
         System.out.println("nombre00  " + user1.getContraseña());
+        serviceAdmin.registrarOperador(user1.getNombre(), user1.getId(),user1.getContraseña());
     }
 
     public void datosRepartidor(String nombre,String user, String contraseña){
@@ -75,6 +86,7 @@ public class ControladorAdmin {
         System.out.println("usuario00 " +  user2.getNombre());
         System.out.println("contra00 " +  user2.getId());
         System.out.println("nombre00  " +  user2.getContraseña());
+        serviceAdmin.resgitrarRepartidor(user2.getNombre(), user2.getId(),user2.getContraseña());
     }
 
 }

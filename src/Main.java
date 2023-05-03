@@ -46,7 +46,6 @@ public class Main {
                     }
 
                     //metodos para acceder a la cocina y al admin que se encuentran servidor
-                    VistaPrincipal viewAdmin = new VistaPrincipal();
                     ControladorAdmin controladorAdmin = new ControladorAdmin();
                     controladorAdmin.start();
 

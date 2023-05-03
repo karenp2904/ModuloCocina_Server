@@ -118,6 +118,7 @@ public class VistaAdminDatos extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 VistaAdmin admin=new VistaAdmin();
+                admin.setVisible(true);
                 admin.panelMenu();
                 estadoRepartidor=true;
 
@@ -262,6 +263,7 @@ public class VistaAdminDatos extends JFrame {
                 controladorAdmin.datosOperador(txtNombreoperador.getText(),txtUseroperador.getText(),txtContraOperador.getText());
 
                 VistaAdmin admin=new VistaAdmin();
+                admin.setVisible(true);
                 admin.panelMenu();
                 dispose();
 
