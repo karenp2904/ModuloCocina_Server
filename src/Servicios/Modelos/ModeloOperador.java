@@ -40,7 +40,18 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
-        return new ColasArray();
+        ColasArray colasArray=new ColasArray();
+        colasArray.enqueue("Hamburguesa");
+        colasArray.enqueue("10");
+        colasArray.enqueue("1");
+        colasArray.enqueue("Perro S");
+        colasArray.enqueue("5");
+        colasArray.enqueue("12");
+        colasArray.enqueue("Perro G");
+        colasArray.enqueue("2");
+        colasArray.enqueue("4");
+        System.out.println(colasArray.print());
+        return colasArray;
     }
 
     @Override
@@ -50,7 +61,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
         colasArray.enqueue("10");
         colasArray.enqueue("12");
         System.out.println(colasArray.print());
-        return new ColasArray();
+        return colasArray;
     }
 
     @Override
