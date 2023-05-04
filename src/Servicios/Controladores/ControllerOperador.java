@@ -7,12 +7,16 @@ import Dominio.Pedido;
 import Servicios.Modelos.ModeloOperador;
 
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.Serializable;
 
 public class ControllerOperador implements IControllerOperador, Serializable {
 
     private String archivoJSON = "datos.json";
     private ModeloOperador modeloOperador=new ModeloOperador();
+
+    public ControllerOperador() throws ParserConfigurationException {
+    }
 
     @Override
     public boolean validarUsuario( String nombre, String contraseña) {

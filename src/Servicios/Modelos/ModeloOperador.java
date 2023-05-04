@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class ModeloOperador implements IControllerOperador, Serializable {
 
     CustomersXML archivoCliente=new CustomersXML(new File("src/Servicios/Modelos/XML/clientes.xml"));
-    UsuariosXML archivoUserOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+
     PedidosXML archivoPedido=new PedidosXML(new File("src/Servicios/Modelos/XML/pedidos.xml"));
 
     public ModeloOperador() throws ParserConfigurationException {
@@ -25,7 +25,12 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean validarUsuario( String nombre, String contraseña) {
-        return  archivoUserOperador.existeUsuarioPorId(nombre);
+        try {
+            ModeloAdmin modeloAdmin=new ModeloAdmin();
+           return modeloAdmin.validarUsuarioOperador(nombre,contraseña);
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -51,16 +56,24 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     }
 
     @Override
-    public boolean ingresarPedido(String producto, String codigo, String cantidad) throws TransformerException {
+    public boolean ingresarPedido(String producto, String codigo, String cantidad) {
         archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
-        archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+        try {
+            archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
         return true;
     }
 
     @Override
-    public boolean actualizarPedido(String producto, String codigo, String cantidad) throws TransformerException {
+    public boolean actualizarPedido(String producto, String codigo, String cantidad) {
         archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
-        archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+        try {
+            archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
         return true;
     }
 

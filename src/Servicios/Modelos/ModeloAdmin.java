@@ -19,16 +19,24 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     }
 
     @Override
-    public boolean resgitrarRepartidor(String nombre, String id, String contraseña) throws TransformerException {
+    public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
         archivoRepartidor.agregarUsuario(new Usuario(nombre,id,contraseña));
-        archivoRepartidor.saveToFile(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
+        try {
+            archivoRepartidor.saveToFile(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
         return true;
     }
 
     @Override
-    public boolean registrarOperador(String nombre, String id, String contraseña) throws TransformerException {
+    public boolean registrarOperador(String nombre, String id, String contraseña)  {
         archivoOperador.agregarUsuario(new Usuario(nombre,id,contraseña));
-        archivoOperador.saveToFile(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+        try {
+            archivoOperador.saveToFile(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
         return true;
     }
 
@@ -40,6 +48,11 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     @Override
     public boolean validarUsuario(String Usuario, String Contraseña) {
         archivoAdmin.existeUsuarioPorId(Usuario);
+        return true;
+    }
+
+    public boolean validarUsuarioOperador(String Usuario, String Contraseña) {
+        archivoOperador.existeUsuarioPorId(Usuario);
         return true;
     }
 }

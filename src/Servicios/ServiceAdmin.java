@@ -20,7 +20,9 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
     }
     public boolean registrarOperador(String nombre, String id, String contraseña) {
         System.out.println("Servicio operador"+ nombre+id+contraseña);
-        Usuario usuario = new Usuario(nombre, id, contraseña);
+        return  controllerAdmin.registrarOperador(nombre,id,contraseña);
+        /*
+         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
             if(usuario!=null) {
                 BufferedWriter writer = new BufferedWriter(new FileWriter("src/Servidor/Servicios.Modelos/JSON/operadores.json", true));
@@ -33,10 +35,14 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
             System.out.println("Error agregar operador" + e.getMessage());
             return false;
         }
+
+         */
     }
 
     public boolean validarUsuario(String id, String contraseña) throws RemoteException {
         System.out.println("Servicio validar"+id+contraseña);
+        return  controllerAdmin.validarUsuario(id,contraseña);
+        /*
         boolean valido=false;
         Gson gson = new Gson();
         try {
@@ -60,17 +66,15 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
                 }
                 }
         */
-            return true;
 
-        } finally {
-            return true;
-        }
     }
 
 
     @Override
     public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
         System.out.println("Servicio R"+ nombre+id+contraseña);
+        return controllerAdmin.resgitrarRepartidor(nombre,id,contraseña);
+        /*
         Usuario usuario = new Usuario(nombre, id, contraseña);
         try {
             if(usuario!=null) {
@@ -84,6 +88,8 @@ public class ServiceAdmin extends UnicastRemoteObject implements IAdmin, Seriali
             System.out.println("Error agregar operador" + e.getMessage());
             return false;
         }
+
+         */
     }
 
 

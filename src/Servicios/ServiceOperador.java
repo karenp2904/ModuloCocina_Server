@@ -27,7 +27,7 @@ public class ServiceOperador extends UnicastRemoteObject implements IOperador, S
     @Override
     public boolean validarUsuario( String nombre, String contraseña) throws RemoteException {
         System.out.println("Validar"+ nombre + contraseña);
-        return true;
+        return controllerOperador.validarUsuario(nombre,contraseña);
     }
 
     @Override

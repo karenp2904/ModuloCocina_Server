@@ -8,6 +8,7 @@ import Dominio.Usuario;
 import Servicios.ServiceAdmin;
 
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 
@@ -24,7 +25,7 @@ public class ControladorAdmin implements Serializable {
     {
         try {
             serviceAdmin = new ServiceAdmin(new ControllerAdmin());
-        } catch (RemoteException e) {
+        } catch (RemoteException | ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
     }

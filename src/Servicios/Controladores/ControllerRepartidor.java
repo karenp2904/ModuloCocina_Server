@@ -4,11 +4,15 @@ import Estructuras.Colas.ColasList;
 import Dominio.Factura;
 import Servicios.Modelos.ModeloRepartidor;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.Serializable;
 
 public class ControllerRepartidor implements IControllerRepartidor , Serializable {
 
     private ModeloRepartidor modeloRepartidor=new ModeloRepartidor();
+
+    public ControllerRepartidor() throws ParserConfigurationException {
+    }
 
     @Override
     public boolean validarUsuario(String nombre, String contraseña) {
