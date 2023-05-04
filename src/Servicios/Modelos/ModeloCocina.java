@@ -55,6 +55,7 @@ public class ModeloCocina implements IControllerCocina, Serializable {
             clientePremium=true;
         }
 
+        // Si el tiempo de cocción es menor a 10 minutos o la prioridad por dirección es 3 o 4 y el cliente no es premium
         if((tiempoCoccion<10 || prioridadDireccion==3 || prioridadDireccion==4) && (clientePremium==false) ){ // comida rapida
             //opciones puesto 3 o 4
             //verificar la cantidad de elementos que tiene el puesto 3 y 4 y encolar en el menor
@@ -65,21 +66,24 @@ public class ModeloCocina implements IControllerCocina, Serializable {
                 colaDespacho.insert(factura.getPedido(),4);
                 prioridadDefinida=4;
             }
-
+        // Si el tiempo de cocción es menor a 10 minutos y la prioridad por dirección es 2 y el cliente es premium
         }else if( (tiempoCoccion<10 || prioridadDireccion==2) && ( clientePremium==true)) {
             //opcion 2
             colaDespacho.insert(factura.getPedido(),2);
             prioridadDefinida=2;
-
+        // Si el tiempo de cocción es mayor o igual a 10 minutos o la prioridad por dirección es 1
         }else if(tiempoCoccion>=10 || prioridadDireccion==1){// coccion lenta
             //opcion 1 - Mayor prioridad
             if(clientePremium){
+                // Si el cliente es premium, se encola el pedido al principio de la cola de prioridad 1
                 colaDespacho.insertFirst(factura.getPedido(),1);
             }else{
+                // Si el cliente no es premium, se encola el pedido al final de la cola de prioridad 1
                 colaDespacho.insert(factura.getPedido(),1);
             }
             prioridadDefinida=1;
         }
+        // Se muestra la prioridad definida y se devuelve
         System.out.println("prioridad definidda"+ prioridadDefinida);
         return prioridadDefinida;
 
