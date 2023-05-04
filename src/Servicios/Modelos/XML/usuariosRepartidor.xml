@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Usuarios>
+        
+  
+  
+  <Usuario Contraseña="ks" ID="karen" Nombre="karen"/>
+      
+  
+  
+  <Usuario Contraseña="karen2" ID="karen2" Nombre="karen2"/>
+    
+  
+  <Usuario Contraseña="karen" ID="karen" Nombre="karenperez"/>
+  
+  <Usuario Contraseña="buenas" ID="buenas" Nombre="buenas"/>
+</Usuarios>

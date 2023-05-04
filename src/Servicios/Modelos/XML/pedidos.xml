@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Pedidos>
+    
+  <Pedido Cantidad="2" Codigo="10" ProductoNombre="perro"/>
+    
+  <Pedido Cantidad="1" Codigo="1" ProductoNombre="perro grande"/>
+    
+  <Pedido Cantidad="3" Codigo="2" ProductoNombre="perro grande"/>
+    
+  <Pedido Cantidad="5" Codigo="2" ProductoNombre="perritooo"/>
+    
+  <Pedido Cantidad="1" Codigo="2" ProductoNombre="hamburguesa"/>
+    
+  <Pedido Cantidad="1" Codigo="1" ProductoNombre="papas locas"/>
+    
+  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
+    
+  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
+  
+  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
+  <Pedido Cantidad="2" Codigo="3" ProductoNombre="perro pequeño"/>
+  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
+</Pedidos>
