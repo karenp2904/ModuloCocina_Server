@@ -35,15 +35,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean validarUsuario(String nombre, String contraseña) {
-          //  return archivoOperador.existeUsuarioPorId(nombre);
-        try {
-            ModeloAdmin  modeloAdmin = new ModeloAdmin();
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        }
-       // return modeloAdmin.validarUsuarioOperador(nombre,contraseña);
-        return  true;
-
+        return true;
     }
 
     @Override
