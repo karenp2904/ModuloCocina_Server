@@ -142,7 +142,7 @@ public class VistaCocina extends JFrame{
         botonBanco1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageIcon imgadmin= new ImageIcon("src/Imagenes/entregado11.png");// se le pone icono a boton
+                ImageIcon imgadmin= new ImageIcon("Imagenes/entregado11.png");// se le pone icono a boton
                 //  Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
                 botonBanco1.setBackground(new Color(217, 217, 217));
                 entregado=true;
@@ -162,7 +162,7 @@ public class VistaCocina extends JFrame{
         entregado=false;
 
         JLabel fondoLetras=new JLabel();
-        ImageIcon imagen =new ImageIcon("src/Imagenes/fondoLetras.png");
+        ImageIcon imagen =new ImageIcon("Imagenes/fondoLetras.png");
         fondoLetras.setIcon(imagen);
         fondoLetras.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         this.setSize(imagen.getIconWidth(), imagen.getIconHeight());

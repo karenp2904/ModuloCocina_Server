@@ -46,7 +46,7 @@ public class VistaAdminDatos extends JFrame {
         //logo de la salchica para el fondo
         JLabel logo = new JLabel("Logo");
         logo.setBounds(70, 130, 350, 350);
-        ImageIcon imgLogo = new ImageIcon("src/Imagenes/FotoPerrito.png");// se le pone icono a boton
+        ImageIcon imgLogo = new ImageIcon("Imagenes/FotoPerrito.png");// se le pone icono a boton
         Icon ilogo = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
         logo.setIcon(ilogo);
         panelCentral.add(logo);
@@ -103,13 +103,13 @@ public class VistaAdminDatos extends JFrame {
         String contra= ingresarContraseñaRepartidor();
 
         botonIngresar.setBounds(630, 400, 200, 80);
-        ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
+        ImageIcon imgR= new ImageIcon("Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
         botonIngresar.setIcon(i);
         botonIngresar.setLayout(null);
         botonIngresar.setOpaque(true);
         botonIngresar.setBorderPainted(false);
-        ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
+        ImageIcon imgadmin= new ImageIcon("Imagenes/btningresarPedido2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresar.getWidth(), botonIngresar.getHeight(), Image.SCALE_DEFAULT));
         botonIngresar.setRolloverIcon(iconAdmin);
         botonIngresar.setBackground(Color.white);
@@ -182,7 +182,7 @@ public class VistaAdminDatos extends JFrame {
         //logo de la salchica para el fondo
         JLabel logo = new JLabel("Logo");
         logo.setBounds(70, 130, 350, 350);
-        ImageIcon imgLogo = new ImageIcon("src/Imagenes/FotoPerrito.png");// se le pone icono a boton
+        ImageIcon imgLogo = new ImageIcon("Imagenes/FotoPerrito.png");// se le pone icono a boton
         Icon ilogo = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
         logo.setIcon(ilogo);
         panelCentral.add(logo);
@@ -243,13 +243,13 @@ public class VistaAdminDatos extends JFrame {
 
 
         botonIngresarOpera.setBounds(630, 400, 200, 80);
-        ImageIcon imgR= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
+        ImageIcon imgR= new ImageIcon("Imagenes/btningresarPedido.png");// se le pone icono a boton
         Icon i= new ImageIcon(imgR.getImage().getScaledInstance(botonIngresarOpera.getWidth(), botonIngresarOpera.getHeight(), Image.SCALE_DEFAULT));
         botonIngresarOpera.setIcon(i);
         botonIngresarOpera.setLayout(null);
         botonIngresarOpera.setOpaque(true);
         botonIngresarOpera.setBorderPainted(false);
-        ImageIcon imgadmin= new ImageIcon("src/Imagenes/btningresarPedido2.png");// se le pone icono a boton
+        ImageIcon imgadmin= new ImageIcon("Imagenes/btningresarPedido2.png");// se le pone icono a boton
         Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonIngresarOpera.getWidth(), botonIngresarOpera.getHeight(), Image.SCALE_DEFAULT));
         botonIngresarOpera.setRolloverIcon(iconAdmin);
         botonIngresarOpera.setBackground(Color.white);
@@ -276,7 +276,7 @@ public class VistaAdminDatos extends JFrame {
 
     }
     public void contenedor(){
-        ImageIcon imagen =new ImageIcon("src/Imagenes/fondoLetras.png");
+        ImageIcon imagen =new ImageIcon("Imagenes/fondoLetras.png");
         fondo.setIcon(imagen);
         fondo.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         //fondo.setBounds(100,40,1400,600);
