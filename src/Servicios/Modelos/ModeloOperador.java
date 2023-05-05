@@ -138,13 +138,16 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
-        ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
+       // ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
         ColasArray colasArray=new ColasArray();
+        /*
         for (int i = 0; i < lista.size(); i++) {
             colasArray.enqueue(lista.get(i));
         }
-        if(colasArray!=null) {
 
+         */
+        if(colasArray==null) {
+            colasArray.enqueue("Pero");
             System.out.println("La cola de array");
             return colasArray;
         }
