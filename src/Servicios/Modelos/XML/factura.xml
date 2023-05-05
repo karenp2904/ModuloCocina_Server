@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Facturas>
+  <Factura DireccionCliente="Provenza" ID="1" NombreCliente="karen" Telefono="2323" TipoCuenta="normal">
+    <Pedido Cantidad="2" Codigo="12" ProductoNombre="perro"/>
+  </Factura>
+  <Factura DireccionCliente="Provenza" ID="2" NombreCliente="karen" Telefono="2323" TipoCuenta="normal">
+    <Pedido Cantidad="1" Codigo="1" ProductoNombre="hamburguesa"/>
+  </Factura>
+</Facturas>
