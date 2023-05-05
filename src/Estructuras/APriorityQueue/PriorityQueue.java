@@ -53,19 +53,20 @@ public class PriorityQueue<T> implements QueueInterface<T> , Serializable {
 		}
 		return null;
 	}
-	
-	
-	public boolean insert(T object, int prioridad) {
-		boolean insertado=false;
-		if(!isEmpty()) {
-			if (prioridad>=0 && object!=null) {
-				Queue queue= arrayQueue[prioridad];
-			    arrayQueue[prioridad].insert(object);//en el indice segun la prioridad que se indique se aña el objeto a la lista
-				insertado=true;
-			}
+
+	public boolean insert(Object object, int priority)
+	{
+		if (object != null)
+		{
+			Queue<T> colaNueva = arrayQueue[priority];
+			arrayQueue[priority].insert(object);
+			return true;
+
+		} else {
+			return false;
 		}
-		return insertado;	
 	}
+
 
 	public boolean insertFirst(T object, int prioridad) {
 		boolean insertado=false;

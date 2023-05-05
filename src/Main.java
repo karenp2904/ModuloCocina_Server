@@ -47,8 +47,6 @@ public class Main {
                         thread.start();
                     }
 
-                    Tiempo tiempo=new Tiempo();
-                    tiempo.start();
 
                     //metodos para acceder a la cocina y al admin que se encuentran servidor
                     ControladorAdmin controladorAdmin = new ControladorAdmin();

@@ -34,10 +34,10 @@ public class VistaCocina extends JFrame{
         this.setTitle("Hot Dogs Palace");
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setVisible(false);
+        this.setVisible(true);
         this.setBackground(Color.white);
         y=30; //coordenadas de la pantalla de despacho
-
+        panelDespachoPedidos();
     }
 
     public void crearTabla() throws PropertyVetoException {
@@ -148,7 +148,7 @@ public class VistaCocina extends JFrame{
                 entregado=true;
                 try {
                     ControladorCocina controladorCocina = new ControladorCocina();
-                    controladorCocina.extraerPedido(true);
+                    //controladorCocina.extraerPedido(true);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 } catch (ParserConfigurationException ex) {
@@ -176,8 +176,8 @@ public class VistaCocina extends JFrame{
 
 
         contenedor();
-        createWorkbenches(1,800,600);
-        //createInternalFrame("Pedidos");
+      createWorkbenches(1,800,600);
+      createInternalFrame("Pedidos");
     }
 
     public void createWorkbenches(int numWorkbenches, int width, int height) {
@@ -219,11 +219,11 @@ public class VistaCocina extends JFrame{
 
         return internalFrame;
     }
-/*
+
     public void editarColaDeDespacho(Pedido pedido, int puestoTrabajo){
 
 
-        JLabel titulo=new JLabel(pedido.getProductoNombre()+ pedido.getCantidad());
+        JLabel titulo=new JLabel(pedido.getProductoNombre()+ "   "+ pedido.getCantidad());
         titulo.setBackground(Color.black);
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         titulo.setBounds(50,y-5,600,100);
@@ -237,7 +237,6 @@ public class VistaCocina extends JFrame{
 
         y+=50;//se le agrega distancia a y para la ubicacion del texto
     }
-*/
 
     public boolean pedidoEntregado(){
         return entregado;

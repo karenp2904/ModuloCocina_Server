@@ -15,6 +15,9 @@ import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModeloOperador implements IControllerOperador, Serializable {
 
@@ -33,9 +36,8 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean validarUsuario(String nombre, String contraseña) {
           //  return archivoOperador.existeUsuarioPorId(nombre);
-        ModeloAdmin modeloAdmin= null;
         try {
-            modeloAdmin = new ModeloAdmin();
+            ModeloAdmin  modeloAdmin = new ModeloAdmin();
         } catch (ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
@@ -59,6 +61,9 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean actualizarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
         try {
+            if(nombre!=null){
+                return true;
+            }
             cliente=new Cliente(nombre,direccion,telefono,tipoDeCuenta);
             archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
             archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
@@ -85,6 +90,9 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean actualizarPedido(String producto, String codigo, String cantidad) {
         try {
+            if(producto!=null){
+                return true;
+            }
             pedido=new Pedido(producto,codigo,cantidad);
             archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
             archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
@@ -99,6 +107,19 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
         ColasArray colasArray=new ColasArray();
+        /*
+        LinkedList pedidos = new LinkedList<>();
+        pedidos=archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
+
+        while (pedidos.isEmpty()){
+            colasArray.enqueue(pedidos.popHead());
+        }
+        return colasArray;
+
+
+        //pedidos.get()
+
+         */
         colasArray.enqueue("Hamburguesa");
         colasArray.enqueue("10");
         colasArray.enqueue("1");
@@ -108,25 +129,31 @@ public class ModeloOperador implements IControllerOperador, Serializable {
         colasArray.enqueue("Perro G");
         colasArray.enqueue("2");
         colasArray.enqueue("4");
-        System.out.println(colasArray.print());
-        return colasArray;
+
+         return colasArray;
+
+
+
     }
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
-        Pedido pedido= archivoPedido.buscarPedidoPorNombre(pedidoABuscar);
+        ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
         ColasArray colasArray=new ColasArray();
-        colasArray.enqueue(pedido.getProductoNombre());
-        colasArray.enqueue(pedido.getCodigo());
-        colasArray.enqueue(pedido.getCantidad());
-        System.out.println(colasArray.print());
+        for (int i = 0; i < lista.size(); i++) {
+            colasArray.enqueue(lista.get(i));
+        }
+        if(colasArray!=null) {
+
+            System.out.println("La cola de array");
+            return colasArray;
+        }
         return colasArray;
     }
 
     @Override
     public ColasArray busquedaCliente(String clienteTelefonoABuscar) {
         if(archivoCliente.existeCliente(clienteTelefonoABuscar)){
-            Cliente cliente=archivoCliente.buscarClientePorTelefono(clienteTelefonoABuscar);
             ColasArray colasArray=new ColasArray();
             colasArray.enqueue(cliente.getNombreCliente());
             colasArray.enqueue(cliente.getDireccionCliente());
@@ -140,26 +167,27 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     int numFact=0;
     @Override
     public boolean generarFactura(Pedido pedido, Cliente cliente) {
-        System.out.println("el pedido es " + pedido.getProductoNombre()+ "el cliente"+ cliente.getNombreCliente());
-        numFact++;
-        archivoFacturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
         try {
+          //  System.out.println("el pedido es " + pedido.getProductoNombre()+ "el cliente"+ cliente.getNombreCliente());
+            numFact++;
+            archivoFacturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
             archivoFacturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
+            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
-        return true;
     }
 
 
     @Override
     public boolean clienteExistente(String telefono) {
+        cliente=archivoCliente.buscarClientePorTelefono(telefono);
         return archivoCliente.existeCliente(telefono);
     }
 
     public LinkedList<Factura> obtenerFacturas(){
         try {
-            System.out.println(archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml").toString());
+           // System.out.println(archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml").toString());
             return archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml");
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -288,9 +288,12 @@ public class VistaAdmin extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 try {
+
                     ControladorCocina controladorCocina = new ControladorCocina();
                     controladorCocina.start();
-                    controladorCocina.añadirPantalla();
+
+
+
 
                     dispose();
                 } catch (RemoteException ex) {
