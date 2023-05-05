@@ -16,6 +16,16 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     UsuariosXML archivoRepartidor =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
 
     public ModeloAdmin() throws ParserConfigurationException {
+        archivoAdmin();
+    }
+
+    private void archivoAdmin(){
+        archivoAdmin.agregarUsuario(new Usuario("karen", "karen","karen"));
+        try {
+            archivoAdmin.saveToFile(new File("src/Servicios/Modelos/XML/usuariosAdmin.xml"));
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -47,12 +57,12 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
 
     @Override
     public boolean validarUsuario(String Usuario, String Contraseña) {
-        archivoAdmin.existeUsuarioPorId(Usuario);
-        return true;
+        return archivoAdmin.existeUsuarioPorId(Usuario);
+      //  return true;
     }
 
     public boolean validarUsuarioOperador(String Usuario, String Contraseña) {
-        archivoOperador.existeUsuarioPorId(Usuario);
-        return true;
+       return archivoOperador.existeUsuarioPorId(Usuario);
+       // return true;
     }
 }

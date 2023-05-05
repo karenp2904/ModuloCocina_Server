@@ -1,8 +1,8 @@
 package Servicios.Controladores;
 
+import Dominio.Factura;
 import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
-import Dominio.Factura;
 import Dominio.Pedido;
 
 import javax.xml.transform.TransformerException;
@@ -18,7 +18,7 @@ public interface IControllerOperador extends Serializable {
     ColasArray pedidosFrecuentesCliente(String telefono);//pedidos mas solicitados por el cliente
     ColasArray busquedaPedido(String pedidoABuscar); //busqueda de pedido
     ColasArray busquedaCliente(String clienteTelefonoABuscar); //busqueda de cliente
-    Factura generarFactura(Pedido pedido, Cliente cliente);
+    boolean generarFactura(Pedido pedido, Cliente cliente);
 
     boolean clienteExistente(String telefono);
 }

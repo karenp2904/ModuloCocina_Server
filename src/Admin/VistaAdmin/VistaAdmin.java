@@ -8,6 +8,7 @@ import Cocina.VistaCocina.VistaCocina;
 
 
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -103,6 +104,8 @@ public class VistaAdmin extends JFrame {
                             validarLogin(true);
                             panelMenu();
                         }
+                        panelMenu();
+                        setVisible(true);
                     } catch (RemoteException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -285,6 +288,8 @@ public class VistaAdmin extends JFrame {
                     controladorCocina.start();
                     dispose();
                 } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ParserConfigurationException ex) {
                     throw new RuntimeException(ex);
                 }
 

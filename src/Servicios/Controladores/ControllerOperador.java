@@ -1,8 +1,8 @@
 package Servicios.Controladores;
 
+import Dominio.Factura;
 import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
-import Dominio.Factura;
 import Dominio.Pedido;
 import Servicios.Modelos.ModeloOperador;
 
@@ -59,8 +59,8 @@ public class ControllerOperador implements IControllerOperador, Serializable {
     }
 
     @Override
-    public Factura generarFactura(Pedido pedido, Cliente cliente) {
-        return modeloOperador.generarFactura(pedido,cliente);
+    public boolean generarFactura(Pedido pedido, Cliente cliente) {
+       return modeloOperador.generarFactura(pedido,cliente);
     }
 
     @Override

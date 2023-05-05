@@ -1,15 +1,19 @@
 package Servicios.Controladores;
 
-import Estructuras.APriorityQueue.PriorityQueue;
 import Dominio.Factura;
+import Estructuras.APriorityQueue.PriorityQueue;
 import Dominio.Pedido;
 import Servicios.Modelos.ModeloCocina;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.Serializable;
 
 public class ControllerCocina implements IControllerCocina, Serializable {
 
     private ModeloCocina modeloCocina=new ModeloCocina();
+
+    public ControllerCocina() throws ParserConfigurationException {
+    }
 
     @Override
     public Factura extraerPedido() {//extraer del archivo el pedido pero manejando el archivo de facturas

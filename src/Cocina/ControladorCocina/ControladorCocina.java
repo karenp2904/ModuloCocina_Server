@@ -6,6 +6,7 @@ import Servicios.Controladores.ControllerCocina;
 import Servicios.ServiceCocina;
 import Dominio.Pedido;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.beans.PropertyVetoException;
 import java.io.Serializable;
 import java.rmi.RemoteException;
@@ -13,11 +14,11 @@ import java.rmi.RemoteException;
 public class ControladorCocina implements Serializable {
     VistaCocina vistaCocina=new VistaCocina();
 
-    public ControladorCocina() throws RemoteException{
+    public ControladorCocina() throws RemoteException, ParserConfigurationException {
         start();
     }
 //metodo para la conexion
-    public void start() throws RemoteException {
+    public void start() throws RemoteException, ParserConfigurationException {
         vistaCocina.panelDespachoPedidos();
         ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
 
@@ -46,7 +47,7 @@ public class ControladorCocina implements Serializable {
 
     }
 
-    public void extraerPedido() throws RemoteException {
+    public void extraerPedido() throws RemoteException, ParserConfigurationException {
         ServiceCocina serviceCocina=new ServiceCocina(new ControllerCocina());
         if(vistaCocina.pedidoEntregado()){
            // vistaCocina.eliminarPedido(2);

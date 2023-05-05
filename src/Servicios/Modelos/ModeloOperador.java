@@ -1,13 +1,13 @@
 package Servicios.Modelos;
 
+import Dominio.Factura;
 import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
-import Dominio.Factura;
 import Dominio.Pedido;
 import Servicios.Controladores.IControllerOperador;
 import Servicios.Modelos.XML.CustomersXML;
+import Servicios.Modelos.XML.FacturasXML;
 import Servicios.Modelos.XML.PedidosXML;
-import Servicios.Modelos.XML.UsuariosXML;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -17,65 +17,82 @@ import java.io.Serializable;
 public class ModeloOperador implements IControllerOperador, Serializable {
 
     CustomersXML archivoCliente=new CustomersXML(new File("src/Servicios/Modelos/XML/clientes.xml"));
+    FacturasXML facturasXML=new FacturasXML(new File("src/Servicios/Modelos/XML/factura.xml"));
+
+   Cliente cliente;
+   Pedido pedido;
 
     PedidosXML archivoPedido=new PedidosXML(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+   // UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
 
     public ModeloOperador() throws ParserConfigurationException {
     }
 
     @Override
-    public boolean validarUsuario( String nombre, String contraseña) {
+    public boolean validarUsuario(String nombre, String contraseña) {
+          //  return archivoOperador.existeUsuarioPorId(nombre);
+        ModeloAdmin modeloAdmin= null;
         try {
-            ModeloAdmin modeloAdmin=new ModeloAdmin();
-           return modeloAdmin.validarUsuarioOperador(nombre,contraseña);
+            modeloAdmin = new ModeloAdmin();
         } catch (ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
+       // return modeloAdmin.validarUsuarioOperador(nombre,contraseña);
+        return  true;
+
     }
 
     @Override
     public boolean registrarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
-        archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
         try {
+            cliente=new Cliente(nombre,direccion,telefono,tipoDeCuenta);
+            archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
             archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
+            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
-        return true;
     }
 
     @Override
     public boolean actualizarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
-        archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
         try {
+            cliente=new Cliente(nombre,direccion,telefono,tipoDeCuenta);
+            archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
             archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
+            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
-        return true;
+
     }
 
     @Override
     public boolean ingresarPedido(String producto, String codigo, String cantidad) {
-        archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
         try {
+            pedido=new Pedido(producto,codigo,cantidad);
+            archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
             archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+            generarFactura(pedido,cliente);
+            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
-        return true;
     }
 
     @Override
     public boolean actualizarPedido(String producto, String codigo, String cantidad) {
-        archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
         try {
+            pedido=new Pedido(producto,codigo,cantidad);
+            archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
             archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+            generarFactura(pedido,cliente);
+            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
-        return true;
     }
+
 
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
@@ -116,32 +133,28 @@ public class ModeloOperador implements IControllerOperador, Serializable {
             return colasArray;
         }
         return null;
-
-        /*
-        Cliente cliente=new Cliente("Karen","Giron", "3157660279", "premium");
-        ColasArray colasArray=new ColasArray();
-        colasArray.enqueue("karen");
-        colasArray.enqueue("Giron");
-        colasArray.enqueue("3157660279");
-        colasArray.enqueue("premium");
-        System.out.println(colasArray.print());
-        return colasArray;
-         */
     }
 
+    int numFact=0;
     @Override
-    public Factura generarFactura(Pedido pedido, Cliente cliente) {
-        return null;
+    public boolean generarFactura(Pedido pedido, Cliente cliente) {
+        System.out.println("el pedido es " + pedido.getProductoNombre()+ "el cliente"+ cliente.getNombreCliente());
+        numFact++;
+        facturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
+        try {
+            facturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
+
 
     @Override
     public boolean clienteExistente(String telefono) {
         return archivoCliente.existeCliente(telefono);
     }
 
-    public ModeloOperador obtenerDatos() {
-        return null;
-    }
     
 
 

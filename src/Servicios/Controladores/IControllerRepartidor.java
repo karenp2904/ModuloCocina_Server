@@ -1,9 +1,11 @@
 package Servicios.Controladores;
 
-import Estructuras.Colas.ColasList;
 import Dominio.Factura;
+import Estructuras.Colas.ColasList;
 
-public interface IControllerRepartidor {
+import java.io.Serializable;
+
+public interface IControllerRepartidor extends Serializable {
 
     boolean validarUsuario(String nombre, String contraseña);//para el login del modulo
     ColasList imprimirRuta();

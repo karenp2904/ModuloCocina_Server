@@ -1,7 +1,7 @@
 package Servicios.Modelos;
 
-import Estructuras.Colas.ColasList;
 import Dominio.Factura;
+import Estructuras.Colas.ColasList;
 import Servicios.Controladores.IControllerRepartidor;
 import Servicios.Modelos.XML.UsuariosXML;
 

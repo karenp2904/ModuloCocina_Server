@@ -93,13 +93,13 @@ public class VistaCocina extends JFrame{
         panelDespacho.setLayout(null);
         panelDespacho.setVisible(true);
         panelDespacho.setOpaque(true);
-        panelDespacho.setBounds(350,240,600,400);
+        panelDespacho.setBounds(200,150,800,700);
         panelDespacho.setBackground(new Color(217, 217, 217));
 
         JLabel titulo=new JLabel("PANTALLA DE PEDIDOS");
         titulo.setBackground(new Color(0,0,0));
         titulo.setFont(new Font("Arial", Font.BOLD, 40));
-        titulo.setBounds(420,70,600,100);
+        titulo.setBounds(420,50,600,100);
         panelCentral.add(titulo);
 /*
         JLabel pedido=new JLabel();
@@ -162,7 +162,7 @@ public class VistaCocina extends JFrame{
 
 
         contenedor();
-        createWorkbenches(1,600,400);
+        createWorkbenches(1,800,600);
         //createInternalFrame("Pedidos");
     }
 
@@ -190,14 +190,14 @@ public class VistaCocina extends JFrame{
     private JInternalFrame createInternalFrame(String title) {
         // Crear el panel de la cola de pedidos
         JPanel queuePanel = new JPanel(new GridLayout(1, 1));
-        queuePanel.setPreferredSize(new Dimension(400, 300)); // Establecer el tamaño preferido del panel
+        queuePanel.setPreferredSize(new Dimension(600, 500)); // Establecer el tamaño preferido del panel
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Pedido", "Cantidad", "Banco de trabajo"});
         JTable queueTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(queueTable);
         queuePanel.add(scrollPane);
 
         // Configurar el frame interno
-        JInternalFrame internalFrame = new JInternalFrame(title, true, true, true, true);
+        JInternalFrame internalFrame = new JInternalFrame(title, true, false, true, true);
         internalFrame.setContentPane(queuePanel);
         Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
         internalFrame.getRootPane().setBorder(border);

@@ -1,12 +1,15 @@
 package Servicios.Modelos;
 
+import Dominio.Factura;
 import Estructuras.APriorityQueue.PriorityQueue;
 import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
-import Dominio.Factura;
 import Dominio.Pedido;
 import Servicios.Controladores.IControllerCocina;
+import Servicios.Modelos.XML.FacturasXML;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.Serializable;
 
 public class ModeloCocina implements IControllerCocina, Serializable {
@@ -14,12 +17,19 @@ public class ModeloCocina implements IControllerCocina, Serializable {
     // el archivo se guarda- guardar cola de despacho de los pedidos- en el metodo de guardarPedido();
     PriorityQueue<Pedido> colaDespacho=new PriorityQueue(5);
     ColasArray numFogon=new ColasArray();
+
+    FacturasXML facturasXML=new FacturasXML(new File("src/Servicios/Modelos/XML/factura.xml"));
+
+    public ModeloCocina() throws ParserConfigurationException {
+    }
+
     @Override
     public Factura extraerPedido() {
+
         //este objeto es temporal mientras se devuelven los archivos, llenar esos espacios cuando se tenga la info
-        Factura fact= new Factura(new Pedido("Papas", "8","6"), new Cliente("berta", "giron", "73773737", "premium"));
-        Factura fact3= new Factura(new Pedido("Perro", "3","6"), new Cliente("berta", "Pidecuesta", "73773737", "premium"));
-        Factura fact2= new Factura(new Pedido("Perrito", "10","6"), new Cliente("berta", "provenza", "73773737", "normal"));
+        Factura fact= new Factura(new Pedido("Papas", "8","6"), new Cliente("berta", "giron", "73773737", "premium"),"11");
+        Factura fact3= new Factura(new Pedido("Perro", "3","6"), new Cliente("berta", "Pidecuesta", "73773737", "premium"),"22");
+        Factura fact2= new Factura(new Pedido("Perrito", "10","6"), new Cliente("berta", "provenza", "73773737", "normal"),"33");
        // guardarPedidos(fact,clasificarPedidoPrioridad(fact));
         guardarPedidos(fact,clasificarPedidoPrioridad(fact));
         guardarPedidos(fact3,clasificarPedidoPrioridad(fact3));

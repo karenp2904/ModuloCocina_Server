@@ -3,10 +3,20 @@ package Dominio;
 public class Factura {
     Pedido pedido;
     Cliente cliente;
+    String id;
 
-    public Factura(Pedido pedido, Cliente cliente) {
+    public Factura(Pedido pedido, Cliente cliente,String id) {
         this.pedido = pedido;
         this.cliente = cliente;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Pedido getPedido() {

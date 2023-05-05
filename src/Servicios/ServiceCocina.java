@@ -1,9 +1,9 @@
 package Servicios;
 
+import Dominio.Factura;
 import Estructuras.APriorityQueue.PriorityQueue;
 import IServices.ICocina;
 import Servicios.Controladores.ControllerCocina;
-import Dominio.Factura;
 import Dominio.Pedido;
 
 import java.io.Serializable;
@@ -25,7 +25,6 @@ public class ServiceCocina extends UnicastRemoteObject implements ICocina, Seria
     public PriorityQueue<Pedido> pantallaDePedidos() throws RemoteException {
         return controllerCocina.pantallaDePedidos() ;
     }
-
 
 
     @Override
