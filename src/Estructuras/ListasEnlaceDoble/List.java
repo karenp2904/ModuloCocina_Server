@@ -1,8 +1,9 @@
 package Estructuras.ListasEnlaceDoble;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
-public interface List<T> {
+public interface List<T> extends Serializable {
 
     /***
      * 1. Agrega un objeto al final de la lista.

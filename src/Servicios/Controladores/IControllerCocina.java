@@ -6,9 +6,9 @@ import Dominio.Pedido;
 
 public interface IControllerCocina {
 
-    Factura extraerPedido(); //devuelve la informacion del pedido
-    PriorityQueue<Pedido> pantallaDePedidos();
+    boolean obtenerFacturas(); //devuelve la informacion del pedido
+    PriorityQueue<Factura> pantallaDePedidos();
     int clasificarPedidoPrioridad(Factura factura);
     boolean entregarPedido(Boolean estado);
-    int entregarNumeroFogon(Pedido pedido);
+    int entregarNumeroFogon(Factura pedido);
 }

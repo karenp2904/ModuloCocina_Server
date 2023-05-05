@@ -1,9 +1,10 @@
 package Estructuras.ListasEnlaceDoble;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.ListIterator;
 
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements List<T> , Serializable {
 	//17-02 inicio- borro metodos
 	//19-02 investigar e iniciar con metodos add
 	//21-02 verificar el nodo prev y el toString

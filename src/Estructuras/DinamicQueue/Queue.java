@@ -1,13 +1,14 @@
 package  Estructuras.DinamicQueue;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import Estructuras.ListasEnlaceDoble.LinkedList;
 import  Estructuras.ListasEnlaceDoble.LinkedListNode;
 
-public class Queue implements QueueInterface {
+public class Queue<T> implements QueueInterface<T> , Serializable {
 	
-	LinkedList<Object> cola= new LinkedList();// se instancia la lista para las colas
+	LinkedList<T> cola= new LinkedList();// se instancia la lista para las colas
 	
 	//Datos:
 	//En la cola se ingresa por tail y se extrae por head
@@ -26,9 +27,9 @@ public class Queue implements QueueInterface {
 
 	//2 Extrae un elemento por la cabeza
 	@Override
-	public Object extract() {
+	public T extract() {
 		if(!isEmpty()) {
-			return cola.popHead();//extraera el primer elemento y lo borarrá, pero retorna ese objeto
+			return (T) cola.popHead();//extraera el primer elemento y lo borarrá, pero retorna ese objeto
 		}else {
 			return null;//si la lista esta vacia no podra extraer nada
 		}
@@ -37,7 +38,7 @@ public class Queue implements QueueInterface {
 
 	//3 Inserta un objeto en la ultima posicion
 	@Override
-	public boolean insert(Object object) {
+	public boolean insert(T object) {
 		boolean objetoInsertado=false;
 		try {
 			if(object!=null) {
@@ -51,7 +52,7 @@ public class Queue implements QueueInterface {
 	     }
 	}
 
-	public boolean insertFirst(Object object) {
+	public boolean insertFirst(T object) {
 		boolean objetoInsertado=false;
 		try {
 			if(object!=null) {
@@ -79,7 +80,7 @@ public class Queue implements QueueInterface {
 
 	//6 Buscara un objeto dentro de la cola 
 	@Override
-	public boolean search(Object object) {
+	public boolean search(T object) {
 		boolean objetoEncontrado=false;
 		try {
 			if(object!=null) {//el objeto no puede ser null
@@ -99,7 +100,7 @@ public class Queue implements QueueInterface {
 		Queue queueaux2 = new Queue();
         int tamaño = this.size();
         for (int i = 0; i < tamaño; i++) {
-            Object objt = extract();
+            T objt = extract();
             if (objt != null) {
                 if (objt instanceof String) {
                 	queuetemp.insert(objt);
@@ -110,9 +111,9 @@ public class Queue implements QueueInterface {
         }
         for (int i = 0; i < tamaño; i++) {
             if (queuetemp.size() != 0) {
-                insert(queuetemp.extract());
+                insert((T) queuetemp.extract());
             } else {
-                insert(queueaux2.extract());
+                insert((T) queueaux2.extract());
             }
         }
 	}
@@ -147,7 +148,7 @@ public class Queue implements QueueInterface {
 		}
 		print+=" ]";
 		for (int i = 0; i < size; i++) {
-			insert(temporal.extract());
+			insert((T) temporal.extract());
 			
 		}
 		return print;

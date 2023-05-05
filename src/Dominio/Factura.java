@@ -1,6 +1,8 @@
 package Dominio;
 
-public class Factura {
+import java.io.Serializable;
+
+public class Factura implements Serializable {
     Pedido pedido;
     Cliente cliente;
     String id;

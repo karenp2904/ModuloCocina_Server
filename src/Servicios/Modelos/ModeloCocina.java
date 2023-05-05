@@ -5,6 +5,7 @@ import Estructuras.APriorityQueue.PriorityQueue;
 import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
 import Dominio.Pedido;
+import Estructuras.ListasEnlaceDoble.LinkedList;
 import Servicios.Controladores.IControllerCocina;
 import Servicios.Modelos.XML.FacturasXML;
 
@@ -15,42 +16,48 @@ import java.io.Serializable;
 public class ModeloCocina implements IControllerCocina, Serializable {
 
     // el archivo se guarda- guardar cola de despacho de los pedidos- en el metodo de guardarPedido();
-    PriorityQueue<Pedido> colaDespacho=new PriorityQueue(5);
-    ColasArray numFogon=new ColasArray();
+    PriorityQueue<Factura> colaDespacho=new PriorityQueue(5);
 
-    FacturasXML facturasXML=new FacturasXML(new File("src/Servicios/Modelos/XML/factura.xml"));
 
     public ModeloCocina() throws ParserConfigurationException {
+
     }
 
     @Override
-    public Factura extraerPedido() {
+    public boolean obtenerFacturas() {
+        try {
+            ModeloOperador operador = new ModeloOperador();
+            LinkedList<Factura> listaFactura=operador.obtenerFacturas();
+            System.out.println("lista en cocina");
+            System.out.println(listaFactura.toString());
+            while (!listaFactura.isEmpty()){
+                Factura factura=listaFactura.popHead();
+                System.out.println("Factura de xml" +factura);
+                guardarPedidos(factura,clasificarPedidoPrioridad(factura));
+            }
 
-        //este objeto es temporal mientras se devuelven los archivos, llenar esos espacios cuando se tenga la info
-        Factura fact= new Factura(new Pedido("Papas", "8","6"), new Cliente("berta", "giron", "73773737", "premium"),"11");
-        Factura fact3= new Factura(new Pedido("Perro", "3","6"), new Cliente("berta", "Pidecuesta", "73773737", "premium"),"22");
-        Factura fact2= new Factura(new Pedido("Perrito", "10","6"), new Cliente("berta", "provenza", "73773737", "normal"),"33");
-       // guardarPedidos(fact,clasificarPedidoPrioridad(fact));
-        guardarPedidos(fact,clasificarPedidoPrioridad(fact));
-        guardarPedidos(fact3,clasificarPedidoPrioridad(fact3));
-        guardarPedidos(fact2,clasificarPedidoPrioridad(fact2));
-        return fact;
+            return true;
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public PriorityQueue<Pedido> pantallaDePedidos() {
+    public PriorityQueue<Factura> pantallaDePedidos() {
         return colaDespacho; // aqui se muestra la pantalla en la vista y se extrae
     }
 
-    private PriorityQueue guardarPedidos(Factura factura, int prioridad) {
+    private PriorityQueue<Factura> guardarPedidos(Factura factura, int prioridad) {
+        System.out.println("factura"+factura +""+ prioridad);
+        System.out.println("Cola en modelo");
         System.out.println(colaDespacho.toString());
-        colaDespacho.insert(factura,clasificarPedidoPrioridad(factura));
+        colaDespacho.insertFirst(factura,prioridad);
         return colaDespacho;//aqui se guarda en el archivo
     }
 
 
-    public int entregarNumeroFogon(Pedido pedido) {
-        return colaDespacho.searchPriority(pedido);
+    public int entregarNumeroFogon(Factura factura) {
+        return colaDespacho.searchPriority(factura);
     }
 
     @Override
@@ -70,31 +77,33 @@ public class ModeloCocina implements IControllerCocina, Serializable {
             //opciones puesto 3 o 4
             //verificar la cantidad de elementos que tiene el puesto 3 y 4 y encolar en el menor
             if (colaDespacho.sizePrioridad(3)>colaDespacho.sizePrioridad(4)){
-                colaDespacho.insert(factura.getPedido(),3);
+                colaDespacho.insert(factura,3);
+                System.out.println("Insertado en la cola");
                 prioridadDefinida=3;
             }else{
-                colaDespacho.insert(factura.getPedido(),4);
+                System.out.println("Insertado en la cola");
+                colaDespacho.insert(factura,4);
                 prioridadDefinida=4;
             }
         // Si el tiempo de cocción es menor a 10 minutos y la prioridad por dirección es 2 y el cliente es premium
         }else if( (tiempoCoccion<10 || prioridadDireccion==2) && ( clientePremium==true)) {
             //opcion 2
-            colaDespacho.insert(factura.getPedido(),2);
+            colaDespacho.insert(factura,2);
             prioridadDefinida=2;
         // Si el tiempo de cocción es mayor o igual a 10 minutos o la prioridad por dirección es 1
         }else if(tiempoCoccion>=10 || prioridadDireccion==1){// coccion lenta
             //opcion 1 - Mayor prioridad
             if(clientePremium){
                 // Si el cliente es premium, se encola el pedido al principio de la cola de prioridad 1
-                colaDespacho.insertFirst(factura.getPedido(),1);
+                colaDespacho.insertFirst(factura,1);
             }else{
                 // Si el cliente no es premium, se encola el pedido al final de la cola de prioridad 1
-                colaDespacho.insert(factura.getPedido(),1);
+                colaDespacho.insert(factura,1);
             }
             prioridadDefinida=1;
         }
         // Se muestra la prioridad definida y se devuelve
-        System.out.println("prioridad definidda"+ prioridadDefinida);
+        System.out.println("prioridad definidda  "+ prioridadDefinida);
         return prioridadDefinida;
 
     }
@@ -120,6 +129,7 @@ public class ModeloCocina implements IControllerCocina, Serializable {
         if(cliente.getDireccionCliente().contains(String.valueOf("Provenza"))){
             direccionLejana=4;
         }
+        System.out.println("direccion" + direccionLejana);
         return direccionLejana;
     }
 
@@ -140,6 +150,8 @@ public class ModeloCocina implements IControllerCocina, Serializable {
             return false;
         }
     }
+
+
 
 
 }

@@ -1,12 +1,14 @@
 package Estructuras.APriorityQueue;
 
-public interface QueueInterface<T> {
+import java.io.Serializable;
+
+public interface QueueInterface<T> extends Serializable {
 	public void clear();
 	public boolean isEmpty();
-	public Object extract();
-	public boolean insert(Object object, int prioridad);
+	public T extract();
+	public boolean insert(T object, int prioridad);
 	public int size();
-	public boolean search(Object object);
+	public boolean search(T object);
 	public void sort();
 	public void reverse();
 	public String toString();

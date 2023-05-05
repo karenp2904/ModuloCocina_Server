@@ -16,12 +16,12 @@ public class ControllerCocina implements IControllerCocina, Serializable {
     }
 
     @Override
-    public Factura extraerPedido() {//extraer del archivo el pedido pero manejando el archivo de facturas
-        return modeloCocina.extraerPedido();
+    public boolean obtenerFacturas() {//extraer del archivo el pedido pero manejando el archivo de facturas
+         return modeloCocina.obtenerFacturas();
     }
 
     @Override
-    public PriorityQueue<Pedido> pantallaDePedidos() {
+    public PriorityQueue<Factura> pantallaDePedidos() {
         return modeloCocina.pantallaDePedidos();
     }
 
@@ -36,7 +36,7 @@ public class ControllerCocina implements IControllerCocina, Serializable {
     }
 
     @Override
-    public int entregarNumeroFogon(Pedido pedido) {
+    public int entregarNumeroFogon(Factura pedido) {
         return modeloCocina.entregarNumeroFogon(pedido);
     }
 }

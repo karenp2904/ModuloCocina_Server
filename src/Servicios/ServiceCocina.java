@@ -22,7 +22,7 @@ public class ServiceCocina extends UnicastRemoteObject implements ICocina, Seria
 
 
     @Override
-    public PriorityQueue<Pedido> pantallaDePedidos() throws RemoteException {
+    public PriorityQueue<Factura> pantallaDePedidos() throws RemoteException {
         return controllerCocina.pantallaDePedidos() ;
     }
 
@@ -38,7 +38,7 @@ public class ServiceCocina extends UnicastRemoteObject implements ICocina, Seria
     }
 
     @Override
-    public int entregarNumeroFogon(Pedido pedido) throws RemoteException {
+    public int entregarNumeroFogon(Factura pedido) throws RemoteException {
         return controllerCocina.entregarNumeroFogon(pedido);
     }
 }

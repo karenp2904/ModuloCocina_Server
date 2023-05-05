@@ -5,6 +5,10 @@ import Admin.VistaAdmin.VistaAdminDatos;
 import Cocina.ControladorCocina.ControladorCocina;
 import Cocina.VistaCocina.Bordes;
 import Cocina.VistaCocina.VistaCocina;
+import Dominio.Factura;
+import Estructuras.APriorityQueue.PriorityQueue;
+import Servicios.Controladores.ControllerCocina;
+import Servicios.ServiceCocina;
 
 
 import javax.swing.*;
@@ -286,6 +290,8 @@ public class VistaAdmin extends JFrame {
                 try {
                     ControladorCocina controladorCocina = new ControladorCocina();
                     controladorCocina.start();
+                    controladorCocina.añadirPantalla();
+
                     dispose();
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);

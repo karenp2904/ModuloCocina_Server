@@ -1,6 +1,8 @@
 package Estructuras.ListasEnlaceDoble;
 
-public class LinkedListNode<T> implements Node<T> {
+import java.io.Serializable;
+
+public class LinkedListNode<T> implements Node<T> , Serializable {
 
     private T object;
     LinkedListNode prev;

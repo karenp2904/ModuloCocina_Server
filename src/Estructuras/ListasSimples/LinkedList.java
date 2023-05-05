@@ -1,6 +1,8 @@
 package Estructuras.ListasSimples;
 
-public class LinkedList {
+import java.io.Serializable;
+
+public class LinkedList implements Serializable {
     public Node head;
     int SizeList;
     public Node previous;

@@ -4,6 +4,7 @@ import Dominio.Factura;
 import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
 import Dominio.Pedido;
+import Estructuras.ListasEnlaceDoble.LinkedList;
 import Servicios.Controladores.IControllerOperador;
 import Servicios.Modelos.XML.CustomersXML;
 import Servicios.Modelos.XML.FacturasXML;
@@ -12,12 +13,13 @@ import Servicios.Modelos.XML.PedidosXML;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 
 public class ModeloOperador implements IControllerOperador, Serializable {
 
     CustomersXML archivoCliente=new CustomersXML(new File("src/Servicios/Modelos/XML/clientes.xml"));
-    FacturasXML facturasXML=new FacturasXML(new File("src/Servicios/Modelos/XML/factura.xml"));
+    FacturasXML archivoFacturasXML =new FacturasXML(new File("src/Servicios/Modelos/XML/factura.xml"));
 
    Cliente cliente;
    Pedido pedido;
@@ -140,9 +142,9 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     public boolean generarFactura(Pedido pedido, Cliente cliente) {
         System.out.println("el pedido es " + pedido.getProductoNombre()+ "el cliente"+ cliente.getNombreCliente());
         numFact++;
-        facturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
+        archivoFacturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
         try {
-            facturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
+            archivoFacturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -153,6 +155,15 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean clienteExistente(String telefono) {
         return archivoCliente.existeCliente(telefono);
+    }
+
+    public LinkedList<Factura> obtenerFacturas(){
+        try {
+            System.out.println(archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml").toString());
+            return archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     

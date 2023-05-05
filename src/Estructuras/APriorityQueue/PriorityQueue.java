@@ -1,9 +1,10 @@
 package Estructuras.APriorityQueue;
 
 import  Estructuras.DinamicQueue.Queue;
-import Dominio.Pedido;
 
-public class PriorityQueue<T> implements QueueInterface<T> {
+import java.io.Serializable;
+
+public class PriorityQueue<T> implements QueueInterface<T> , Serializable {
 
 	Queue arrayQueue[];//array de prioridad
 	final int numeroPrioridad;//numero de prioridades establecedido
@@ -34,6 +35,8 @@ public class PriorityQueue<T> implements QueueInterface<T> {
 			if (!queue.isEmpty()) {
 				vacia=false;// si encuentra una cola que no este vacia pues ya se retorna el false que indica que hay elementos
 				break;
+			}else{
+				vacia=true;
 			}
 		}
 		return vacia;
@@ -52,7 +55,7 @@ public class PriorityQueue<T> implements QueueInterface<T> {
 	}
 	
 	
-	public boolean insert(Object object, int prioridad) {
+	public boolean insert(T object, int prioridad) {
 		boolean insertado=false;
 		if(!isEmpty()) {
 			if (prioridad>=0 && object!=null) {
@@ -64,7 +67,7 @@ public class PriorityQueue<T> implements QueueInterface<T> {
 		return insertado;	
 	}
 
-	public boolean insertFirst(Object object, int prioridad) {
+	public boolean insertFirst(T object, int prioridad) {
 		boolean insertado=false;
 		if(!isEmpty()) {
 			if (prioridad>=0 && object!=null) {
@@ -86,7 +89,7 @@ public class PriorityQueue<T> implements QueueInterface<T> {
 		return  arrayQueue[prioridad].size();
 	}
 	
-	public boolean search(Object object) {
+	public boolean search(T object) {
 		boolean encontrado=false;
 		for (int i = 0; i < arrayQueue.length; i++) {
 			Queue queue=arrayQueue[i];
@@ -97,7 +100,7 @@ public class PriorityQueue<T> implements QueueInterface<T> {
 		return encontrado;
 	}
 
-	public int searchPriority(Object object) {
+	public int searchPriority(T object) {
 		int prioridad=0;
 		for (int i = 0; i < arrayQueue.length; i++) {
 			Queue queue=arrayQueue[i];

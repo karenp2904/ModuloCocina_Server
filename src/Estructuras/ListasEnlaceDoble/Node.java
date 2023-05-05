@@ -1,6 +1,8 @@
 package Estructuras.ListasEnlaceDoble;
 
-public interface Node<T> {
+import java.io.Serializable;
+
+public interface Node<T> extends Serializable {
 
     /***
      * Asigna un objeto genérico.

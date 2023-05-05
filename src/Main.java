@@ -2,6 +2,8 @@ import Admin.ControladorAdmin.ControladorAdmin;
 import Admin.VistaAdmin.VistaPrincipal;
 import Servicios.*;
 import Servicios.Controladores.*;
+import Servicios.Modelos.ModeloCocina;
+import Servicios.Modelos.Tiempo;
 import Servicios.ServiceOperador;
 //
 import java.io.File;
@@ -44,6 +46,9 @@ public class Main {
                     for (Thread thread : threadList) { //hilos
                         thread.start();
                     }
+
+                    Tiempo tiempo=new Tiempo();
+                    tiempo.start();
 
                     //metodos para acceder a la cocina y al admin que se encuentran servidor
                     ControladorAdmin controladorAdmin = new ControladorAdmin();

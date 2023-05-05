@@ -1,6 +1,8 @@
 package Dominio;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private String nombre="";
     private String id="";
     private String contraseña="";

@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,14 +67,19 @@ public class VistaCocina extends JFrame{
         tableModel.addRow(new Object[]{nombrePedido, cantidad, banco});
     }
     public void eliminarPedido(int bancoDeTrabajo) {
-        // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
-        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo+1].getContentPane().getComponent(bancoDeTrabajo)).getViewport().getView();
-        DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
+        try{
+            // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
+            JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo-1].getContentPane().getComponent(bancoDeTrabajo)).getViewport().getView();
+            DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
 
-        // Eliminar la primera fila de la tabla si existe
-        if (tableModel.getRowCount() > 0) {
-            tableModel.removeRow(0);
+            // Eliminar la primera fila de la tabla si existe
+            if (tableModel.getRowCount() > 0) {
+                tableModel.removeRow(0);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     public void ingresarIntento(int bancoDeTrabajo,String nombrePedido, String cantidad,int bancoAsignado){
@@ -140,12 +146,20 @@ public class VistaCocina extends JFrame{
                 //  Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
                 botonBanco1.setBackground(new Color(217, 217, 217));
                 entregado=true;
+                try {
+                    ControladorCocina controladorCocina = new ControladorCocina();
+                    controladorCocina.extraerPedido(true);
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ParserConfigurationException ex) {
+                    throw new RuntimeException(ex);
+                }
+
 
             }
         });
 
         entregado=false;
-
 
         JLabel fondoLetras=new JLabel();
         ImageIcon imagen =new ImageIcon("src/Imagenes/fondoLetras.png");

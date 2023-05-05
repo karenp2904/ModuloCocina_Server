@@ -3,6 +3,7 @@ package Servicios.Modelos.XML;
 import Dominio.Cliente;
 import Dominio.Factura;
 import Dominio.Pedido;
+import Estructuras.ListasEnlaceDoble.LinkedList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,7 +18,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class FacturasXML {
     private Document doc;
@@ -95,5 +99,32 @@ public class FacturasXML {
 
         Node root = doc.getDocumentElement();
         root.appendChild(elementoFactura);
+    }
+
+    public LinkedList<Factura> leerArchivoXML(String nombreArchivo) throws IOException {
+        LinkedList<Factura> listaContenido=new LinkedList<>();
+        StringBuilder contenido = new StringBuilder();
+        BufferedReader lector = new BufferedReader(new FileReader(nombreArchivo));
+        String linea;
+        doc.getDocumentElement().normalize();
+        NodeList facturaNodes = doc.getElementsByTagName("Factura");
+        for (int i = 0; i < facturaNodes.getLength(); i++) {
+            Element factura = (Element) doc.getElementsByTagName("Factura").item(0);
+            String idFactura = factura.getAttribute("ID");
+            String nombreCliente = factura.getAttribute("NombreCliente");
+            String direccionCliente = factura.getAttribute("DireccionCliente");
+            String telefono = factura.getAttribute("Telefono");
+            String tipoCuenta = factura.getAttribute("TipoCuenta");
+
+            Element pedido = (Element) factura.getElementsByTagName("Pedido").item(0);
+            String productoNombre = pedido.getAttribute("ProductoNombre");
+            String codigo = pedido.getAttribute("Codigo");
+            String cantidad = pedido.getAttribute("Cantidad");
+
+            listaContenido.add(new Factura(new Pedido(productoNombre,codigo,cantidad),new Cliente(nombreCliente,direccionCliente,telefono,tipoCuenta),idFactura));
+        }
+
+        lector.close();
+        return listaContenido;
     }
 }

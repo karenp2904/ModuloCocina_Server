@@ -1,6 +1,8 @@
 package Dominio;
 
-public class Pedido {
+import java.io.Serializable;
+
+public class Pedido implements Serializable {
 
     String productoNombre="";
     String codigo=""; //tiempo de ccoion
