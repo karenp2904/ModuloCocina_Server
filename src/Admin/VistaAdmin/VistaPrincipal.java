@@ -117,7 +117,7 @@ public class VistaPrincipal extends JFrame {
 
 
     public void panelContenedor(){
-        ImageIcon imagen =(new ImageIcon("C:\\Users\\karen\\IdeaProjects\\ModuloCocina\\src\\Imagenes\\Logo.jpeg"));
+        ImageIcon imagen =(new ImageIcon("src/Imagenes/Logo.jpeg"));
         fondo.setIcon(imagen);
         fondo.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         fondo.setBounds(100,20,1400,600);
