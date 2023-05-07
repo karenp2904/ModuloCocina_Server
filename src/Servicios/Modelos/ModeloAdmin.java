@@ -22,7 +22,7 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     private void archivoAdmin(){
         archivoAdmin.agregarUsuario(new Usuario("karen", "karen","karen"));
         try {
-            archivoAdmin.saveToFile(new File("usuariosAdmin.xml"));
+            archivoAdmin.saveToFile(new File("src/Servicios/Modelos/XML/usuariosAdmin.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +32,7 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
         archivoRepartidor.agregarUsuario(new Usuario(nombre,id,contraseña));
         try {
-            archivoRepartidor.saveToFile(new File("usuariosRepartidor.xml"));
+            archivoRepartidor.saveToFile(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +43,7 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     public boolean registrarOperador(String nombre, String id, String contraseña)  {
         archivoOperador.agregarUsuario(new Usuario(nombre,id,contraseña));
         try {
-            archivoOperador.saveToFile(new File("usuariosOperador.xml"));
+            archivoOperador.saveToFile(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }

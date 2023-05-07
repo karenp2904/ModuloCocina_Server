@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Pedidos>
-                                
+                                    
+  
+  
   
   
   
@@ -16,7 +18,9 @@
   
   
   <Pedido Cantidad="2" Codigo="10" ProductoNombre="perro"/>
-                                
+                                    
+  
+  
   
   
   
@@ -32,7 +36,9 @@
   
   
   <Pedido Cantidad="1" Codigo="1" ProductoNombre="perro grande"/>
-                                
+                                    
+  
+  
   
   
   
@@ -48,7 +54,9 @@
   
   
   <Pedido Cantidad="3" Codigo="2" ProductoNombre="perro grande"/>
-                                
+                                    
+  
+  
   
   
   
@@ -64,7 +72,9 @@
   
   
   <Pedido Cantidad="5" Codigo="2" ProductoNombre="perritooo"/>
-                                
+                                    
+  
+  
   
   
   
@@ -80,7 +90,9 @@
   
   
   <Pedido Cantidad="1" Codigo="2" ProductoNombre="hamburguesa"/>
-                                
+                                    
+  
+  
   
   
   
@@ -96,25 +108,31 @@
   
   
   <Pedido Cantidad="1" Codigo="1" ProductoNombre="papas locas"/>
-                                
+                                    
 
+  
+  
   
   
   
   
   <Pedido Cantidad="2" Codigo="3" ProductoNombre="perro pequeño"/>
-        
+            
   
   
   
 
+  
+  
   
   
   
   
   
   <Pedido Cantidad="2" Codigo="10" ProductoNombre="perro pequeño"/>
-                        
+                            
+  
+  
   
   
   
@@ -127,7 +145,9 @@
   
   
   <Pedido Cantidad="4" Codigo="2" ProductoNombre="perro caliente"/>
-                      
+                          
+  
+  
   
   
   
@@ -139,7 +159,9 @@
   
   
   <Pedido Cantidad="2" Codigo="10" ProductoNombre="papas locas"/>
-                    
+                        
+  
+  
   
   
   
@@ -150,7 +172,9 @@
   
   
   <Pedido Cantidad="2" Codigo="12" ProductoNombre="perro"/>
-                    
+                        
+  
+  
   
   
   
@@ -160,7 +184,20 @@
   
   
   <Pedido Cantidad="1" Codigo="1" ProductoNombre="hamburguesa"/>
-                  
+                      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Pedido Cantidad="2" Codigo="1" ProductoNombre="perro"/>
+                      
+  
   
   
   
@@ -170,16 +207,9 @@
   
   
   <Pedido Cantidad="2" Codigo="1" ProductoNombre="perro"/>
-                  
+                    
   
   
-  
-  
-  
-  
-  
-  <Pedido Cantidad="2" Codigo="1" ProductoNombre="perro"/>
-                
   
   
   
@@ -188,7 +218,9 @@
   
   
   <Pedido Cantidad="1" Codigo="1" ProductoNombre="perro"/>
-              
+                  
+  
+  
   
   
   
@@ -196,40 +228,54 @@
   
   
   <Pedido Cantidad="2" Codigo="11" ProductoNombre="Perro"/>
-              
+                  
+  
+  
   
   
   
   
   
   <Pedido Cantidad="1" Codigo="8" ProductoNombre="Hamburguesaaa"/>
-            
+                
+  
+  
   
   
   
   
   
   <Pedido Cantidad="2" Codigo="15" ProductoNombre="Perro"/>
-          
+              
+  
+  
+  
+  
+  
+  
+  <Pedido Cantidad="2" Codigo="13" ProductoNombre="hamburguesa"/>
+              
+  
   
   
   
   
   <Pedido Cantidad="2" Codigo="13" ProductoNombre="hamburguesa"/>
-          
+              
   
   
-  
-  <Pedido Cantidad="2" Codigo="13" ProductoNombre="hamburguesa"/>
-          
   
   
   
   <Pedido Cantidad="1" Codigo="20" ProductoNombre="perro"/>
-          
+              
+  
+  
   
   
   
   <Pedido Cantidad="22" Codigo="23" ProductoNombre="helado"/>
+    
+
 
 </Pedidos>

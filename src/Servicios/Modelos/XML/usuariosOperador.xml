@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Usuarios>
-          
+            
+  
   
   
   
   <Usuario Contraseña="ka123" ID="karenp" Nombre="karen"/>
-        
+          
+  
   
   
   
   <Usuario Contraseña="santi123" ID="santi" Nombre="santiago"/>
-      
+        
+  
   
   
   <Usuario Contraseña="luciaa" ID="lucia2" Nombre="lucia"/>
-    
+      
+  
   
   <Usuario Contraseña="karenn" ID="karen2" Nombre="karenn"/>
+    
   
   <Usuario Contraseña="juannn" ID="juan" Nombre="juan"/>
+  
+  <Usuario Contraseña="22" ID="22" Nombre="222"/>
 </Usuarios>

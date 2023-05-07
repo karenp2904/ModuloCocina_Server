@@ -34,16 +34,25 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public boolean validarUsuario(String nombre, String contraseña) {
-        return true;
+        if(nombre!=null){
+            return true;
+        }else{
+            System.out.println("Incorrecto");
+            return false;
+        }
     }
 
     @Override
     public boolean registrarCliente(String nombre, String direccion, String telefono, String tipoDeCuenta) {
         try {
             cliente=new Cliente(nombre,direccion,telefono,tipoDeCuenta);
-            archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
-            archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
-            return true;
+            if(nombre!=null){
+                archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
+                archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
+                return true;
+            }else{
+                return false;
+            }
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -68,11 +77,15 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean ingresarPedido(String producto, String codigo, String cantidad) {
         try {
-            pedido=new Pedido(producto,codigo,cantidad);
-            archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
-            archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
-            generarFactura(pedido,cliente);
-            return true;
+            if(producto!=null){
+                pedido=new Pedido(producto,codigo,cantidad);
+                archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
+                archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+                generarFactura(pedido,cliente);
+                return true;
+            }else{
+                return false;
+            }
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -81,14 +94,15 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean actualizarPedido(String producto, String codigo, String cantidad) {
         try {
-            if(producto!=null){
+            if(producto==null){
+                return true;
+            }else{
+                pedido=new Pedido(producto,codigo,cantidad);
+                archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
+                archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+                generarFactura(pedido,cliente);
                 return true;
             }
-            pedido=new Pedido(producto,codigo,cantidad);
-            archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
-            archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
-            generarFactura(pedido,cliente);
-            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -101,8 +115,10 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
         LinkedList pedidos = new LinkedList<>();
         pedidos=archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
+        System.out.println("Pedidos frecuentes");
+        pedidos.print();
 
-        while (pedidos.isEmpty()){
+        while (!pedidos.isEmpty()){
             colasArray.enqueue(pedidos.popHead());
         }
         return colasArray;
@@ -134,11 +150,12 @@ public class ModeloOperador implements IControllerOperador, Serializable {
         ColasArray colasArray=new ColasArray();
 
         for (int i = 0; i < lista.size(); i++) {
+            System.out.println("palabra error "+lista.get(i));
             colasArray.enqueue(lista.get(i));
         }
 
         if(colasArray==null) {
-            colasArray.enqueue("Pero");
+            colasArray.enqueue("No hay coincidencias");
             System.out.println("La cola de array");
             return colasArray;
         }
@@ -163,10 +180,15 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     public boolean generarFactura(Pedido pedido, Cliente cliente) {
         try {
           //  System.out.println("el pedido es " + pedido.getProductoNombre()+ "el cliente"+ cliente.getNombreCliente());
-            numFact++;
-            archivoFacturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
-            archivoFacturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
-            return true;
+            if(pedido!=null&&cliente!=null){
+                numFact++;
+                archivoFacturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
+                archivoFacturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
+                return true;
+            }else{
+                return false;
+            }
+
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
