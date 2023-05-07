@@ -101,7 +101,7 @@ public class PriorityQueue<T> implements QueueInterface<T> , Serializable {
 		return encontrado;
 	}
 
-	public int searchPriority(T object) {
+	public int searchPriority(Object object) {
 		int prioridad=0;
 		for (int i = 0; i < arrayQueue.length; i++) {
 			Queue queue=arrayQueue[i];

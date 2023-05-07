@@ -231,21 +231,5 @@
   
   
   <Pedido Cantidad="22" Codigo="23" ProductoNombre="helado"/>
-        
-  
-  
-  
-  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
-      
-  
-  
-  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
-      
-  
-  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
-    
-  
-  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
-  
-  <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
+
 </Pedidos>

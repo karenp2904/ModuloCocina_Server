@@ -22,10 +22,22 @@ public class ControladorCocina implements Serializable {
     }
 //metodo para la conexion
     public void start() throws RemoteException, ParserConfigurationException {
-        añadirPantalla();
+
     }
 
-    public void añadirPantalla() throws RemoteException {
+    public void añadirPantalla() throws RemoteException, PropertyVetoException {
+        vistaCocina.setVisible(true);
+        vistaCocina.panelDespachoPedidos();
+        PriorityQueue<Factura> cola=serviceCocina.pantallaDePedidos();
+        while (!cola.isEmpty()){//hasta que la cola se vacie
+            Factura factura=cola.extract();
+            System.out.println(factura.getPedido().getProductoNombre());
+            int prioridad=serviceCocina.clasificarPedidoPrioridad(factura);
+            if(factura!=null){
+                vistaCocina.agregarPedido(1,factura.getPedido().getProductoNombre(),factura.getPedido().getCantidad(),prioridad);
+            }
+        }
+        /*
         vistaCocina.setVisible(true);
         vistaCocina.panelDespachoPedidos();
         vistaCocina.agregarPedido(1,"Perro","2",2);
@@ -33,8 +45,6 @@ public class ControladorCocina implements Serializable {
         vistaCocina.agregarPedido(1,"Hamburguesa","2",2);
         vistaCocina.agregarPedido(1,"Perro Caliente","2",3);
         vistaCocina.agregarPedido(1,"Perro","2",2);
-        /*
-
         System.out.println("Pantalla en añadir pantalla");
         PriorityQueue<Factura> colaDespacho=serviceCocina.pantallaDePedidos();
         System.out.println(colaDespacho.toString());
@@ -45,27 +55,26 @@ public class ControladorCocina implements Serializable {
                 Pedido pedido=factura.getPedido();
                 int numeroFogon= serviceCocina.entregarNumeroFogon(factura);
                System.out.println(pedido);
-            //vistaCocina.agregarPedido(1, pedido.getProductoNombre(), pedido.getCantidad(), 2);
+              vistaCocina.agregarPedido(1, pedido.getProductoNombre(), pedido.getCantidad(), numeroFogon);
         }
 
-
          */
-
     }
 
     public void extraerPedido(boolean estado) throws RemoteException, ParserConfigurationException {
         if (estado) {
-            vistaCocina.eliminarPedido(1);
             if (serviceCocina.entregarPedido(true)) {
-                while (!serviceCocina.pantallaDePedidos().isEmpty()) {
-                    Factura factura= serviceCocina.pantallaDePedidos().extract();
-                    System.out.println("pedido" + factura.getPedido().getProductoNombre());
-                    vistaCocina.eliminarPedido(serviceCocina.entregarNumeroFogon(factura));
-                    ;
-
+                PriorityQueue<Factura> cola = serviceCocina.pantallaDePedidos();
+                while (!cola.isEmpty()) {//hasta que la cola se vacie
+                    Factura factura = cola.extract();
+                    System.out.println(factura.getPedido().getProductoNombre());
+                    int prioridad=serviceCocina.clasificarPedidoPrioridad(factura);
+                    if (factura != null) {
+                        vistaCocina.agregarPedido(1, factura.getPedido().getProductoNombre(), factura.getPedido().getCantidad(), 3);
+                    }
                 }
-            }
 
+            }
         }
     }
 

@@ -11,9 +11,9 @@ import java.io.Serializable;
 
 public class ModeloAdmin implements IControllerAdmin, Serializable {
 
-    UsuariosXML archivoOperador =new UsuariosXML(new File("usuariosOperador.xml"));
-    UsuariosXML archivoAdmin = new UsuariosXML(new File("usuariosAdmin.xml"));
-    UsuariosXML archivoRepartidor =new UsuariosXML(new File("usuariosRepartidor.xml"));
+    UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+    UsuariosXML archivoAdmin = new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosAdmin.xml"));
+    UsuariosXML archivoRepartidor =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
 
     public ModeloAdmin() throws ParserConfigurationException {
         archivoAdmin();

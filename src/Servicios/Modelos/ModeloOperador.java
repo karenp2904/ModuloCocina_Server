@@ -15,16 +15,18 @@ import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class ModeloOperador implements IControllerOperador, Serializable {
 
-    CustomersXML archivoCliente=new CustomersXML(new File("clientes.xml"));
-    FacturasXML archivoFacturasXML =new FacturasXML(new File("factura.xml"));
+    CustomersXML archivoCliente=new CustomersXML(new File("src/Servicios/Modelos/XML/clientes.xml"));
+    FacturasXML archivoFacturasXML =new FacturasXML(new File("src/Servicios/Modelos/XML/factura.xml"));
 
+    PedidosXML archivoPedido=new PedidosXML(new File("src/Servicios/Modelos/XML/pedidos.xml"));
    Cliente cliente;
    Pedido pedido;
 
-    PedidosXML archivoPedido=new PedidosXML(new File("pedidos.xml"));
+
    // UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
 
     public ModeloOperador() throws ParserConfigurationException {
@@ -40,7 +42,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
         try {
             cliente=new Cliente(nombre,direccion,telefono,tipoDeCuenta);
             archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
-            archivoCliente.saveToFile(new File("clientes.xml"));
+            archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
             return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
@@ -55,7 +57,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
             }
             cliente=new Cliente(nombre,direccion,telefono,tipoDeCuenta);
             archivoCliente.agregarCliente(nombre,direccion,telefono,tipoDeCuenta);
-            archivoCliente.saveToFile(new File("clientes.xml"));
+            archivoCliente.saveToFile(new File("src/Servicios/Modelos/XML/clientes.xml"));
             return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
@@ -68,7 +70,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
         try {
             pedido=new Pedido(producto,codigo,cantidad);
             archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
-            archivoPedido.saveToFile(new File("pedidos.xml"));
+            archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
             generarFactura(pedido,cliente);
             return true;
         } catch (TransformerException e) {
@@ -84,7 +86,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
             }
             pedido=new Pedido(producto,codigo,cantidad);
             archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
-            archivoPedido.saveToFile(new File("pedidos.xml"));
+            archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
             generarFactura(pedido,cliente);
             return true;
         } catch (TransformerException e) {
@@ -96,7 +98,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
         ColasArray colasArray=new ColasArray();
-        /*
+
         LinkedList pedidos = new LinkedList<>();
         pedidos=archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
 
@@ -107,8 +109,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
 
         //pedidos.get()
-
-         */
+        /*
         colasArray.enqueue("Hamburguesa");
         colasArray.enqueue("10");
         colasArray.enqueue("1");
@@ -121,20 +122,21 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
          return colasArray;
 
+         */
+
 
 
     }
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
-       // ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
+       ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
         ColasArray colasArray=new ColasArray();
-        /*
+
         for (int i = 0; i < lista.size(); i++) {
             colasArray.enqueue(lista.get(i));
         }
 
-         */
         if(colasArray==null) {
             colasArray.enqueue("Pero");
             System.out.println("La cola de array");
@@ -163,7 +165,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
           //  System.out.println("el pedido es " + pedido.getProductoNombre()+ "el cliente"+ cliente.getNombreCliente());
             numFact++;
             archivoFacturasXML.agregarFactura(new Factura(pedido,cliente,String.valueOf(numFact)));
-            archivoFacturasXML.saveToFile(new File("factura.xml"));
+            archivoFacturasXML.saveToFile(new File("src/Servicios/Modelos/XML/factura.xml"));
             return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
@@ -180,7 +182,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     public LinkedList<Factura> obtenerFacturas(){
         try {
            // System.out.println(archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml").toString());
-            return archivoFacturasXML.leerArchivoXML("factura.xml");
+            return archivoFacturasXML.leerArchivoXML("src/Servicios/Modelos/XML/factura.xml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

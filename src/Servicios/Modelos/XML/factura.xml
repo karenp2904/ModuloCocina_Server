@@ -116,19 +116,6 @@
     
     
     <Pedido Cantidad="22" Codigo="23" ProductoNombre="helado"/>
-              
-  
-  
-  </Factura>
-    
-  
-  <Factura DireccionCliente="poblado giron" ID="1" NombreCliente="karenn" Telefono="111" TipoCuenta="normal">
-        
-    <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
-      
-  </Factura>
-  
-  <Factura DireccionCliente="poblado giron" ID="1" NombreCliente="karenn" Telefono="111" TipoCuenta="normal">
-    <Pedido Cantidad="" Codigo="" ProductoNombre=""/>
+
   </Factura>
 </Facturas>

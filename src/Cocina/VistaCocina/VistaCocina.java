@@ -1,5 +1,6 @@
 package Cocina.VistaCocina;
 
+import Admin.VistaAdmin.VistaAdmin;
 import Cocina.ControladorCocina.ControladorCocina;
 import Dominio.Pedido;
 
@@ -22,7 +23,7 @@ public class VistaCocina extends JFrame{
     JPanel panelCentral=new JPanel();//panel para la pantalla de despacho
     JPanel panelBlanco = new JPanel();//panel para el registro
     JPanel panelDespacho=new JPanel();//panel para la impresion de la cola de pedidos
-    JInternalFrame[] internalFrames;//Bancos de trabajos internos del panel
+    JInternalFrame[] internalFrames ;//Bancos de trabajos internos del panel
     public JButton botonBanco1=new JButton();
     JButton botonBanco2=new JButton();
     JButton botonBanco3=new JButton();
@@ -34,62 +35,19 @@ public class VistaCocina extends JFrame{
         this.setTitle("Hot Dogs Palace");
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setVisible(true);
+        this.setVisible(false);
         this.setBackground(Color.white);
         y=30; //coordenadas de la pantalla de despacho
-        panelDespachoPedidos();
-    }
-
-    public void crearTabla() throws PropertyVetoException {
-        // Crear los frames internos de las colas de pedidos
-        internalFrames = new JInternalFrame[1];
-            int i=0;
-        internalFrames[i] = createInternalFrame("Banco de trabajo " + (i + 1));
-        internalFrames[i].setSize(new Dimension(600, 400)); // Redimensionar el frame interno
-            internalFrames[i].setLocation(i * 420, 0); // Alinear los frames internos horizontalmente
-            panelDespacho.add(internalFrames[i]);
 
     }
 
-    //Metodos de la tablita
-    public void agregarPedido(int bancoDeTrabajo,String nombrePedido, String cantidad,int bancoAsignado) {
-        System.out.println(nombrePedido+cantidad+bancoAsignado);
-        // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
-        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo - 1].getContentPane().getComponent(0)).getViewport().getView();
-        DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
 
-        // Obtener la información del nuevo pedido
-
-        String banco = "Banco de trabajo " + bancoAsignado;
-
-        // Agregar el nuevo pedido a la tabla de la cola de pedidos
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        tableModel.addRow(new Object[]{nombrePedido, cantidad, banco});
-    }
-    public void eliminarPedido(int bancoDeTrabajo) {
-        try{
-            // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
-            JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo-1].getContentPane().getComponent(bancoDeTrabajo)).getViewport().getView();
-            DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
-
-            // Eliminar la primera fila de la tabla si existe
-            if (tableModel.getRowCount() > 0) {
-                tableModel.removeRow(0);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void ingresarIntento(int bancoDeTrabajo,String nombrePedido, String cantidad,int bancoAsignado){
-        agregarPedido( bancoDeTrabajo, nombrePedido,  cantidad, bancoAsignado);
-    }
-
-
-    public void panelDespachoPedidos(){
+    public void panelDespachoPedidos() throws PropertyVetoException {
         //Nuevo
         //panel de color blanco
+        createWorkbenches(1,800,600);
+        createInternalFrame("Cocina");
+
         panelCentral.setLayout(null);
         panelCentral.setVisible(true);
         panelCentral.setOpaque(true);
@@ -130,8 +88,8 @@ public class VistaCocina extends JFrame{
 
 
         botonBanco1.setBounds(1000, 350, 200, 90);
-        ImageIcon img= new ImageIcon("Imagenes/entregado1.png");// se le pone icono a boton
-        // Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
+        ImageIcon img= new ImageIcon("src/Imagenes/entregado.png");// se le pone icono a boton
+        //Icon i= new ImageIcon(img.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
         botonBanco1.setIcon(img);
         botonBanco1.setLayout(null);
         botonBanco1.setBackground(new Color(217, 217, 217));
@@ -142,13 +100,13 @@ public class VistaCocina extends JFrame{
         botonBanco1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageIcon imgadmin= new ImageIcon("Imagenes/entregado11.png");// se le pone icono a boton
+                ImageIcon imgadmin= new ImageIcon("src/Imagenes/entregado.png");// se le pone icono a boton
                 //  Icon iconAdmin= new ImageIcon(imgadmin.getImage().getScaledInstance(botonPedidoListo.getWidth(), botonPedidoListo.getHeight(), Image.SCALE_DEFAULT));
                 botonBanco1.setBackground(new Color(217, 217, 217));
                 entregado=true;
                 try {
                     ControladorCocina controladorCocina = new ControladorCocina();
-                    //controladorCocina.extraerPedido(true);
+                   // controladorCocina.extraerPedido(true);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 } catch (ParserConfigurationException ex) {
@@ -159,10 +117,32 @@ public class VistaCocina extends JFrame{
             }
         });
 
+        JButton botonBanco4=new JButton("Regresar");
+        botonBanco4.setBounds(10, 600, 170, 70);
+        ImageIcon ii= new ImageIcon("src/Imagenes/btningresarPedido.png");// se le pone icono a boton
+        Icon i= new ImageIcon(ii.getImage().getScaledInstance(botonBanco4.getWidth(), botonBanco4.getHeight(), Image.SCALE_DEFAULT));
+        botonBanco4.setIcon(i);
+        botonBanco4.setLayout(null);
+        botonBanco4.setBackground(new Color(217, 217, 217));
+        botonBanco4.setOpaque(false);
+        botonBanco4.setBorderPainted(false);
+        panelCentral.add(botonBanco4);
+
+        botonBanco4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VistaAdmin vistaAdmin=new VistaAdmin();
+                vistaAdmin.setVisible(true);
+                vistaAdmin.panelMenu();
+                dispose();
+
+            }
+        });
+
         entregado=false;
 
         JLabel fondoLetras=new JLabel();
-        ImageIcon imagen =new ImageIcon("Imagenes/fondoLetras.png");
+        ImageIcon imagen =new ImageIcon("src/Imagenes/fondoLetras.png");
         fondoLetras.setIcon(imagen);
         fondoLetras.setSize(imagen.getIconWidth(), imagen.getIconHeight());
         this.setSize(imagen.getIconWidth(), imagen.getIconHeight());
@@ -173,20 +153,51 @@ public class VistaCocina extends JFrame{
         //contenedor.add(pedido,Integer.valueOf(8));
         contenedor.add(panelDespacho,Integer.valueOf(8));
         contenedor.add(botonBanco1,Integer.valueOf(9));
+        contenedor.add(botonBanco4,Integer.valueOf(9));
 
 
         contenedor();
-      createWorkbenches(1,800,600);
-      createInternalFrame("Pedidos");
+
+      //crearTabla();
+    }
+
+
+    public void crearTabla() throws PropertyVetoException {
+        for (int i = 0; i<1 ; i++) {
+            internalFrames = new JInternalFrame[i];
+            internalFrames[i] = createInternalFrame("Cocina" + (i + 1));
+            internalFrames[i].setSize(new Dimension(400, 300)); // Redimensionar el frame interno
+            internalFrames[i].setLocation(i * 420, 0); // Alinear los frames internos horizontalmente
+            panelDespacho.add(internalFrames[i]);
+        }
+
+    }
+
+    //Metodos de la tablita
+    public void agregarPedido(int bancoDeTrabajo,String nombrePedido, String cantidad,int bancoAsignado) {
+
+        System.out.println(nombrePedido+cantidad+bancoAsignado);
+        // Obtener la tabla de la cola de pedidos del banco de trabajo especificado
+        JTable queueTable = (JTable) ((JScrollPane) internalFrames[bancoDeTrabajo-1].getContentPane().getComponent(0)).getViewport().getView();
+        DefaultTableModel tableModel = (DefaultTableModel) queueTable.getModel();
+
+        // Obtener la información del nuevo pedido
+
+        String banco = "Banco de trabajo " + bancoAsignado;
+
+        // Agregar el nuevo pedido a la tabla de la cola de pedidos
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        tableModel.addRow(new Object[]{nombrePedido, cantidad, banco});
+        panelDespacho.add(internalFrames[bancoDeTrabajo-1]);
     }
 
     public void createWorkbenches(int numWorkbenches, int width, int height) {
         // Crear los frames internos de los bancos de trabajo
         internalFrames = new JInternalFrame[numWorkbenches];
-        for (int i = 0; i < numWorkbenches; i++) {
+        for (int i = 0; i <1; i++) {
             internalFrames[i] = createInternalFrame("Cocina " );
             internalFrames[i].setSize(new Dimension(width, height)); // Redimensionar el frame interno
-            internalFrames[i].setLocation(i * (width + 20), 0); // Alinear los frames internos horizontalmente
+            internalFrames[i].setLocation(i * (width + 40), 0); // Alinear los frames internos horizontalmente
             panelDespacho.add(internalFrames[i]);
         }
 
@@ -204,7 +215,7 @@ public class VistaCocina extends JFrame{
     private JInternalFrame createInternalFrame(String title) {
         // Crear el panel de la cola de pedidos
         JPanel queuePanel = new JPanel(new GridLayout(1, 1));
-        queuePanel.setPreferredSize(new Dimension(600, 500)); // Establecer el tamaño preferido del panel
+        queuePanel.setPreferredSize(new Dimension(600, 1000)); // Establecer el tamaño preferido del panel
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Pedido", "Cantidad", "Banco de trabajo"});
         JTable queueTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(queueTable);
@@ -223,7 +234,7 @@ public class VistaCocina extends JFrame{
     public void editarColaDeDespacho(Pedido pedido, int puestoTrabajo){
 
 
-        JLabel titulo=new JLabel(pedido.getProductoNombre()+ "   "+ pedido.getCantidad());
+        JLabel titulo=new JLabel(pedido.getProductoNombre()+ "           "+ pedido.getCantidad());
         titulo.setBackground(Color.black);
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         titulo.setBounds(50,y-5,600,100);
