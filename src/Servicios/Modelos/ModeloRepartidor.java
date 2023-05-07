@@ -3,7 +3,7 @@ package Servicios.Modelos;
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
 import Servicios.Controladores.IControllerRepartidor;
-import Servicios.Modelos.XML.UsuariosXML;
+import Servicios.Modelos.GenerarXml.UsuariosXML;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class ModeloRepartidor implements IControllerRepartidor, Serializable {
 
-    UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+    UsuariosXML archivoOperador =new UsuariosXML(new File("usuariosRepartidor.xml"));
 
     public ModeloRepartidor() throws ParserConfigurationException {
     }

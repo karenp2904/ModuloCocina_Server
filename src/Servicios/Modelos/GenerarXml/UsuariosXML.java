@@ -1,4 +1,4 @@
-package Servicios.Modelos.XML;
+package Servicios.Modelos.GenerarXml;
 
 import Dominio.Usuario;
 import org.w3c.dom.Document;

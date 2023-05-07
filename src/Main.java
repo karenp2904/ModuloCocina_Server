@@ -20,23 +20,23 @@ public class Main {
         try {
                 try {
                     Properties properties= new Properties();
-                    properties.load(new FileInputStream(new File("src/serverOperador.properties")));
+                    properties.load(new FileInputStream(new File("serverOperador.properties")));
 
                     ServiceOperador serviceOperador = new ServiceOperador(new ControllerOperador());
                     Server modOperador = new Server((String) properties.get("IP"),
                             (String) properties.get("PORTS"),
                             (String) properties.get("SERVICES"),
                             serviceOperador);
-/*
+
                     Properties propertiess= new Properties();
-                    propertiess.load(new FileInputStream(new File("src/serverRepartidor.properties")));
+                    propertiess.load(new FileInputStream(new File("serverRepartidor.properties")));
                     ServiceRepartidor serviceRepartidor = new ServiceRepartidor(new ControllerRepartidor());
                     Server modRepartidor = new Server((String) propertiess.get("IP"),
                             (String) propertiess.get("PORT"),
                             (String) propertiess.get("SERVICE"),
                             serviceRepartidor);
 
- */
+
                    // Server server = new Server((String) properties.get("IP"), (String) properties.get("PORT"), (String) properties.get("SERVICENAME"), serviceOperador);
 
                     Thread[] threadList = { new Thread(modOperador)

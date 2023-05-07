@@ -2,15 +2,11 @@ package Servicios.Modelos;
 
 import Dominio.Factura;
 import Estructuras.APriorityQueue.PriorityQueue;
-import Estructuras.Colas.ColasArray;
 import Dominio.Cliente;
-import Dominio.Pedido;
 import Estructuras.ListasEnlaceDoble.LinkedList;
 import Servicios.Controladores.IControllerCocina;
-import Servicios.Modelos.XML.FacturasXML;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.Serializable;
 
 public class ModeloCocina implements IControllerCocina, Serializable {

@@ -2,7 +2,7 @@ package Servicios.Modelos;
 
 import Dominio.Usuario;
 import Servicios.Controladores.IControllerAdmin;
-import Servicios.Modelos.XML.UsuariosXML;
+import Servicios.Modelos.GenerarXml.UsuariosXML;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -11,9 +11,9 @@ import java.io.Serializable;
 
 public class ModeloAdmin implements IControllerAdmin, Serializable {
 
-    UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
-    UsuariosXML archivoAdmin = new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosAdmin.xml"));
-    UsuariosXML archivoRepartidor =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
+    UsuariosXML archivoOperador =new UsuariosXML(new File("usuariosOperador.xml"));
+    UsuariosXML archivoAdmin = new UsuariosXML(new File("usuariosAdmin.xml"));
+    UsuariosXML archivoRepartidor =new UsuariosXML(new File("usuariosRepartidor.xml"));
 
     public ModeloAdmin() throws ParserConfigurationException {
         archivoAdmin();
@@ -22,7 +22,7 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     private void archivoAdmin(){
         archivoAdmin.agregarUsuario(new Usuario("karen", "karen","karen"));
         try {
-            archivoAdmin.saveToFile(new File("src/Servicios/Modelos/XML/usuariosAdmin.xml"));
+            archivoAdmin.saveToFile(new File("usuariosAdmin.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +32,7 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
         archivoRepartidor.agregarUsuario(new Usuario(nombre,id,contraseña));
         try {
-            archivoRepartidor.saveToFile(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
+            archivoRepartidor.saveToFile(new File("usuariosRepartidor.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +43,7 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
     public boolean registrarOperador(String nombre, String id, String contraseña)  {
         archivoOperador.agregarUsuario(new Usuario(nombre,id,contraseña));
         try {
-            archivoOperador.saveToFile(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+            archivoOperador.saveToFile(new File("usuariosOperador.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }

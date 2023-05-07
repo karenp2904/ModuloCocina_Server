@@ -1,4 +1,4 @@
-package Servicios.Modelos.XML;
+package Servicios.Modelos.GenerarXml;
 
 import java.io.File;
 import java.io.Serializable;

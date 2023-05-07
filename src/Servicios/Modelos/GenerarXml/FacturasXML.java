@@ -1,4 +1,4 @@
-package Servicios.Modelos.XML;
+package Servicios.Modelos.GenerarXml;
 
 import Dominio.Cliente;
 import Dominio.Factura;
