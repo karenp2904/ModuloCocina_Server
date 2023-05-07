@@ -2,6 +2,7 @@ package Servicios.Controladores;
 
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
+import Estructuras.DinamicQueue.Queue;
 import Servicios.Modelos.ModeloRepartidor;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,14 +21,10 @@ public class ControllerRepartidor implements IControllerRepartidor , Serializabl
     }
 
     @Override
-    public ColasList imprimirRuta() {
+    public Queue imprimirRuta() {
         return modeloRepartidor.imprimirRuta();
     }
 
-    @Override
-    public boolean recibirPedido(Factura factura) {
-        return modeloRepartidor.recibirPedido(factura);
-    }
 
     @Override
     public boolean estadoPedido(Boolean estado) {

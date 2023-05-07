@@ -2,6 +2,7 @@ package Servicios;
 
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
+import Estructuras.DinamicQueue.Queue;
 import Servicios.Controladores.ControllerRepartidor;
 import IServices.IRepartidor;
 
@@ -25,14 +26,11 @@ public class ServiceRepartidor extends UnicastRemoteObject implements IRepartido
     }
 
     @Override
-    public ColasList imprimirRuta() {
+    public Queue imprimirRuta() {
         return controllerRepartidor.imprimirRuta();
     }
 
-    @Override
-    public boolean recibirPedido(Factura factura) {
-        return controllerRepartidor.recibirPedido(factura);
-    }
+
 
     @Override
     public boolean estadoPedido(Boolean estado) {

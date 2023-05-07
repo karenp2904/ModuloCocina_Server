@@ -2,6 +2,7 @@ package Servicios.Modelos;
 
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
+import Estructuras.DinamicQueue.Queue;
 import Servicios.Controladores.IControllerRepartidor;
 import Servicios.Modelos.GenerarXml.UsuariosXML;
 
@@ -23,13 +24,8 @@ public class ModeloRepartidor implements IControllerRepartidor, Serializable {
     }
 
     @Override
-    public ColasList imprimirRuta() {
+    public Queue imprimirRuta() {
         return null;
-    }
-
-    @Override
-    public boolean recibirPedido(Factura factura) {
-        return false;
     }
 
     @Override
