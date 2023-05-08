@@ -1,62 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Facturas>
-                        
+                            
 
+  
+  
   
   
   <Factura DireccionCliente="Provenza" ID="1" NombreCliente="karen" Telefono="2323" TipoCuenta="normal">
-                                                
+                                                        
 
+    
+    
     
     
     <Pedido Cantidad="2" Codigo="12" ProductoNombre="perro"/>
-                                              
+                                                      
 
+  
+  
   
   </Factura>
+      
+
 
   
-
-
+  
   <Factura DireccionCliente="Giron" ID="1" NombreCliente="karen" Telefono="23232" TipoCuenta="Premium">
-
-
+            
+    
     <Pedido Cantidad="2" Codigo="11" ProductoNombre="Perro"/>
+          
 
   
-
+  
   </Factura>
-                      
+                          
   
 
 
 
 
+  
+  
   
   <Factura DireccionCliente="Pidecuesta" ID="1" NombreCliente="Manuel" Telefono="3027031702" TipoCuenta="Premium">
-                                    
+                                            
 
+    
+    
     
     
     <Pedido Cantidad="1" Codigo="20" ProductoNombre="perro"/>
-                                  
+                                          
 
+  
+  
   </Factura>
-                  
+                      
 
   
 
     
   
+  
+  
   <Factura DireccionCliente="12" ID="1" NombreCliente="12" Telefono="12" TipoCuenta="12">
-        
+                
+    
+    
     <Pedido Cantidad="2" Codigo="3" ProductoNombre="perro"/>
+              
+  
+  
+  </Factura>
+      
+  
+  <Factura DireccionCliente="giron" ID="3" NombreCliente="karen" Telefono="3157660279" TipoCuenta="premium">
+            
+    
+    <Pedido Cantidad="2" Codigo="2" ProductoNombre="perro s"/>
+          
+  
+  </Factura>
+    
+  
+  <Factura DireccionCliente="poblado giron" ID="1" NombreCliente="karenn" Telefono="111" TipoCuenta="normal">
+        
+    <Pedido Cantidad="2" Codigo="15" ProductoNombre="perro XS"/>
       
   </Factura>
-
-
-  <Factura DireccionCliente="giron" ID="3" NombreCliente="karen" Telefono="3157660279" TipoCuenta="premium">
-    <Pedido Cantidad="2" Codigo="2" ProductoNombre="perro s"/>
+    
+  <Factura DireccionCliente="poblado giron" ID="2" NombreCliente="karenn" Telefono="111" TipoCuenta="normal">
+        
+    <Pedido Cantidad="11" Codigo="11" ProductoNombre="perroo"/>
+      
   </Factura>
-
+  
+  <Factura DireccionCliente="poblado giron" ID="1" NombreCliente="karenn" Telefono="111" TipoCuenta="normal">
+    <Pedido Cantidad="2" Codigo="3" ProductoNombre="perrp xl"/>
+  </Factura>
 </Facturas>

@@ -116,7 +116,21 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
+        Map<String, Integer> pedidos = archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
+        System.out.println("Pedidos frecuentes");
+        System.out.println(pedidos.toString());
+        ColasArray colasArray = new ColasArray();
+        for (Map.Entry<String, Integer> entry : pedidos.entrySet()) {
+            String producto = entry.getKey();
+            int cantidad = entry.getValue();
+            String result = producto + "     --------------------      " + cantidad + "\n";
+            colasArray.enqueue(result);
+        }
+        System.out.println("cola" + colasArray.toString());
+        return colasArray;
+           /*
             Map<String, Integer> pedidos = archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
+
             System.out.println("Pedidos frecuentes");
             System.out.println(pedidos.toString());
             String result = pedidos.entrySet().stream()
@@ -127,24 +141,8 @@ public class ModeloOperador implements IControllerOperador, Serializable {
             System.out.println("cola" + colasArray.toString());
             return colasArray;
 
-        /*
-        ColasArray colasArray=new ColasArray();
-        Map<String, Integer> pedidos = new HashMap<>();
-        pedidos=archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
-        System.out.println("Pedidos frecuentes");
-        System.out.println(pedidos.toString());
+            */
 
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, Integer> entry : pedidos.entrySet()) {
-            String key = entry.getKey();
-            int value = entry.getValue();
-            sb.append(key).append("---------------").append(value).append("\n");
-        }
-        colasArray.enqueue(sb.toString());
-        System.out.println("cola" + colasArray.toString());
-         return colasArray;
-
-         */
     }
 
     @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Clientes>
-                                        
+                                          
+  
   
   
   
@@ -20,7 +21,8 @@
   
   
   <Cliente Direccion="giron" Nombre="karen" Telefono="3157660279" TipoCuenta="premium"/>
-                                        
+                                          
+  
   
   
   
@@ -40,7 +42,8 @@
   
   
   <Cliente Direccion="Giron" Nombre="santiago" Telefono="317839393" TipoCuenta="premium"/>
-                                        
+                                          
+  
   
   
   
@@ -60,7 +63,8 @@
   
   
   <Cliente Direccion="Pidecuesta" Nombre="manuel" Telefono="3027031702" TipoCuenta="normal"/>
-                                        
+                                          
+  
   
   
   
@@ -80,7 +84,7 @@
   
   
   <Cliente Direccion="cañaveral" Nombre="santi" Telefono="3278282" TipoCuenta="normal"/>
-                                        
+                                          
   
   
   
@@ -102,28 +106,10 @@
   
   
   
-  <Cliente Direccion="poblado giron" Nombre="karenn" Telefono="111" TipoCuenta="normal"/>
-                                        
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   <Cliente Direccion="poblado giron" Nombre="karenn" Telefono="111" TipoCuenta="normal"/>
-                                        
+                                          
+  
   
   
   
@@ -143,7 +129,28 @@
   
   
   <Cliente Direccion="poblado giron" Nombre="karenn" Telefono="111" TipoCuenta="normal"/>
-                                        
+                                          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Cliente Direccion="poblado giron" Nombre="karenn" Telefono="111" TipoCuenta="normal"/>
+                                          
   
   
   
@@ -153,6 +160,7 @@
   
   
 
+  
   
   
   
@@ -168,7 +176,7 @@
   
   
   <Cliente Direccion="2" Nombre="2" Telefono="2" TipoCuenta="2"/>
-                                      
+                                        
   
   
   
@@ -179,6 +187,7 @@
   
   
 
+  
   
   
   
@@ -193,7 +202,7 @@
   
   
   <Cliente Direccion="cañaveral" Nombre="manuel" Telefono="3434" TipoCuenta="normal"/>
-                                      
+                                        
   
   
   
@@ -205,6 +214,7 @@
   
   
 
+  
   
   
   
@@ -219,7 +229,8 @@
   
   
   <Cliente Direccion="provenza" Nombre="cliente1" Telefono="822992" TipoCuenta="normal"/>
-                                    
+                                      
+  
   
   
   
@@ -237,7 +248,8 @@
   
   
   <Cliente Direccion="Cañaveral " Nombre="karen" Telefono="karen2" TipoCuenta="normal"/>
-                                  
+                                    
+  
   
   
   
@@ -255,7 +267,8 @@
   
   
   <Cliente Direccion="calle#21 giron" Nombre="luis" Telefono="3178292929" TipoCuenta="normal"/>
-                                
+                                  
+  
   
   
   
@@ -272,7 +285,8 @@
   
   
   <Cliente Direccion="giron" Nombre="kathe" Telefono="312829922" TipoCuenta="normal"/>
-                              
+                                
+  
   
   
   
@@ -288,6 +302,22 @@
   
   
   <Cliente Direccion="Pidecuesta" Nombre="manuel" Telefono="93929292" TipoCuenta="Normal"/>
+                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Cliente Direccion="1" Nombre="1" Telefono="1" TipoCuenta="1"/>
                             
   
   
@@ -303,21 +333,8 @@
   
   
   <Cliente Direccion="1" Nombre="1" Telefono="1" TipoCuenta="1"/>
-                          
+                            
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <Cliente Direccion="1" Nombre="1" Telefono="1" TipoCuenta="1"/>
-                          
   
   
   
@@ -330,7 +347,8 @@
   
   
   <Cliente Direccion="Provenza" Nombre="karen" Telefono="2323" TipoCuenta="normal"/>
-                        
+                          
+  
   
   
   
@@ -343,6 +361,19 @@
   
   
   <Cliente Direccion="Giron" Nombre="karen" Telefono="23232" TipoCuenta="Premium"/>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Cliente Direccion="Giron" Nombre="Santiago" Telefono="3155470362" TipoCuenta="Premium"/>
                       
   
   
@@ -354,19 +385,8 @@
   
   
   
-  <Cliente Direccion="Giron" Nombre="Santiago" Telefono="3155470362" TipoCuenta="Premium"/>
-                    
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <Cliente Direccion="Pidecuesta" Nombre="Manuel" Telefono="3027031702" TipoCuenta="Premium"/>
-                  
+                    
 
   
   
@@ -376,8 +396,10 @@
   
   
   
+  
   <Cliente Direccion="Calle 14#15-25 Upb" Nombre="Pepe Perez" Telefono="3331234585" TipoCuenta="premium"/>
-              
+                
+  
   
   
   
@@ -385,44 +407,58 @@
   
   
   <Cliente Direccion="pidecuesta" Nombre="karen" Telefono="12345" TipoCuenta="normal"/>
-            
+              
+  
   
   
   
   
   
   <Cliente Direccion="11" Nombre="juan" Telefono="11" TipoCuenta="11"/>
+              
+  
+  
+  
+  
+  
+  <Cliente Direccion="" Nombre="" Telefono="" TipoCuenta=""/>
             
   
   
   
   
-  <Cliente Direccion="" Nombre="" Telefono="" TipoCuenta=""/>
+  
+  <Cliente Direccion="calle giron" Nombre="karen" Telefono="123456" TipoCuenta="premium"/>
           
   
   
   
   
-  <Cliente Direccion="calle giron" Nombre="karen" Telefono="123456" TipoCuenta="premium"/>
+  <Cliente Direccion="11" Nombre="11" Telefono="11" TipoCuenta="11"/>
         
   
   
   
-  <Cliente Direccion="11" Nombre="11" Telefono="11" TipoCuenta="11"/>
-      
-  
-  
   <Cliente Direccion="8" Nombre="8" Telefono="8" TipoCuenta="8"/>
+        
+  
+  
+  <Cliente Direccion="1" Nombre="1" Telefono="1" TipoCuenta="1"/>
       
+  
+  
+  <Cliente Direccion="12" Nombre="12" Telefono="12" TipoCuenta="12"/>
+    
   
   <Cliente Direccion="1" Nombre="1" Telefono="1" TipoCuenta="1"/>
     
-  
-  <Cliente Direccion="12" Nombre="12" Telefono="12" TipoCuenta="12"/>
-  
-  <Cliente Direccion="1" Nombre="1" Telefono="1" TipoCuenta="1"/>
   <Cliente Direccion="11" Nombre="11" Telefono="11" TipoCuenta="11"/>
+    
   <Cliente Direccion="" Nombre="" Telefono="" TipoCuenta=""/>
+    
   <Cliente Direccion="" Nombre="" Telefono="" TipoCuenta=""/>
+    
   <Cliente Direccion="Giron" Nombre="Santiago" Telefono="3155470362" TipoCuenta="Premium"/>
+  
+  <Cliente Direccion="cañaveral" Nombre="karen" Telefono="123" TipoCuenta="normal"/>
 </Clientes>
