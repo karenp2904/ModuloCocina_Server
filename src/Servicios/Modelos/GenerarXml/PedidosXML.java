@@ -18,6 +18,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PedidosXML {
@@ -117,7 +118,79 @@ public class PedidosXML {
         return pedidosLista;
     }
 
+    public  ArrayList<String> buscarComidasPorNombre(String nombre) {
+        ArrayList<String> resultados = new ArrayList<>();
+        String[] menu = {"Papas Locas", "Perro XL", "Perro S", "Perrito", "Salchipapa", "Choripapa"};
+        double umbral = 0.5;
+        for (String plato : menu) {
+            String[] palabras = plato.split("\\s+");
+            double similitudMaxima = 0;
+            for (String palabra : palabras) {
+                double similitud = jaroWinkler(nombre.replaceAll("\\d", ""), palabra);
+                if (similitud > similitudMaxima) {
+                    similitudMaxima = similitud;
+                }
+            }
+            if (similitudMaxima >= umbral) {
+                resultados.add(plato);
+            }
+        }
+        return resultados;
+    }
 
+    private double jaroWinkler(String s1, String s2) {
+        int s1_len = s1.length();
+        int s2_len = s2.length();
+
+        if (s1_len == 0 && s2_len == 0) return 1; // Caso de cadenas vacías
+        if (s1_len == 0 || s2_len == 0) return 0; // Si alguna cadena está vacía, no hay similitud
+
+        int match_distance = Math.max(s1_len, s2_len) / 2 - 1;
+
+        boolean[] s1_matches = new boolean[s1_len];
+        Arrays.fill(s1_matches, false);
+
+        boolean[] s2_matches = new boolean[s2_len];
+        Arrays.fill(s2_matches, false);
+
+        int matches = 0;
+        int transpositions = 0;
+
+        // Busca caracteres coincidentes
+        for (int i = 0; i < s1_len; i++) {
+            int start = Math.max(0, i - match_distance);
+            int end = Math.min(i + match_distance + 1, s2_len);
+
+            for (int j = start; j < end; j++) {
+                if (s2_matches[j]) continue;
+                if (s1.charAt(i) != s2.charAt(j)) continue;
+                s1_matches[i] = true;
+                s2_matches[j] = true;
+                matches++;
+                break;
+            }
+        }
+
+        if (matches == 0) return 0;
+
+        // Busca transposiciones
+        int k = 0;
+        for (int i = 0; i < s1_len; i++) {
+            if (!s1_matches[i]) continue;
+            while (!s2_matches[k]) k++;
+            if (s1.charAt(i) != s2.charAt(k)) transpositions++;
+            k++;
+        }
+
+        double similitud = ((double) matches / s1_len + (double) matches / s2_len + (double) (matches - transpositions / 2) / matches) / 3;
+        int prefijo_comun = 0;
+        while (prefijo_comun < 4 && prefijo_comun < Math.min(s1_len, s2_len) && s1.charAt(prefijo_comun) == s2.charAt(prefijo_comun)) {
+            prefijo_comun++;
+        }
+        return similitud + prefijo_comun * 0.1 * (1 - similitud);
+    }
+
+/*
     public ArrayList<Pedido> buscarComidasPorNombre(String nombre) {
         ArrayList<Pedido> resultados = new ArrayList<>();
         Element root = doc.getDocumentElement();
@@ -148,6 +221,8 @@ public class PedidosXML {
         return resultados;
     }
 
+
+ */
     private int levenshtein(String s1, String s2) {
         int m = s1.length();
         int n = s2.length();

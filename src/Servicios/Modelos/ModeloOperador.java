@@ -150,8 +150,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
        ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
-        System.out.println(archivoPedido.buscarComidasPorNombre("hambguesa"));
-        ColasArray colasArray=new ColasArray();
+       ColasArray colasArray=new ColasArray();
 
         for (int i = 0; i < lista.size(); i++) {
             System.out.println("palabra error "+lista.get(i));

@@ -80,25 +80,22 @@ public class ModeloCocina implements IControllerCocina, Serializable {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-
-
         boolean clientePremium = false;
         int prioridadDireccion = definirPrioridadPorDireccion(factura.getCliente());
 
         if (factura.getCliente().getTipoCuenta().toLowerCase().contains("premium")) { // se evalua el tipo de cliente
             clientePremium = true;
         }
-
         // Si el tiempo de cocción es menor a 10 minutos o la prioridad por dirección es 3 o 4 y el cliente no es premium
         if ((tiempoCoccion < 10 || prioridadDireccion == 3 || prioridadDireccion == 4) && (clientePremium == false)) { // comida rapida
             //opciones puesto 3 o 4
             //verificar la cantidad de elementos que tiene el puesto 3 y 4 y encolar en el menor
             // System.out.println("Insertado en la cola");
             if (colaDespacho.sizePrioridad(3) > colaDespacho.sizePrioridad(4)) {
-                prioridadDefinida = 3;
+                prioridadDefinida = 4;
             }
              else {
-                     prioridadDefinida = 4;
+                     prioridadDefinida = 3;
         }
         // Si el tiempo de cocción es menor a 10 minutos y la prioridad por dirección es 2 y el cliente es premium
         }else if( (tiempoCoccion<10 || prioridadDireccion==2) && ( clientePremium==true)) {
