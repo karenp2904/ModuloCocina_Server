@@ -2,11 +2,11 @@ package Servicios.Controladores;
 
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
-import Estructuras.DinamicQueue.Queue;
 import Servicios.Modelos.ModeloRepartidor;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.Serializable;
+import java.util.LinkedList;
 
 public class ControllerRepartidor implements IControllerRepartidor , Serializable {
 
@@ -21,10 +21,14 @@ public class ControllerRepartidor implements IControllerRepartidor , Serializabl
     }
 
     @Override
-    public Queue imprimirRuta() {
+    public LinkedList imprimirRuta() {
         return modeloRepartidor.imprimirRuta();
     }
 
+    @Override
+    public boolean recibirPedido(Factura factura) {
+        return modeloRepartidor.recibirPedido(factura);
+    }
 
     @Override
     public boolean estadoPedido(Boolean estado) {
