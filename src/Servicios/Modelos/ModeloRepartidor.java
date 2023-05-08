@@ -2,9 +2,8 @@ package Servicios.Modelos;
 
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
-import Estructuras.DinamicQueue.Queue;
 import Servicios.Controladores.IControllerRepartidor;
-import Servicios.Modelos.GenerarXml.UsuariosXML;
+import Servicios.Modelos.XML.UsuariosXML;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -12,7 +11,7 @@ import java.io.Serializable;
 
 public class ModeloRepartidor implements IControllerRepartidor, Serializable {
 
-    UsuariosXML archivoOperador =new UsuariosXML(new File("usuariosRepartidor.xml"));
+    UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
 
     public ModeloRepartidor() throws ParserConfigurationException {
     }
@@ -24,8 +23,13 @@ public class ModeloRepartidor implements IControllerRepartidor, Serializable {
     }
 
     @Override
-    public Queue imprimirRuta() {
+    public ColasList imprimirRuta() {
         return null;
+    }
+
+    @Override
+    public boolean recibirPedido(Factura factura) {
+        return false;
     }
 
     @Override
