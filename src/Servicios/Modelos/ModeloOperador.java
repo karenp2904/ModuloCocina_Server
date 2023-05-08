@@ -16,6 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ModeloOperador implements IControllerOperador, Serializable {
 
@@ -77,7 +80,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
     @Override
     public boolean ingresarPedido(String producto, String codigo, String cantidad) {
         try {
-            if(producto!=null){
+            if(producto!=null || codigo!=null){
                 pedido=new Pedido(producto,codigo,cantidad);
                 archivoPedido.agregarPedido(new Pedido(producto,codigo,cantidad));
                 archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
@@ -97,12 +100,14 @@ public class ModeloOperador implements IControllerOperador, Serializable {
             if(producto==null){
                 return true;
             }else{
-                pedido=new Pedido(producto,codigo,cantidad);
-                archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
-                archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
-                generarFactura(pedido,cliente);
-                return true;
+                if(producto!=null || codigo!=null) {
+                    pedido = new Pedido(producto, codigo, cantidad);
+                    archivoPedido.agregarPedido(new Pedido(producto, codigo, cantidad));
+                    archivoPedido.saveToFile(new File("src/Servicios/Modelos/XML/pedidos.xml"));
+                    generarFactura(pedido, cliente);
+                }
             }
+            return true;
         } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
@@ -111,42 +116,41 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public ColasArray pedidosFrecuentesCliente(String telefono) {
-        ColasArray colasArray=new ColasArray();
+            Map<String, Integer> pedidos = archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
+            System.out.println("Pedidos frecuentes");
+            System.out.println(pedidos.toString());
+            String result = pedidos.entrySet().stream()
+                    .map(entry -> entry.getKey() + "     --------------------      " + entry.getValue() + "\n")
+                    .collect(Collectors.joining());
+            ColasArray colasArray = new ColasArray();
+            colasArray.enqueue(result);
+            System.out.println("cola" + colasArray.toString());
+            return colasArray;
 
-        LinkedList pedidos = new LinkedList<>();
+        /*
+        ColasArray colasArray=new ColasArray();
+        Map<String, Integer> pedidos = new HashMap<>();
         pedidos=archivoFacturasXML.getCantidadPedidosPorProductoOrdenado(telefono);
         System.out.println("Pedidos frecuentes");
-        pedidos.print();
+        System.out.println(pedidos.toString());
 
-        while (!pedidos.isEmpty()){
-            colasArray.enqueue(pedidos.popHead());
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : pedidos.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+            sb.append(key).append("---------------").append(value).append("\n");
         }
-        return colasArray;
-
-
-        //pedidos.get()
-        /*
-        colasArray.enqueue("Hamburguesa");
-        colasArray.enqueue("10");
-        colasArray.enqueue("1");
-        colasArray.enqueue("Perro S");
-        colasArray.enqueue("5");
-        colasArray.enqueue("12");
-        colasArray.enqueue("Perro G");
-        colasArray.enqueue("2");
-        colasArray.enqueue("4");
-
+        colasArray.enqueue(sb.toString());
+        System.out.println("cola" + colasArray.toString());
          return colasArray;
 
          */
-
-
-
     }
 
     @Override
     public ColasArray busquedaPedido(String pedidoABuscar) {
        ArrayList lista=archivoPedido.buscarComidasPorNombre(pedidoABuscar);
+        System.out.println(archivoPedido.buscarComidasPorNombre("hambguesa"));
         ColasArray colasArray=new ColasArray();
 
         for (int i = 0; i < lista.size(); i++) {
@@ -164,6 +168,7 @@ public class ModeloOperador implements IControllerOperador, Serializable {
 
     @Override
     public ColasArray busquedaCliente(String clienteTelefonoABuscar) {
+
         if(archivoCliente.existeCliente(clienteTelefonoABuscar)){
             ColasArray colasArray=new ColasArray();
             colasArray.enqueue(cliente.getNombreCliente());

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Facturas>
-                  
+                        
+  
+  
+  
   
   
   
@@ -9,7 +12,10 @@
   
   
   <Factura DireccionCliente="Provenza" ID="1" NombreCliente="karen" Telefono="2323" TipoCuenta="normal">
-                                    
+                                                
+    
+    
+    
     
     
     
@@ -18,6 +24,171 @@
     
     
     <Pedido Cantidad="2" Codigo="12" ProductoNombre="perro"/>
+                                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </Factura>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Factura DireccionCliente="Provenza" ID="2" NombreCliente="karen" Telefono="2323" TipoCuenta="normal">
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <Pedido Cantidad="1" Codigo="1" ProductoNombre="hamburguesa"/>
+                                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </Factura>
+                      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Factura DireccionCliente="Giron" ID="1" NombreCliente="karen" Telefono="23232" TipoCuenta="Premium">
+                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <Pedido Cantidad="2" Codigo="11" ProductoNombre="Perro"/>
+                                          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </Factura>
+                      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Factura DireccionCliente="Giron" ID="2" NombreCliente="karen" Telefono="23232" TipoCuenta="Premium">
+                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <Pedido Cantidad="1" Codigo="8" ProductoNombre="Hamburguesaaa"/>
+                                          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </Factura>
+                    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Factura DireccionCliente="Giron" ID="1" NombreCliente="Santiago" Telefono="3155470362" TipoCuenta="Premium">
+                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    <Pedido Cantidad="2" Codigo="15" ProductoNombre="Perro"/>
+                                      
+  
+  
+  
+  
+  
+  
+  
+  
+  </Factura>
+                  
+  
+  
+  
+  
+  
+  
+  
+  
+  <Factura DireccionCliente="Pidecuesta" ID="1" NombreCliente="Manuel" Telefono="3027031702" TipoCuenta="Premium">
+                                    
+    
+    
+    
+    
+    
+    
+    
+    <Pedido Cantidad="1" Codigo="20" ProductoNombre="perro"/>
                                   
   
   
@@ -35,126 +206,47 @@
   
   
   
-  <Factura DireccionCliente="Provenza" ID="2" NombreCliente="karen" Telefono="2323" TipoCuenta="normal">
+  <Factura DireccionCliente="Pidecuesta" ID="2" NombreCliente="Manuel" Telefono="3027031702" TipoCuenta="Premium">
                                     
+
     
     
     
-    
-    
-    
-    
-    <Pedido Cantidad="1" Codigo="1" ProductoNombre="hamburguesa"/>
-                                  
-  
-  
-  
-  
-  
-  
-  
-  </Factura>
-                
-  
-  
-  
-  
-  
-  
-  
-  <Factura DireccionCliente="Giron" ID="1" NombreCliente="karen" Telefono="23232" TipoCuenta="Premium">
-                                
-    
-    
-    
-    
-    
-    
-    <Pedido Cantidad="2" Codigo="11" ProductoNombre="Perro"/>
-                              
-  
-  
-  
-  
-  
-  
-  </Factura>
-                
-  
-  
-  
-  
-  
-  
-  <Factura DireccionCliente="Giron" ID="2" NombreCliente="karen" Telefono="23232" TipoCuenta="Premium">
-                                
-    
-    
-    
-    
-    
-    
-    <Pedido Cantidad="1" Codigo="8" ProductoNombre="Hamburguesaaa"/>
-                              
-  
-  
-  
-  
-  
-  
-  </Factura>
-              
-  
-  
-  
-  
-  
-  
-  <Factura DireccionCliente="Giron" ID="1" NombreCliente="Santiago" Telefono="3155470362" TipoCuenta="Premium">
-                            
-    
-    
-    
-    
-    
-    <Pedido Cantidad="2" Codigo="15" ProductoNombre="Perro"/>
-                          
-  
-  
-  
-  
-  
-  </Factura>
-            
-  
-  
-  
-  
-  
-  <Factura DireccionCliente="Pidecuesta" ID="1" NombreCliente="Manuel" Telefono="3027031702" TipoCuenta="Premium">
-                        
-    
-    
-    
-    
-    <Pedido Cantidad="1" Codigo="20" ProductoNombre="perro"/>
+    <Pedido Cantidad="22" Codigo="23" ProductoNombre="helado"/>
                       
   
   
   
   
   </Factura>
+      
+  
+  
+  <Factura DireccionCliente="calle giron" ID="1" NombreCliente="karen" Telefono="123456" TipoCuenta="premium">
             
-  
-  
-  
-  
-  <Factura DireccionCliente="Pidecuesta" ID="2" NombreCliente="Manuel" Telefono="3027031702" TipoCuenta="Premium">
-                        
-
-    <Pedido Cantidad="22" Codigo="23" ProductoNombre="helado"/>
+    
+    <Pedido Cantidad="2" Codigo="2" ProductoNombre="perr"/>
           
   
   </Factura>
-
+    
+  
+  <Factura DireccionCliente="12" ID="1" NombreCliente="12" Telefono="12" TipoCuenta="12">
+        
+    <Pedido Cantidad="2" Codigo="3" ProductoNombre="perro"/>
+      
+  </Factura>
+  
+  <Factura DireccionCliente="Giron" ID="1" NombreCliente="Santiago" Telefono="3155470362" TipoCuenta="Premium">
+    <Pedido Cantidad="6" Codigo="4" ProductoNombre="hamburguesa"/>
+  </Factura>
+  <Factura DireccionCliente="Giron" ID="2" NombreCliente="Santiago" Telefono="3155470362" TipoCuenta="Premium">
+    <Pedido Cantidad="2" Codigo="1" ProductoNombre="arroz"/>
+  </Factura>
+  <Factura DireccionCliente="giron" ID="3" NombreCliente="karen" Telefono="3157660279" TipoCuenta="premium">
+    <Pedido Cantidad="2" Codigo="2" ProductoNombre="perro s"/>
+  </Factura>
+  <Factura DireccionCliente="calle giron" ID="4" NombreCliente="karen" Telefono="123456" TipoCuenta="premium">
+    <Pedido Cantidad="1" Codigo="1" ProductoNombre="hambur"/>
+  </Factura>
 </Facturas>

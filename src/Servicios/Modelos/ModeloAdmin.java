@@ -30,8 +30,9 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
 
     @Override
     public boolean resgitrarRepartidor(String nombre, String id, String contraseña) {
-        archivoRepartidor.agregarUsuario(new Usuario(nombre,id,contraseña));
+
         try {
+            archivoRepartidor.agregarUsuario(new Usuario(nombre,id,contraseña));
             archivoRepartidor.saveToFile(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);
@@ -41,8 +42,9 @@ public class ModeloAdmin implements IControllerAdmin, Serializable {
 
     @Override
     public boolean registrarOperador(String nombre, String id, String contraseña)  {
-        archivoOperador.agregarUsuario(new Usuario(nombre,id,contraseña));
+
         try {
+            archivoOperador.agregarUsuario(new Usuario(nombre,id,contraseña));
             archivoOperador.saveToFile(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
         } catch (TransformerException e) {
             throw new RuntimeException(e);

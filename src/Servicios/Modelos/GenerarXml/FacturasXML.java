@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class FacturasXML {
     private Document doc;
@@ -134,7 +135,27 @@ public class FacturasXML {
         return listaContenido;
     }
 
-    public LinkedList getCantidadPedidosPorProductoOrdenado(String telefonoo) {
+
+    public Map<String, Integer> getCantidadPedidosPorProductoOrdenado(String telefono) {
+        Map<String, Integer> cantidadPedidosPorProducto = new HashMap<>();
+        NodeList facturaNodes = doc.getElementsByTagName("Factura");
+        for (int i = 0; i < facturaNodes.getLength(); i++) {
+            Element factura = (Element) facturaNodes.item(i);
+            String telefonoCliente = factura.getAttribute("Telefono");
+            if (telefonoCliente.equals(telefono)) {
+                Element pedido = (Element) factura.getElementsByTagName("Pedido").item(0);
+                String productoNombre = pedido.getAttribute("ProductoNombre");
+                int cantidad = Integer.parseInt(pedido.getAttribute("Cantidad"));
+                cantidadPedidosPorProducto.merge(productoNombre, cantidad, Integer::sum);
+            }
+        }
+        return cantidadPedidosPorProducto.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+    }
+
+/*
+    public  Map<String, Integer> getCantidadPedidosPorProductoOrdenado(String telefonoo) {
         Map<String, Integer> cantidadPedidosPorProducto = new HashMap<>();
         LinkedList lista=new LinkedList<>();
         NodeList facturaNodes = doc.getElementsByTagName("Factura");
@@ -150,6 +171,7 @@ public class FacturasXML {
                     cantidad += cantidadPedidosPorProducto.get(productoNombre);
                 }
                 cantidadPedidosPorProducto.put(productoNombre, cantidad);
+                System.out.println("en "+productoNombre);
                 lista.add(productoNombre);
 
             }
@@ -159,7 +181,9 @@ public class FacturasXML {
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .forEachOrdered(entry -> cantidadPedidosPorProductoOrdenado.put(entry.getKey(), entry.getValue()));
 
-        return lista;
+        return cantidadPedidosPorProductoOrdenado;
 
     }
+
+ */
 }

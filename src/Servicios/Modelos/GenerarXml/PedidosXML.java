@@ -116,14 +116,16 @@ public class PedidosXML {
         }
         return pedidosLista;
     }
-    public ArrayList buscarComidasPorNombre(String nombre) {
-        ArrayList resultados = new ArrayList<>();
+
+
+    public ArrayList<Pedido> buscarComidasPorNombre(String nombre) {
+        ArrayList<Pedido> resultados = new ArrayList<>();
         Element root = doc.getDocumentElement();
         NodeList comidas = root.getElementsByTagName("Comida");
         int umbral = 3;
         for (int i = 0; i < comidas.getLength(); i++) {
             Element comida = (Element) comidas.item(i);
-            Element nombreElement = (Element) comida.getElementsByTagName("ProductoNombre").item(0);
+            Element nombreElement = (Element) comida.getElementsByTagName("Nombre").item(0);
             String nombreComida = nombreElement.getTextContent();
             String[] palabras = nombreComida.split("\\s+");
             int distanciaMinima = Integer.MAX_VALUE;
@@ -134,13 +136,13 @@ public class PedidosXML {
                 }
             }
             if (distanciaMinima <= umbral) {
-               // Pedido.Time tiempo = Food.Time.valueOf(tiempoElement.getTextContent());
+                Element tiempoElement = (Element) comida.getElementsByTagName("Tiempo").item(0);
                 Element precioElement = (Element) comida.getElementsByTagName("Codigo").item(0);
                 String codigo =precioElement.getTextContent();
                 Element cantidadElement = (Element) comida.getElementsByTagName("Cantidad").item(0);
-                String cantidad = cantidadElement.getTextContent();
-                Pedido resultado = new Pedido(nombreComida,codigo,cantidad);
-                resultados.add(nombreComida);
+                int cantidad = Integer.parseInt(cantidadElement.getTextContent());
+                Pedido resultado = new Pedido(nombreComida,codigo, String.valueOf(cantidad));
+                resultados.add(resultado);
             }
         }
         return resultados;
@@ -167,4 +169,6 @@ public class PedidosXML {
         }
         return dp[m][n];
     }
+
+
 }
