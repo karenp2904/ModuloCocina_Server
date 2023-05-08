@@ -2,11 +2,11 @@ package Servicios.Controladores;
 
 import Dominio.Factura;
 import Estructuras.Colas.ColasList;
+import Estructuras.ListasEnlaceDoble.LinkedList;
 import Servicios.Modelos.ModeloRepartidor;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.Serializable;
-import java.util.LinkedList;
 
 public class ControllerRepartidor implements IControllerRepartidor , Serializable {
 

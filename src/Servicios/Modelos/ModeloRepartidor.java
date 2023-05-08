@@ -1,9 +1,10 @@
 package Servicios.Modelos;
 
 import Dominio.Factura;
-import Estructuras.Colas.ColasList;
+import Estructuras.ListasEnlaceDoble.LinkedList;
 import Servicios.Controladores.IControllerRepartidor;
-import Servicios.Modelos.XML.UsuariosXML;
+
+import Servicios.Modelos.GenerarXml.UsuariosXML;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,12 +15,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 
 public class ModeloRepartidor implements IControllerRepartidor, Serializable {
 
 
-    UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosOperador.xml"));
+    UsuariosXML archivoOperador =new UsuariosXML(new File("src/Servicios/Modelos/XML/usuariosRepartidor.xml"));
 
     grafo grafo=new grafo();
 
@@ -37,26 +42,26 @@ public class ModeloRepartidor implements IControllerRepartidor, Serializable {
     @Override
     public LinkedList imprimirRuta() {
         grafo.agregarDireccionFactura();
-        return  imprimirRuta() ;
+        return  grafo.imprimirRutaGrafo() ;
     }
 
 
     @Override
     public boolean recibirPedido(Factura factura) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean estadoPedido(Boolean estado) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean disponibilidadRepartidor() {
-        return false;
+        return true;
     }
 
-    public class grafo {
+    public class grafo implements  Serializable{
         private static int Bucaramanga1= 10000;
         private static int Giron1=8000;
         private static int Pobladogiron1= 7000;
@@ -90,7 +95,7 @@ public class ModeloRepartidor implements IControllerRepartidor, Serializable {
 
             try {
                 // Cargar el XML
-                File inputFile = new File("factura.xml");
+                File inputFile = new File("src/Servicios/Modelos/XML/factura.xml");
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
                 Document doc = dBuilder.parse(inputFile);
@@ -273,6 +278,7 @@ public class ModeloRepartidor implements IControllerRepartidor, Serializable {
             padres.put(direccionOrigen, null);
 
             ArrayList<String> cola = new ArrayList<>();
+            cola.add(direccionOrigen); // Agregar el nodo de origen a la cola
 
             while (!cola.isEmpty()) {
                 String direccionActual = cola.remove(0);
@@ -302,7 +308,10 @@ public class ModeloRepartidor implements IControllerRepartidor, Serializable {
 
 
 
-        public static LinkedList imprimirRuta(String direccionOrigen, String direccionDestino) {
+        public static LinkedList imprimirRutaGrafo() {
+            String direccionOrigen = "dirección de origen"; // Reemplaza "dirección de origen" con la dirección real de origen
+            String direccionDestino = "dirección de destino"; // Reemplaza "dirección de destino" con la dirección real de destino
+
             List<String> ruta = buscarRuta(direccionOrigen, direccionDestino);
             LinkedList resultado = new LinkedList<>();
 
